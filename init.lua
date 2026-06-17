@@ -5,6 +5,7 @@ do
   -- option
   require('configs.options')
   require('keymaps.highlight-esc')
+  require('keymaps.file')
 
   -- indent
   require('configs.indents')
