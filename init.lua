@@ -5,7 +5,7 @@ do
   -- option
   require('configs.options')
   require('keymaps.highlight-esc')
-  require('keymaps.file')
+  require('keymaps.doom-emacs')
 
   -- indent
   require('configs.indents')
@@ -16,17 +16,16 @@ do
   -- highlight
   require('configs.highlight-yank')
 
-  -- ui
+  -- ux
   require('plugins.guess-indent')
   require('plugins.gitsigns')
   require('plugins.whichkey')
   require('plugins.tokyonight')
   require('plugins.nvim-autopairs')
+  require('plugins.persistence')
+  require('keymaps.persistence')
 
   -- collections
-  -- require('plugins.plenary')
-  -- require('plugins.telescope')
-  -- require('keymaps.telescope')
   require('plugins.mini')
   require('plugins.snacks')
   require('keymaps.snacks')
