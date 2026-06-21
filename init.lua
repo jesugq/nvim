@@ -5,7 +5,7 @@ do
   -- option
   require('configs.options')
   require('keymaps.highlight-esc')
-  require('keymaps.doom-emacs')
+  require('keymaps.session')
 
   -- indent
   require('configs.indents')
@@ -24,6 +24,8 @@ do
   require('plugins.nvim-autopairs')
   require('plugins.persistence')
   require('keymaps.persistence')
+  require('plugins.orgmode')
+  require('keymaps.orgmode')
 
   -- collections
   require('plugins.mini')
@@ -31,9 +33,9 @@ do
   require('keymaps.snacks')
 
   -- lsp
-  require('plugins.fidget')
-  require('plugins.mason')
-  require('plugins.mason-lspconfig')
-  require('plugins.mason-tool-installer')
-  require('plugins.arborist')
+  -- require('plugins.fidget')
+  -- require('plugins.mason')
+  -- require('plugins.mason-lspconfig')
+  -- require('plugins.mason-tool-installer')
+  -- require('plugins.arborist')
 end
