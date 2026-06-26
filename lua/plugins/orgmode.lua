@@ -16,7 +16,7 @@ do
     org_hide_leading_stars = true,
     org_hide_emphasis_markers = true,
     org_blank_before_new_entry = { heading = false, plain_list_item = false },
-    win_split_mode = 'vertical',
+    win_split_mode = 'edit',
     org_todo_keywords = { 'TODO', 'QUERY', 'FUZZY', 'READY', '|', 'DONE' },
     org_todo_keyword_faces = {
       QUERY = ':foreground "#4d9391"',

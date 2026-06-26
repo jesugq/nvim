@@ -4,8 +4,12 @@ do
 
   -- option
   require('configs.options')
+
+  -- keymaps
   require('keymaps.highlight-esc')
+  require('keymaps.editing')
   require('keymaps.session')
+  require('keymaps.buffers')
 
   -- indent
   require('configs.indents')
