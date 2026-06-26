@@ -26,10 +26,10 @@ do
   require('plugins.whichkey')
   require('plugins.tokyonight')
   require('plugins.nvim-autopairs')
-  require('plugins.persistence')
-  require('keymaps.persistence')
   require('plugins.orgmode')
   require('keymaps.orgmode')
+  require('plugins.no-neck-pain')
+  require('keymaps.no-neck-pain')
 
   -- collections
   require('plugins.mini')

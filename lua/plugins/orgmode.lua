@@ -8,10 +8,10 @@ do
 
   vim.pack.add { 'https://github.com/nvim-orgmode/orgmode' }
   require('orgmode').setup {
-    -- org_agenda_files = '~/Sync/Apps/Orgmode/**/*',
-    org_agenda_files = '~/Development/orgmode/**/*',
-    -- org_default_notes_file = '~/Sync/Apps/Orgmode/@inbox.org',
-    org_default_notes_file = '~/Development/orgmode/@inbox.org',
+    org_agenda_files = '~/Sync/Apps/Orgmode/**/*',
+    -- org_agenda_files = '~/Development/orgmode/**/*',
+    org_default_notes_file = '~/Sync/Apps/Orgmode/@inbox.org',
+    -- org_default_notes_file = '~/Development/orgmode/@inbox.org',
     org_startup_folded = 'overview',
     org_hide_leading_stars = true,
     org_hide_emphasis_markers = true,
@@ -51,7 +51,7 @@ do
           {
             type = 'tags_todo',
             match = 'PRIORITY="A"',
-            org_agenda_overriding_header = 'By prio HIGHEST',
+            org_agenda_overriding_header = 'By prio higher',
             org_agenda_sorting_strategy = { 'todo-state-down' },
           },
         },
@@ -73,7 +73,7 @@ do
           {
             type = 'tags',
             match = 'TODO="FUZZY"',
-            org_agenda_overriding_header = 'By face FUZZY',
+            org_agenda_overriding_header = 'By face fuzzy',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
@@ -84,7 +84,7 @@ do
           {
             type = 'agenda',
             org_agenda_span = 7,
-            org_agenda_overriding_header = 'By default AGENDA',
+            org_agenda_overriding_header = 'By default agenda',
           },
         },
       },
