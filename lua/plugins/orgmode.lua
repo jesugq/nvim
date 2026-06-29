@@ -15,6 +15,7 @@ do
     org_startup_folded = 'overview',
     org_hide_leading_stars = true,
     org_hide_emphasis_markers = true,
+    org_use_tag_inheritance = false,
     org_blank_before_new_entry = { heading = false, plain_list_item = false },
     win_split_mode = 'edit',
     org_todo_keywords = { 'TODO', 'QUERY', 'FUZZY', 'READY', '|', 'DONE' },
