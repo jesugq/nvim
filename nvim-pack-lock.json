@@ -20,6 +20,10 @@
       "rev": "85a86eb62409e3ec88713bff3d1b9d7374e112e4",
       "src": "https://github.com/sainnhe/everforest"
     },
+    "faster.nvim": {
+      "rev": "6b7cb8b1a9628d4b87009c4849d510d1a3a14319",
+      "src": "https://github.com/pteroctopus/faster.nvim"
+    },
     "fidget.nvim": {
       "rev": "82404b196e73a00b1727a91903beef5ddc319d22",
       "src": "https://github.com/j-hui/fidget.nvim"
@@ -43,6 +47,10 @@
     "kanagawa.nvim": {
       "rev": "bb85e4bfc8d89b0e62c8fa53ccdd13d12e2f77b3",
       "src": "https://github.com/rebelot/kanagawa.nvim"
+    },
+    "lazygit.nvim": {
+      "rev": "a04ad0dbc725134edbee3a5eea29290976695357",
+      "src": "https://github.com/kdheepak/lazygit.nvim"
     },
     "mason-lspconfig.nvim": {
       "rev": "0a695750d747db1e7e70bcf0267ef8951c95fc83",

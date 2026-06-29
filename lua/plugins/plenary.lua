@@ -1,0 +1,4 @@
+do
+  vim.pack.add { 'https://github.com/nvim-lua/plenary.nvim' }
+  require('plenary')
+end

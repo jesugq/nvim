@@ -1,9 +1,11 @@
 do
-  -- startups
+  -- configs
   require('configs.startup')
-
-  -- option
   require('configs.options')
+  require('configs.indents')
+  require('configs.autobuild')
+  require('configs.autochecktime')
+  require('configs.highlight-yank')
 
   -- keymaps
   require('keymaps.highlight-esc')
@@ -11,25 +13,24 @@ do
   require('keymaps.session')
   require('keymaps.buffers')
 
-  -- indent
-  require('configs.indents')
-
-  -- autobuild
-  require('configs.autobuild')
-
-  -- highlight
-  require('configs.highlight-yank')
-
-  -- ux
-  require('plugins.guess-indent')
+  -- interface
   require('plugins.gitsigns')
   require('plugins.whichkey')
   require('plugins.tokyonight')
-  require('plugins.nvim-autopairs')
-  require('plugins.orgmode')
-  require('keymaps.orgmode')
   require('plugins.no-neck-pain')
   require('keymaps.no-neck-pain')
+
+  -- tuning
+  require('plugins.plenary')
+  require('plugins.lazygit')
+  require('keymaps.lazygit')
+  require('plugins.guess-indent')
+  require('plugins.nvim-autopairs')
+  require('plugins.faster')
+
+  -- languages
+  require('plugins.orgmode')
+  require('keymaps.orgmode')
 
   -- collections
   require('plugins.mini')

@@ -17,4 +17,5 @@ do
   -- file
   vim.o.undofile = true
   vim.o.confirm = true
+  vim.o.autoread = true
 end
