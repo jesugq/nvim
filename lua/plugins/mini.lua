@@ -5,4 +5,5 @@ do
   require('mini.statusline').setup { use_icons = true, }
   require('mini.tabline').setup { show_icons = true, }
   require('mini.trailspace').setup { }
+  require('mini.cursorword').setup { delay = 500, }
 end

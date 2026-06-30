@@ -1,29 +1,31 @@
 do
-  -- configs
+  -- startup
   require('configs.startup')
-  require('configs.options')
   require('configs.indents')
+  require('autocfg.indents')
   require('configs.autobuild')
-  require('configs.autochecktime')
-  require('configs.highlight-yank')
+  require('autocfg.autobuild')
+  require('autocfg.autochecktime')
+  require('autocfg.highlightyank')
 
   -- keymaps
-  require('keymaps.highlight-esc')
   require('keymaps.editing')
   require('keymaps.session')
   require('keymaps.buffers')
 
   -- interface
+  require('plugins.fidget')
   require('plugins.gitsigns')
   require('plugins.whichkey')
   require('plugins.tokyonight')
   require('plugins.no-neck-pain')
   require('keymaps.no-neck-pain')
+  require('plugins.smear-cursor')
 
   -- tuning
+  require('plugins.marks')
+  require('keymaps.marks')
   require('plugins.plenary')
-  require('plugins.lazygit')
-  require('keymaps.lazygit')
   require('plugins.guess-indent')
   require('plugins.nvim-autopairs')
   require('plugins.faster')
