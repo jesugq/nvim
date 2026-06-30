@@ -38,11 +38,4 @@ do
   require('plugins.mini')
   require('plugins.snacks')
   require('keymaps.snacks')
-
-  -- lsp
-  -- require('plugins.fidget')
-  -- require('plugins.mason')
-  -- require('plugins.mason-lspconfig')
-  -- require('plugins.mason-tool-installer')
-  -- require('plugins.arborist')
 end
