@@ -14,6 +14,7 @@ do
   require('keymaps.buffers')
 
   -- collections
+  require('plugins.plenary')
   require('plugins.mini')
   require('plugins.snacks')
   require('keymaps.snacks')
@@ -30,7 +31,9 @@ do
   -- tuning
   require('plugins.marks')
   require('keymaps.marks')
-  require('plugins.plenary')
+  require('configs.lazygit')
+  require('plugins.lazygit')
+  require('keymaps.lazygit')
   require('plugins.guess-indent')
   require('plugins.nvim-autopairs')
   require('plugins.faster')
