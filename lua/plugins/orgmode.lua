@@ -1,17 +1,9 @@
 do
-  vim.api.nvim_create_autocmd('FileType', {
-    pattern = 'org',
-    callback = function()
-      vim.api.nvim_set_hl(0, "Folded", { fg = "#1a1b25", bg = "#1a1b25", italic = false })
-    end,
-  })
+  local path = require('../path')
 
   vim.pack.add { 'https://github.com/nvim-orgmode/orgmode' }
   require('orgmode').setup {
-    org_agenda_files = '~/Sync/Apps/Orgmode/**/*',
-    -- org_agenda_files = '~/Development/orgmode/**/*',
-    org_default_notes_file = '~/Sync/Apps/Orgmode/@inbox.org',
-    -- org_default_notes_file = '~/Development/orgmode/@inbox.org',
+    org_agenda_files = path.org_dir .. '/**/*',
     org_startup_folded = 'overview',
     org_hide_leading_stars = true,
     org_hide_emphasis_markers = true,
@@ -35,35 +27,34 @@ do
       disable_all = true,
     },
     org_agenda_custom_commands = {
-      c = {
-        description = 'Coder',
-        types = {
-          {
-            type = 'tags_todo',
-            match = '+coder',
-            org_agenda_overriding_header = 'By tags coder',
-            org_agenda_sorting_strategy = { 'priority_down' },
-          },
-        },
-      },
       h = {
         description = 'Higher',
         types = {
           {
-            type = 'tags_todo',
-            match = 'PRIORITY="A"',
+            type = 'agenda',
+            org_agenda_span = 15,
+            org_agenda_tag_filter_preset = '+A',
             org_agenda_overriding_header = 'By prio higher',
-            org_agenda_sorting_strategy = { 'todo-state-down' },
           },
         },
       },
-      r = {
-        description = 'Ready',
+      a = {
+        description = 'Agenda',
         types = {
           {
-            type = 'tags_todo',
-            match = 'TODO="READY"',
-            org_agenda_overriding_header = 'By face ready',
+            type = 'agenda',
+            org_agenda_span = 8,
+            org_agenda_overriding_header = 'By default agenda',
+          },
+        },
+      },
+      w = {
+        description = 'Query',
+        types = {
+          {
+            type = 'tags',
+            match = 'TODO="QUERY"',
+            org_agenda_overriding_header = 'By face query',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
@@ -79,13 +70,36 @@ do
           },
         },
       },
-      a = {
-        description = 'Agenda',
+      r = {
+        description = 'Ready',
         types = {
           {
-            type = 'agenda',
-            org_agenda_span = 7,
-            org_agenda_overriding_header = 'By default agenda',
+            type = 'tags_todo',
+            match = 'TODO="READY"',
+            org_agenda_overriding_header = 'By face ready',
+            org_agenda_sorting_strategy = { 'priority_down' },
+          },
+        },
+      },
+      o = {
+        description = 'Oled',
+        types = {
+          {
+            type = 'tags_todo',
+            match = '+oled',
+            org_agenda_overriding_header = 'By tags oled',
+            org_agenda_sorting_strategy = { 'priority_down' },
+          },
+        },
+      },
+      i = {
+        description = 'Inkd',
+        types = {
+          {
+            type = 'tags_todo',
+            match = '+inkd',
+            org_agenda_overriding_header = 'By tags inkd',
+            org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
       },

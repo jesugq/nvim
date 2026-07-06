@@ -13,6 +13,11 @@ do
   require('keymaps.session')
   require('keymaps.buffers')
 
+  -- collections
+  require('plugins.mini')
+  require('plugins.snacks')
+  require('keymaps.snacks')
+
   -- interface
   require('plugins.fidget')
   require('plugins.gitsigns')
@@ -32,10 +37,9 @@ do
 
   -- languages
   require('plugins.orgmode')
+  require('autocfg.orgmode')
   require('keymaps.orgmode')
-
-  -- collections
-  require('plugins.mini')
-  require('plugins.snacks')
-  require('keymaps.snacks')
+  require('plugins.obsidian')
+  require('autocfg.obsidian')
+  require('keymaps.obsidian')
 end

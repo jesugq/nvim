@@ -6,12 +6,12 @@ do
       enabled = true,
       sources = {
         explorer = {
-          auto_close = true
+          auto_close = true,
         },
       },
     },
-    bufdelete = { enabled = true },
-    indent = { enabled = true },
-    notifier = { enabled = true },
+    indent = { enabled = true, },
+    notifier = { enabled = true, },
+    image = { enabled = true, },
   }
 end
