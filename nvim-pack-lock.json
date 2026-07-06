@@ -160,6 +160,10 @@
       "rev": "cf49e389c22dab56224e43ae16422ddcd5b61b28",
       "src": "https://github.com/nyoom-engineering/oxocarbon.nvim"
     },
+    "paperplanes.nvim": {
+      "rev": "dfe43f895ec6f43f4a0a2af006ee74c79e5e1028",
+      "src": "https://github.com/rktjmp/paperplanes.nvim"
+    },
     "persistence.nvim": {
       "rev": "b20b2a7887bd39c1a356980b45e03250f3dce49c",
       "src": "https://github.com/folke/persistence.nvim"

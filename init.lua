@@ -37,6 +37,7 @@ do
   require('plugins.guess-indent')
   require('plugins.nvim-autopairs')
   require('plugins.faster')
+  require('plugins.paperplanes')
 
   -- languages
   require('plugins.orgmode')
