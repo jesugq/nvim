@@ -4,6 +4,7 @@ do
     explorer = { enabled = true },
     picker = {
       enabled = true,
+      hidden = true,
       sources = {
         explorer = {
           auto_close = true,
