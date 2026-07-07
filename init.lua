@@ -12,6 +12,7 @@ do
   require('keymaps.editing')
   require('keymaps.session')
   require('keymaps.buffers')
+  require('keymaps.cursorl')
 
   -- collections
   require('plugins.plenary')
