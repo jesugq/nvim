@@ -39,6 +39,8 @@ do
   require('plugins.nvim-autopairs')
   require('plugins.faster')
   require('plugins.paperplanes')
+  require('plugins.cellular-automaton')
+  require('keymaps.cellular-automaton')
 
   -- languages
   require('plugins.orgmode')
