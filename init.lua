@@ -12,6 +12,7 @@ do
   require('keymaps.editing')
   require('keymaps.session')
   require('keymaps.buffers')
+  require('keymaps.windows')
   require('keymaps.cursorl')
 
   -- collections
@@ -28,6 +29,8 @@ do
   require('plugins.no-neck-pain')
   require('keymaps.no-neck-pain')
   require('plugins.smear-cursor')
+  require('plugins.cellular-automaton')
+  require('keymaps.cellular-automaton')
 
   -- tuning
   require('plugins.marks')
@@ -39,8 +42,6 @@ do
   require('plugins.nvim-autopairs')
   require('plugins.faster')
   require('plugins.paperplanes')
-  require('plugins.cellular-automaton')
-  require('keymaps.cellular-automaton')
 
   -- languages
   require('plugins.orgmode')
