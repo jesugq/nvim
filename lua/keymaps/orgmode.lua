@@ -82,14 +82,10 @@ do
     callback = function()
       local orgmode = require('orgmode')
 
-
-      vim.keymap.set('n', '<CR>', function() orgmode.action('agenda.preview_item') end, {
-        buffer = true, desc = 'Orgagenda preview item'
-      })
-
-      vim.keymap.set('n', '<C-CR>', function() orgmode.action('agenda.switch_to_item') end, {
+      vim.keymap.set('n', '<CR>', function() orgmode.action('agenda.switch_to_item') end, {
         buffer = true, desc = 'Orgagenda switch to item'
       })
+
       vim.keymap.set('n', '<C-h>', function() orgmode.action('agenda.advance_span', -1) end, {
         buffer = true, desc = 'Orgagenda rewind span'
       })
