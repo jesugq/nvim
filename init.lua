@@ -22,10 +22,11 @@ do
   require('keymaps.snacks')
 
   -- interface
+  require('plugins.tokyonight')
+  require('plugins.bufferline')
   require('plugins.fidget')
   require('plugins.gitsigns')
   require('plugins.whichkey')
-  require('plugins.tokyonight')
   require('plugins.no-neck-pain')
   require('keymaps.no-neck-pain')
   require('plugins.smear-cursor')
