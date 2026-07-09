@@ -10,11 +10,11 @@ do
     org_use_tag_inheritance = false,
     org_blank_before_new_entry = { heading = false, plain_list_item = false },
     win_split_mode = 'edit',
-    org_todo_keywords = { 'TODO', 'QUERY', 'FUZZY', 'READY', '|', 'DONE' },
+    org_todo_keywords = { 'TODO', 'REVIEW', 'RESUME', '|', 'DONE' },
     org_todo_keyword_faces = {
-      QUERY = ':foreground "#4d9391"',
-      FUZZY = ':foreground "#47ba99"',
-      READY = ':foreground "#57bfc2"',
+      REVIEW = ':foreground "#4d9391"',
+      -- RENAME = ':foreground "#47ba99"',
+      RESUME = ':foreground "#57bfc2"',
     },
     org_log_done = 'time',
     org_priority_default = 'C',
@@ -27,56 +27,41 @@ do
       disable_all = true,
     },
     org_agenda_custom_commands = {
-      h = {
-        description = 'Higher',
-        types = {
-          {
-            type = 'agenda',
-            org_agenda_span = 15,
-            org_agenda_tag_filter_preset = '+A',
-            org_agenda_overriding_header = 'By prio higher',
-          },
-        },
-      },
       a = {
         description = 'Agenda',
         types = {
           {
             type = 'agenda',
             org_agenda_span = 8,
-            org_agenda_overriding_header = 'By default agenda',
+          },
+        },
+      },
+      s = {
+        description = 'Signal',
+        types = {
+          {
+            type = 'agenda',
+            org_agenda_span = 15,
+            org_agenda_tag_filter_preset = '+A',
           },
         },
       },
       w = {
-        description = 'Query',
-        types = {
-          {
-            type = 'tags',
-            match = 'TODO="QUERY"',
-            org_agenda_overriding_header = 'By face query',
-            org_agenda_sorting_strategy = { 'priority_down' },
-          },
-        },
-      },
-      f = {
-        description = 'Fuzzy',
-        types = {
-          {
-            type = 'tags',
-            match = 'TODO="FUZZY"',
-            org_agenda_overriding_header = 'By face fuzzy',
-            org_agenda_sorting_strategy = { 'priority_down' },
-          },
-        },
-      },
-      r = {
-        description = 'Ready',
+        description = 'Review',
         types = {
           {
             type = 'tags_todo',
-            match = 'TODO="READY"',
-            org_agenda_overriding_header = 'By face ready',
+            match = 'TODO="REVIEW"',
+            org_agenda_sorting_strategy = { 'priority_down' },
+          },
+        },
+      },
+      e = {
+        description = 'Resume',
+        types = {
+          {
+            type = 'tags',
+            match = 'TODO="RESUME"',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
@@ -87,7 +72,6 @@ do
           {
             type = 'tags_todo',
             match = '+oled',
-            org_agenda_overriding_header = 'By tags oled',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
@@ -98,7 +82,6 @@ do
           {
             type = 'tags_todo',
             match = '+inkd',
-            org_agenda_overriding_header = 'By tags inkd',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
