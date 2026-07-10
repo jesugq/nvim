@@ -62,11 +62,14 @@ do
       vim.keymap.set({'n', 'i'}, '<C-c>c', function() orgmode.action('org_mappings.set_tags') end, {
         buffer = true, desc = 'Org set tags'
       })
-      vim.keymap.set({'n', 'i'}, '<C-c>d', function() orgmode.action('org_mappings.org_deadline') end, {
-        buffer = true, desc = 'Org deadline'
+      vim.keymap.set({'n', 'i'}, '<C-c>a', function() orgmode.action('org_mappings.change_date') end, {
+        buffer = true, desc = 'Org change date'
       })
       vim.keymap.set({'n', 'i'}, '<C-c>s', function() orgmode.action('org_mappings.org_schedule') end, {
         buffer = true, desc = 'Org schedule'
+      })
+      vim.keymap.set({'n', 'i'}, '<C-c>d', function() orgmode.action('org_mappings.org_deadline') end, {
+        buffer = true, desc = 'Org deadline'
       })
       vim.keymap.set({'n', 'i'}, '<C-c>k', function() orgmode.action('org_mappings.timestamp_up') end, {
         buffer = true, desc = 'Org timestamp up'

@@ -2,8 +2,8 @@ do
   vim.keymap.set('n', '<leader>e', function() Snacks.explorer() end, { desc = 'Snacks explorer' })
 
   vim.keymap.set('n', '<leader>fb', function() Snacks.picker.buffers() end, { desc = 'Snacks picker buffer' })
+  vim.keymap.set('n', '<leader>fr', function() Snacks.picker.recent({ limit = 500, filter = { cwd = true } }) end, { desc = 'Snacks picker recent' })
   vim.keymap.set('n', '<leader>ff', function() Snacks.picker.files() end, { desc = 'Snacks picker files' })
-  vim.keymap.set('n', '<leader>fr', function() Snacks.picker.recent() end, { desc = 'Snacks picker recent' })
   vim.keymap.set('n', '<leader>fg', function() Snacks.picker.grep() end, { desc = 'Snacks picker grep' })
 
   vim.keymap.set('n', '<leader>s:', function() Snacks.picker.command_history() end, { desc = 'Snacks picker command history' })
