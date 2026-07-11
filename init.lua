@@ -33,6 +33,7 @@ do
   -- interface
   require('plugins.tokyonight')
   require('plugins.bufferline')
+  require('plugins.lualine')
   require('plugins.gitsigns')
   require('plugins.whichkey')
   require('plugins.no-neck-pain')
