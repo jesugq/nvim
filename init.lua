@@ -21,10 +21,18 @@ do
   require('plugins.snacks')
   require('keymaps.snacks')
 
+  -- lsp ordered
+  require('plugins.mason')
+  require('plugins.nvim-lspconfig')
+  require('plugins.mason-lspconfig')
+  require('plugins.mason-tool-installer')
+  require('plugins.fidget')
+  require('lspconf.lua-ls')
+  require('configs.diagnostics')
+
   -- interface
   require('plugins.tokyonight')
   require('plugins.bufferline')
-  require('plugins.fidget')
   require('plugins.gitsigns')
   require('plugins.whichkey')
   require('plugins.no-neck-pain')
