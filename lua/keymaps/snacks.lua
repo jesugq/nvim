@@ -1,5 +1,6 @@
 do
   vim.keymap.set('n', '<leader>e', function() Snacks.explorer() end, { desc = 'Snacks explorer' })
+  vim.keymap.set('n', '<leader>w', function() Snacks.picker.buffers( { focus = 'list' }) end, { desc = 'Snacks picker buffer' })
 
   vim.keymap.set('n', '<leader>fb', function() Snacks.picker.buffers() end, { desc = 'Snacks picker buffer' })
   vim.keymap.set('n', '<leader>fr', function() Snacks.picker.recent({ limit = 500, filter = { cwd = true } }) end, { desc = 'Snacks picker recent' })

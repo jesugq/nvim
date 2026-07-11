@@ -13,7 +13,6 @@ do
     org_todo_keywords = { 'TODO', 'REVIEW', 'RESUME', '|', 'DONE' },
     org_todo_keyword_faces = {
       REVIEW = ':foreground "#4d9391"',
-      -- RENAME = ':foreground "#47ba99"',
       RESUME = ':foreground "#57bfc2"',
     },
     org_log_done = 'time',
@@ -33,6 +32,7 @@ do
           {
             type = 'agenda',
             org_agenda_span = 8,
+            org_agenda_tag_filter_preset = '-A',
           },
         },
       },
@@ -82,6 +82,16 @@ do
           {
             type = 'tags_todo',
             match = '+inkd',
+            org_agenda_sorting_strategy = { 'priority_down' },
+          },
+        },
+      },
+      p = {
+        description = 'Prod',
+        types = {
+          {
+            type = 'tags_todo',
+            match = '+prod',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
