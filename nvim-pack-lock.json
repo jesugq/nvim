@@ -224,6 +224,10 @@
       "rev": "7014644e25d5cebcb3e70a079804c44ec14d8e46",
       "src": "https://github.com/embark-theme/vim"
     },
+    "vim-endwise": {
+      "rev": "4994afb0cdf956d9a665a14b9c834869e602c396",
+      "src": "https://github.com/tpope/vim-endwise"
+    },
     "vim-tmux-navigator": {
       "rev": "e41c431a0c7b7388ae7ba341f01a0d217eb3a432",
       "src": "https://github.com/christoomey/vim-tmux-navigator"

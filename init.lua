@@ -1,8 +1,6 @@
 do
   -- startup
   require('configs.startup')
-  require('configs.indents')
-  require('autocfg.indents')
   require('configs.autobuild')
   require('autocfg.autobuild')
   require('autocfg.autochecktime')
