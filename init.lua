@@ -11,7 +11,6 @@ do
   require('keymaps.session')
   require('keymaps.buffers')
   require('keymaps.windows')
-  require('keymaps.cursorl')
 
   -- collections
   require('plugins.plenary')
@@ -53,7 +52,6 @@ do
 
   -- languages
   require('plugins.orgmode')
-  require('autocfg.orgmode')
   require('keymaps.orgmode')
   require('plugins.obsidian')
   require('autocfg.obsidian')
