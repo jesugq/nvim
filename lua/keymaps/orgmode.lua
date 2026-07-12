@@ -143,9 +143,6 @@ do
       vim.keymap.set('n', '<leader>ai', function() orgmode.action('agenda.open_by_key', 'i') end, {
         buffer = true, desc = 'Org inkd'
       })
-      vim.keymap.set('n', '<leader>ap', function() orgmode.action('agenda.open_by_key', 'p') end, {
-        buffer = true, desc = 'Org prod'
-      })
     end,
   })
 end

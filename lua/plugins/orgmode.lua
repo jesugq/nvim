@@ -86,16 +86,6 @@ do
           },
         },
       },
-      p = {
-        description = 'Prod',
-        types = {
-          {
-            type = 'tags_todo',
-            match = '+prod',
-            org_agenda_sorting_strategy = { 'priority_down' },
-          },
-        },
-      },
     },
   }
   vim.api.nvim_set_hl(0, '@org.priority.highest', { fg = '#d6224d', bold = true })
