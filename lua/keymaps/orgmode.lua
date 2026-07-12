@@ -8,8 +8,11 @@ do
         buffer = true, desc = 'Org cycle'
       })
 
-      vim.keymap.set({'n', 'i'}, '<S-TAB>', function() orgmode.action('org_mappings.global_cycle') end, {
-        buffer = true, desc = 'Org global cycle'
+      vim.keymap.set({'n', 'i'}, '<S-TAB>', function()
+        orgmode.action('org_mappings.outline_up_heading')
+        orgmode.action('org_mappings.cycle')
+      end, {
+        buffer = true, desc = 'Org outline up heading'
       })
 
       vim.keymap.set({'n', 'i'}, '<A-CR>', function() orgmode.action('org_mappings.open_at_point') end, {
