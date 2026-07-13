@@ -29,6 +29,7 @@ do
 
   -- interface
   require('plugins.tokyonight')
+  require('plugins.github-nvim-theme')
   require('plugins.bufferline')
   require('plugins.lualine')
   require('plugins.gitsigns')
