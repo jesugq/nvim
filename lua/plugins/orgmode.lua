@@ -50,7 +50,7 @@ do
         description = 'Review',
         types = {
           {
-            type = 'tags_todo',
+            type = 'tags',
             match = 'TODO="REVIEW"',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
@@ -70,7 +70,7 @@ do
         description = 'Oled',
         types = {
           {
-            type = 'tags_todo',
+            type = 'tags',
             match = '+oled',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
@@ -80,7 +80,7 @@ do
         description = 'Inkd',
         types = {
           {
-            type = 'tags_todo',
+            type = 'tags',
             match = '+inkd',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
