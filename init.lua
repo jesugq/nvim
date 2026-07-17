@@ -31,6 +31,7 @@ do
   require('plugins.tokyonight')
   require('plugins.github-nvim-theme')
   require('plugins.bufferline')
+  require('keymaps.bufferline')
   require('plugins.lualine')
   require('plugins.gitsigns')
   require('plugins.whichkey')
@@ -43,9 +44,6 @@ do
   -- tuning
   require('plugins.marks')
   require('keymaps.marks')
-  require('configs.lazygit')
-  require('plugins.lazygit')
-  require('keymaps.lazygit')
   require('plugins.guess-indent')
   require('plugins.nvim-autopairs')
   require('plugins.faster')
