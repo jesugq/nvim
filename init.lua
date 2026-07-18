@@ -23,12 +23,18 @@ do
   require('plugins.nvim-lspconfig')
   require('plugins.mason-lspconfig')
   require('plugins.mason-tool-installer')
-  require('plugins.fidget')
   require('lspconf.lua-ls')
+
+  -- ts ordered
+  require('plugins.treesitter-parser-registry')
+  require('plugins.nvim-treesitter')
+  require('autocfg.nvim-treesitter')
+
+  -- lsp & ts helpers
+  require('plugins.fidget')
   require('configs.diagnostics')
 
   -- interface
-  require('plugins.tokyonight')
   require('plugins.github-nvim-theme')
   require('plugins.bufferline')
   require('keymaps.bufferline')
@@ -36,7 +42,6 @@ do
   require('plugins.gitsigns')
   require('plugins.whichkey')
   require('plugins.no-neck-pain')
-  require('keymaps.no-neck-pain')
   require('plugins.smear-cursor')
   require('plugins.cellular-automaton')
   require('keymaps.cellular-automaton')
@@ -44,7 +49,6 @@ do
   -- tuning
   require('plugins.marks')
   require('keymaps.marks')
-  require('plugins.guess-indent')
   require('plugins.nvim-autopairs')
   require('plugins.faster')
   require('plugins.paperplanes')

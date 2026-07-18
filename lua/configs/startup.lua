@@ -49,9 +49,4 @@ do
   vim.opt.tabstop = 2
   vim.opt.shiftwidth = 2
   vim.opt.expandtab = true
-
-  -- folds
-  vim.opt.foldlevelstart = 0
-  vim.opt.foldmethod = 'expr'
-  vim.opt.foldexpr = 'v:lua.vim.lsp.foldexpr()'
 end

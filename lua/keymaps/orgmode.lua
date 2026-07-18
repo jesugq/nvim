@@ -15,10 +15,16 @@ do
       vim.keymap.set({'n', 'i'}, '<A-CR>', function() orgmode.action('org_mappings.open_at_point') end, {
         buffer = true, desc = 'Org open at point'
       })
-      vim.keymap.set('n', '<A-k>', function() orgmode.action('org_mappings.move_subtree_up') end, {
+      vim.keymap.set('n', '<A-k>', function()
+        orgmode.action('org_mappings.move_subtree_up')
+        vim.cmd('normal! zx')
+      end, {
         buffer = true, desc = 'Org move subtree up'
       })
-      vim.keymap.set('n', '<A-j>', function() orgmode.action('org_mappings.move_subtree_down') end, {
+      vim.keymap.set('n', '<A-j>', function()
+        orgmode.action('org_mappings.move_subtree_down')
+        vim.cmd('normal! zx')
+      end, {
         buffer = true, desc = 'Org move subtree down'
       })
       vim.keymap.set('n', '<A-h>', function() orgmode.action('org_mappings.do_promote', true) end, {

@@ -12,6 +12,8 @@ do
     win_split_mode = 'edit',
     org_todo_keywords = { 'TODO', 'REVIEW', 'RESUME', '|', 'DONE' },
     org_todo_keyword_faces = {
+      TODO = ':foreground "#d24b83"',
+      DONE = ':foreground "#e55c7a"',
       REVIEW = ':foreground "#4d9391"',
       RESUME = ':foreground "#57bfc2"',
     },
