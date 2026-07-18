@@ -31,7 +31,7 @@ do
         types = {
           {
             type = 'agenda',
-            org_agenda_span = 8,
+            org_agenda_span = 15,
             org_agenda_tag_filter_preset = '-A',
           },
         },

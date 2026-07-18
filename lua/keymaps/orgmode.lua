@@ -12,7 +12,7 @@ do
         buffer = true, desc = 'Org global cycle'
       })
 
-      vim.keymap.set('n', '<A-CR>', function() orgmode.action('org_mappings.open_at_point') end, {
+      vim.keymap.set({'n', 'i'}, '<A-CR>', function() orgmode.action('org_mappings.open_at_point') end, {
         buffer = true, desc = 'Org open at point'
       })
       vim.keymap.set('n', '<A-k>', function() orgmode.action('org_mappings.move_subtree_up') end, {
@@ -28,7 +28,7 @@ do
         buffer = true, desc = 'Org move subtree right'
       })
 
-      vim.keymap.set('n', '<C-CR>', function() orgmode.action('org_mappings.insert_heading_respect_content') end, {
+      vim.keymap.set({'n', 'i'}, '<C-CR>', function() orgmode.action('org_mappings.insert_heading_respect_content') end, {
         buffer = true, desc = 'Org insert heading respect content'
       })
       vim.keymap.set('n', '<C-k>', function() orgmode.action('org_mappings.priority_up') end, {
@@ -44,10 +44,10 @@ do
         buffer = true, desc = 'Org todo next state'
       })
 
-      vim.keymap.set('n', '<C-c>h', function() orgmode.action('org_mappings.store_link') end, {
+      vim.keymap.set({'n', 'i'}, '<C-c>h', function() orgmode.action('org_mappings.store_link') end, {
         buffer = true, desc = 'Org store link'
       })
-      vim.keymap.set('n', '<C-c>l', function() orgmode.action('org_mappings.insert_link') end, {
+      vim.keymap.set({'n', 'i'}, '<C-c>l', function() orgmode.action('org_mappings.insert_link') end, {
         buffer = true, desc = 'Org insert link'
       })
       vim.keymap.set('n', '<C-c>c', function() orgmode.action('org_mappings.set_tags') end, {
@@ -76,11 +76,11 @@ do
     callback = function()
       local orgmode = require('orgmode')
 
-      vim.keymap.set('n', 'q', ']b', {
-        buffer = true, desc = 'Orgagenda exit', remap = true
+      vim.keymap.set('n', 'q', ':bnext<CR>', {
+        buffer = true, desc = 'Orgagenda exit', remap = false
       })
-      vim.keymap.set('n', '<C-[>', ']b', {
-        buffer = true, desc = 'Orgagenda exit', remap = true
+      vim.keymap.set('n', '<C-[>', ':bnext<CR>', {
+        buffer = true, desc = 'Orgagenda exit', remap = false
       })
       vim.keymap.set('n', '<CR>', function() orgmode.action('agenda.switch_to_item') end, {
         buffer = true, desc = 'Orgagenda switch to item'

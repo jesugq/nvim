@@ -15,7 +15,7 @@ do
         buffer = true, desc = 'Mark paste image'
       })
       vim.keymap.set('n', '<leader>ai', function()
-        local full_path = vim.fn.expand('01 insights')
+        local full_path = vim.fn.expand('3-insights')
         local safe_path = vim.fn.shellescape(full_path)
 
         local cmd = string.format('find %s -type f | shuf -n 1', safe_path)
