@@ -14,5 +14,6 @@ do
     { "<leader>q", group = "Quit" },
     { "<leader>s", group = "Search" },
     { "<C-w>c", hidden = true },
+    { "gO", hidden = true },
   })
 end

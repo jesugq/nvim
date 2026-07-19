@@ -28,16 +28,13 @@ do
         local formatted_date = os.date('<%Y-%m-%d %a>')
         vim.api.nvim_put({ formatted_date }, 'c', true, true)
       end, { buffer = true, desc = 'Markdown insert date' })
-      vim.keymap.set({'n', 'i'}, '<C-c>r', ':Obsidian rename<CR>', {
-        buffer = true, desc = 'Markdown rename'
-      })
       vim.keymap.set({'n', 'i'}, '<C-c>p', ':Obsidian paste_img<CR>', {
         buffer = true, desc = 'Markdown paste image'
       })
-      vim.keymap.set('n', '<C-c>b', ':Obsidian backlinks<CR>', {
-        buffer = true, desc = 'Markdown backlinks'
+      vim.keymap.set('n', '<C-c>,', ':Obsidian backlinks<CR>', {
+        buffer = true, desc = 'Markdown incoming links'
       })
-      vim.keymap.set('n', '<C-c>o', ':Obsidian links<CR>', {
+      vim.keymap.set('n', '<C-c>.', ':Obsidian links<CR>', {
         buffer = true, desc = 'Markdown outgoing links'
       })
 

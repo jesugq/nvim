@@ -21,6 +21,7 @@ do
   -- lsp ordered
   require('plugins.mason')
   require('plugins.nvim-lspconfig')
+  require('keymaps.nvim-lspconfig')
   require('plugins.mason-lspconfig')
   require('plugins.mason-tool-installer')
   require('lspconf.lua-ls')
