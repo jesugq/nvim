@@ -1,3 +1,4 @@
+---@diagnostic disable: different-requires
 do
   local FUNCTION = {}
 

@@ -1,3 +1,4 @@
+---@diagnostic disable: different-requires
 do
   vim.pack.add { 'https://github.com/lewis6991/gitsigns.nvim' }
   require('gitsigns').setup {
@@ -13,7 +14,7 @@ do
     },
     current_line_blame = true,
     on_attach = function(bufnr)
-      require('keymaps/gitsigns').mappings(bufnr)
+      require('keymaps.gitsigns').mappings(bufnr)
     end
   }
 end

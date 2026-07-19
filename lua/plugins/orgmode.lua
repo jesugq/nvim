@@ -1,8 +1,10 @@
+---@diagnostic disable: different-requires
 do
-  local path = require('../path')
+  local path = require('path')
 
   vim.pack.add { 'https://github.com/nvim-orgmode/orgmode' }
-  require('orgmode').setup {
+  local orgmode = require('orgmode')
+  orgmode.setup {
     org_agenda_files = path.og_dir .. '/**/*',
     org_startup_folded = 'overview',
     org_hide_leading_stars = true,
