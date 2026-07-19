@@ -3,7 +3,7 @@ do
 
   vim.pack.add { 'https://github.com/nvim-orgmode/orgmode' }
   require('orgmode').setup {
-    org_agenda_files = path.org_dir .. '/**/*',
+    org_agenda_files = path.og_dir .. '/**/*',
     org_startup_folded = 'overview',
     org_hide_leading_stars = true,
     org_hide_emphasis_markers = true,

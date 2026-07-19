@@ -7,7 +7,7 @@ do
     workspaces = {
       {
         name = 'Markdown',
-        path = path.mark_dir,
+        path = path.md_dir,
       }
     },
     picker = {

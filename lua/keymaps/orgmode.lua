@@ -56,22 +56,22 @@ do
       vim.keymap.set({'n', 'i'}, '<C-c>l', function() orgmode.action('org_mappings.insert_link') end, {
         buffer = true, desc = 'Org insert link'
       })
-      vim.keymap.set('n', '<C-c>c', function() orgmode.action('org_mappings.set_tags') end, {
+      vim.keymap.set({'n', 'i'}, '<C-c>c', function() orgmode.action('org_mappings.set_tags') end, {
         buffer = true, desc = 'Org set tags'
       })
       vim.keymap.set({'n', 'i'}, '<C-c>a', function() orgmode.action('org_mappings.org_time_stamp') end, {
         buffer = true, desc = 'Org time stamp'
       })
-      vim.keymap.set('n', '<C-c>s', function() orgmode.action('org_mappings.org_schedule') end, {
+      vim.keymap.set({'n', 'i'}, '<C-c>s', function() orgmode.action('org_mappings.org_schedule') end, {
         buffer = true, desc = 'Org schedule'
       })
-      vim.keymap.set('n', '<C-c>d', function() orgmode.action('org_mappings.org_deadline') end, {
+      vim.keymap.set({'n', 'i'}, '<C-c>d', function() orgmode.action('org_mappings.org_deadline') end, {
         buffer = true, desc = 'Org deadline'
       })
-      vim.keymap.set('n', '<C-c>k', function() orgmode.action('org_mappings.timestamp_up') end, {
+      vim.keymap.set({'n', 'i'}, '<C-c>k', function() orgmode.action('org_mappings.timestamp_up') end, {
         buffer = true, desc = 'Org timestamp up'
       })
-      vim.keymap.set('n', '<C-c>j', function() orgmode.action('org_mappings.timestamp_down') end, {
+      vim.keymap.set({'n', 'i'}, '<C-c>j', function() orgmode.action('org_mappings.timestamp_down') end, {
         buffer = true, desc = 'Org timestamp down'
       })
     end,
@@ -121,6 +121,12 @@ do
     pattern = { 'org', 'orgagenda' },
     callback = function()
       local orgmode = require('orgmode')
+
+      vim.keymap.set('n', '<leader>bc', function()
+        vim.cmd('enew')
+        vim.api.nvim_buf_set_name(0, 'untitled.org')
+        vim.cmd('filetype detect')
+      end, { desc = 'Org buffer open' })
 
       vim.keymap.set('n', '<leader>aa', function() orgmode.action('agenda.open_by_key', 'a') end, {
         buffer = true, desc = 'Org agenda'

@@ -3,13 +3,13 @@ do
 
   if os_name == "Darwin" then
     return {
-      org_dir = '~/Development/orgmode',
-      mark_dir = '~/Development/markdown',
+      og_dir = '~/Development/orgmode',
+      md_dir = '~/Development/markdown',
     }
   else
     return {
-      org_dir = '~/Sync/Apps/Orgmode',
-      mark_dir = '~/Sync/Apps/Markdown',
+      og_dir = '~/Sync/Apps/Orgmode',
+      md_dir = '~/Sync/Apps/Markdown',
     }
   end
 end
