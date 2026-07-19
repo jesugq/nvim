@@ -30,6 +30,10 @@ do
   require('plugins.nvim-treesitter')
   require('autocfg.nvim-treesitter')
 
+  -- cmp ordered
+  require('plugins.nvim-cmp')
+  require('plugins.cmp-nvim-lsp')
+
   -- lsp & ts helpers
   require('plugins.fidget')
   require('configs.diagnostics')
