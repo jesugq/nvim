@@ -204,6 +204,10 @@
       "rev": "9e9378d6ee34bb3782e0e8c63d9ec8ca618b479b",
       "src": "https://github.com/sphamba/smear-cursor.nvim"
     },
+    "smudge.nvim": {
+      "rev": "749f8ddc022def0aade98dee01dd42739a24d765",
+      "src": "https://github.com/indium114/smudge.nvim"
+    },
     "snacks.nvim": {
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
@@ -219,6 +223,10 @@
     "telescope.nvim": {
       "rev": "7d324792b7943e4aa16ad007212e6acc6f9fe335",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "tiny-glimmer.nvim": {
+      "rev": "9a48d8a7436231cb16d47c88f924702e5602870a",
+      "src": "https://github.com/rachartier/tiny-glimmer.nvim"
     },
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
@@ -251,6 +259,10 @@
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
+    },
+    "whisk.nvim": {
+      "rev": "a5d122ed7c08dcb8366ddc58b44df9458a263d23",
+      "src": "https://github.com/josstei/whisk.nvim"
     }
   }
 }

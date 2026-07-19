@@ -1,18 +1,12 @@
 do
-  -- startup
+  -- settings
   require('configs.startup')
-  require('configs.autobuild')
-  require('autocfg.autobuild')
-  require('autocfg.autochecktime')
-  require('autocfg.highlightyank')
-
-  -- keymaps
-  require('keymaps.editing')
-  require('keymaps.session')
+  require('keymaps.editors')
+  require('autocfg.editors')
   require('keymaps.buffers')
   require('keymaps.windows')
 
-  -- collections
+  -- packs ordered
   require('plugins.plenary')
   require('plugins.mini')
   require('plugins.snacks')
@@ -35,9 +29,21 @@ do
   require('plugins.nvim-cmp')
   require('plugins.cmp-nvim-lsp')
 
-  -- lsp & ts helpers
+  -- languages
+  require('plugins.orgmode')
+  require('keymaps.orgmode')
+  require('plugins.obsidian')
+  require('autocfg.obsidian')
+  require('keymaps.obsidian')
+
+  -- notifications
   require('plugins.fidget')
   require('configs.diagnostics')
+
+  -- editing
+  require('plugins.marks')
+  require('keymaps.marks')
+  require('plugins.nvim-autopairs')
 
   -- interface
   require('plugins.github-nvim-theme')
@@ -45,23 +51,16 @@ do
   require('keymaps.bufferline')
   require('plugins.lualine')
   require('plugins.gitsigns')
-  require('plugins.whichkey')
   require('plugins.no-neck-pain')
+
+  -- animation
   require('plugins.smear-cursor')
+  require('plugins.tiny-glimmer')
   require('plugins.cellular-automaton')
   require('keymaps.cellular-automaton')
 
-  -- tuning
-  require('plugins.marks')
-  require('keymaps.marks')
-  require('plugins.nvim-autopairs')
+  -- integration
+  require('plugins.whichkey')
   require('plugins.faster')
   require('plugins.paperplanes')
-
-  -- languages
-  require('plugins.orgmode')
-  require('keymaps.orgmode')
-  require('plugins.obsidian')
-  require('autocfg.obsidian')
-  require('keymaps.obsidian')
 end
