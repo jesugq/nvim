@@ -26,6 +26,8 @@ do
   require('autocfg.nvim-treesitter')
 
   -- cmp ordered
+  require('plugins.cmp-buffer')
+  require('plugins.cmp-cmdline')
   require('plugins.nvim-cmp')
   require('plugins.cmp-nvim-lsp')
 
