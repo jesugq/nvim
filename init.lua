@@ -34,6 +34,9 @@ do
   -- languages
   require('plugins.orgmode')
   require('keymaps.orgmode')
+  require('plugins.telescope-orgmode')
+  require('keymaps.telescope-orgmode')
+  require('configs.orgmode')
   require('plugins.obsidian')
   require('autocfg.obsidian')
   require('keymaps.obsidian')

@@ -51,11 +51,8 @@ do
         buffer = true, desc = 'Org todo next state'
       })
 
-      vim.keymap.set({'n', 'i'}, '<C-c>h', function() orgmode.action('org_mappings.store_link') end, {
-        buffer = true, desc = 'Org store link'
-      })
       vim.keymap.set({'n', 'i'}, '<C-c>l', function() orgmode.action('org_mappings.insert_link') end, {
-        buffer = true, desc = 'Org insert link'
+        buffer = true, desc = 'Org insert link to hyperlink'
       })
       vim.keymap.set({'n', 'i'}, '<C-c>c', function() orgmode.action('org_mappings.set_tags') end, {
         buffer = true, desc = 'Org set tags'
