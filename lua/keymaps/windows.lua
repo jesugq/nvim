@@ -1,6 +1,7 @@
 do
   vim.keymap.set('n', '<C-w>c', '<Nop>', { desc = 'Close current window' })
   vim.keymap.set('n', '<C-w>x', '<C-w>c', { remap = false, desc = 'Close current window' })
+  vim.keymap.set('n', '<C-w><C-w>', '<C-w>p', { desc = "Focus last accessed window" })
 
   vim.keymap.set("n", "<C-w>m", function()
       if #vim.api.nvim_list_tabpages() > 1 then
