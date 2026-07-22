@@ -18,12 +18,6 @@ do
         end
       end
 
-      vim.keymap.set('n', '<leader>bc', function()
-        vim.cmd('enew')
-        vim.api.nvim_buf_set_name(0, 'untitled.md')
-        vim.cmd('filetype detect')
-      end, { desc = 'Markdown buffer open' })
-
       vim.keymap.set({'n', 'i'}, '<C-c>a', function()
         local formatted_date = os.date('<%Y-%m-%d %a>')
         vim.api.nvim_put({ formatted_date }, 'c', true, true)
@@ -37,6 +31,12 @@ do
       vim.keymap.set('n', '<C-c>.', ':Obsidian links<CR>', {
         buffer = true, desc = 'Markdown outgoing links'
       })
+
+      vim.keymap.set('n', '<leader>bc', function()
+        vim.cmd('enew')
+        vim.api.nvim_buf_set_name(0, 'untitled.md')
+        vim.cmd('filetype detect')
+      end, { desc = 'Markdown buffer open' })
 
       vim.keymap.set('n', '<leader>ap', function()
         random_md('1-projects', true)

@@ -8,9 +8,11 @@ do
       vim.keymap.set('n', '<TAB>', function() orgmode.action('org_mappings.cycle') end, {
         buffer = true, desc = 'Org cycle'
       })
-
       vim.keymap.set('n', '<S-TAB>', function() orgmode.action('org_mappings.global_cycle') end, {
         buffer = true, desc = 'Org global cycle'
+      })
+      vim.keymap.set({'n', 'i'}, '<C-CR>', function() orgmode.action('org_mappings.insert_heading_respect_content') end, {
+        buffer = true, desc = 'Org insert heading respect content'
       })
 
       vim.keymap.set({'n', 'i'}, '<A-CR>', function() orgmode.action('org_mappings.open_at_point') end, {
@@ -28,30 +30,32 @@ do
       end, {
         buffer = true, desc = 'Org move subtree down'
       })
-      vim.keymap.set('n', '<A-h>', function() orgmode.action('org_mappings.do_promote', true) end, {
+      vim.keymap.set('n', '<A-h>', function()
+        orgmode.action('org_mappings.do_promote', true)
+        vim.cmd('normal! zx')
+      end, {
         buffer = true, desc = 'Org move subtree left'
       })
-      vim.keymap.set('n', '<A-l>', function() orgmode.action('org_mappings.do_demote', true) end, {
+      vim.keymap.set('n', '<A-l>', function()
+        orgmode.action('org_mappings.do_demote', true)
+        vim.cmd('normal! zx')
+      end, {
         buffer = true, desc = 'Org move subtree right'
       })
 
-      vim.keymap.set({'n', 'i'}, '<C-CR>', function() orgmode.action('org_mappings.insert_heading_respect_content') end, {
-        buffer = true, desc = 'Org insert heading respect content'
-      })
-      vim.keymap.set('n', '<C-k>', function() orgmode.action('org_mappings.priority_up') end, {
+      vim.keymap.set('n', '<C-c>k', function() orgmode.action('org_mappings.priority_up') end, {
         buffer = true, desc = 'Org priority up'
       })
-      vim.keymap.set('n', '<C-j>', function() orgmode.action('org_mappings.priority_down') end, {
+      vim.keymap.set('n', '<C-c>j', function() orgmode.action('org_mappings.priority_down') end, {
         buffer = true, desc = 'Org priority down'
       })
-      vim.keymap.set('n', '<C-h>', function() orgmode.action('org_mappings.todo_prev_state') end, {
+      vim.keymap.set('n', '<C-c>h', function() orgmode.action('org_mappings.todo_prev_state') end, {
         buffer = true, desc = 'Org todo prev state'
       })
-      vim.keymap.set('n', '<C-l>', function() orgmode.action('org_mappings.todo_next_state') end, {
+      vim.keymap.set('n', '<C-c>l', function() orgmode.action('org_mappings.todo_next_state') end, {
         buffer = true, desc = 'Org todo next state'
       })
-
-      vim.keymap.set({'n', 'i'}, '<C-c>l', function() orgmode.action('org_mappings.insert_link') end, {
+      vim.keymap.set({'n', 'i'}, '<C-c>p', function() orgmode.action('org_mappings.insert_link') end, {
         buffer = true, desc = 'Org insert link to hyperlink'
       })
       vim.keymap.set({'n', 'i'}, '<C-c>c', function() orgmode.action('org_mappings.set_tags') end, {
@@ -65,12 +69,6 @@ do
       })
       vim.keymap.set({'n', 'i'}, '<C-c>d', function() orgmode.action('org_mappings.org_deadline') end, {
         buffer = true, desc = 'Org deadline'
-      })
-      vim.keymap.set({'n', 'i'}, '<C-c>k', function() orgmode.action('org_mappings.timestamp_up') end, {
-        buffer = true, desc = 'Org timestamp up'
-      })
-      vim.keymap.set({'n', 'i'}, '<C-c>j', function() orgmode.action('org_mappings.timestamp_down') end, {
-        buffer = true, desc = 'Org timestamp down'
       })
     end,
   })
@@ -90,16 +88,16 @@ do
         buffer = true, desc = 'Orgagenda switch to item'
       })
 
-      vim.keymap.set('n', '<C-h>', function() orgmode.action('agenda.advance_span', -1) end, {
+      vim.keymap.set('n', '<A-h>', function() orgmode.action('agenda.advance_span', -1) end, {
         buffer = true, desc = 'Orgagenda rewind span'
       })
-      vim.keymap.set('n', '<C-j>', function() orgmode.action('agenda.reset') end, {
+      vim.keymap.set('n', '<A-j>', function() orgmode.action('agenda.reset') end, {
         buffer = true, desc = 'Orgagenda reset'
       })
-      vim.keymap.set('n', '<C-k>', function() orgmode.action('agenda.goto_date') end, {
+      vim.keymap.set('n', '<A-k>', function() orgmode.action('agenda.goto_date') end, {
         buffer = true, desc = 'Orgagenda go to date'
       })
-      vim.keymap.set('n', '<C-l>', function() orgmode.action('agenda.advance_span', 1) end, {
+      vim.keymap.set('n', '<A-l>', function() orgmode.action('agenda.advance_span', 1) end, {
         buffer = true, desc = 'Orgagenda advance span'
       })
 
