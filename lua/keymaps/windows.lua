@@ -10,12 +10,4 @@ do
   vim.keymap.set('n', '<C-w>j', '<C-w>J', { remap = false, desc = 'Move window down' })
   vim.keymap.set('n', '<C-w>k', '<C-w>K', { remap = false, desc = 'Move window up' })
   vim.keymap.set('n', '<C-w>l', '<C-w>L', { remap = false, desc = 'Move window right' })
-
-  vim.keymap.set("n", "<C-w>m", function()
-      if #vim.api.nvim_list_tabpages() > 1 then
-          vim.cmd("tabclose")
-      else
-          vim.cmd("tab split")
-      end
-  end, { desc = "Toggle maximize window" })
 end

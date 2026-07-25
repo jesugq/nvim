@@ -7,6 +7,7 @@ do
   require('keymaps.windows')
 
   -- packs ordered
+  require('plugins.nvim-web-devicons')
   require('plugins.plenary')
   require('plugins.mini')
   require('plugins.snacks')
@@ -52,11 +53,10 @@ do
 
   -- interface
   require('plugins.github-nvim-theme')
-  require('plugins.bufferline')
-  require('keymaps.bufferline')
   require('plugins.lualine')
   require('plugins.gitsigns')
-  require('plugins.no-neck-pain')
+  require('plugins.zen-mode')
+  require('keymaps.zen-mode')
 
   -- animation
   require('plugins.smear-cursor')

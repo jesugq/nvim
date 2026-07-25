@@ -5,12 +5,12 @@ do
     signcolumn = true,
     numhl = true,
     signs = {
-      add          = { text = '+' },
-      change       = { text = '~' },
-      delete       = { text = '-' },
-      topdelete    = { text = '-' },
-      changedelete = { text = '~' },
-      untracked    = { text = '?' },
+      add          = { text = '₊' },
+      change       = { text = '₌' },
+      delete       = { text = '₋' },
+      topdelete    = { text = '⁻' },
+      changedelete = { text = '⁼' },
+      untracked    = { text = 'ᵤ' },
     },
     current_line_blame = true,
     on_attach = function(bufnr)

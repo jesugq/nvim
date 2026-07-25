@@ -39,11 +39,10 @@ do
   -- lines
   vim.o.wrap = false
   vim.o.list = true
-  vim.opt.listchars = {
-    tab = '> ',
-    trail = '.',
-    nbsp = '_'
-  }
+
+  -- folds
+  vim.opt.foldcolumn = "1"
+  vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldclose:▶,foldsep: ,foldinner: ]]
 
   -- indents
   vim.opt.tabstop = 2
