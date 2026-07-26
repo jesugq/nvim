@@ -10,7 +10,7 @@ do
     'ts_ls',
     'ruby_lsp',
     'ember',
-    'markdown-oxide',
-    'marksman',
+    -- 'markdown-oxide',
+    -- 'marksman',
   }
 end

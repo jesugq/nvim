@@ -50,6 +50,8 @@ do
   -- editing
   require('plugins.marks')
   require('plugins.nvim-autopairs')
+  require('plugins.auto-session')
+  require('keymaps.auto-session')
 
   -- interface
   require('plugins.github-nvim-theme')

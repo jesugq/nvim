@@ -24,7 +24,8 @@ do
         warn = 'w:',
       },
       progress = {
-        enabled = false,
+        enabled = true,
+        spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
       },
     },
     git = {
@@ -46,6 +47,7 @@ do
         'modified',
         'readonly',
         'git_diff',
+        'lsp_progress',
         'lsp_status',
         'lsp_diagnostics',
       },
