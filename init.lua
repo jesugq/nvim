@@ -1,3 +1,4 @@
+---@diagnostic disable: different-requires
 do
   -- settings
   require('configs.startup')

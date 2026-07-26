@@ -1,6 +1,8 @@
+---@diagnostic disable: different-requires
 do
   vim.pack.add { 'https://github.com/nvim-orgmode/telescope-orgmode.nvim' }
-  require('telescope-orgmode').setup {
+  local tom = require('telescope-orgmode')
+  tom.setup {
     adapter = 'snacks',
     ordinal_fields = { 'location', 'headline', },
     show_tags = false,

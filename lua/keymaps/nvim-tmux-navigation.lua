@@ -1,3 +1,4 @@
+---@diagnostic disable: different-requires
 do
   local nvim_tmux_nav = require('nvim-tmux-navigation')
   vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)

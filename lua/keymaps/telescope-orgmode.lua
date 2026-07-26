@@ -1,3 +1,4 @@
+---@diagnostic disable: different-requires
 do
   vim.api.nvim_create_autocmd('FileType', {
     pattern = 'org',
