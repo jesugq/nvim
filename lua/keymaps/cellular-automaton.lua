@@ -1,3 +1,3 @@
 do
-  vim.keymap.set("n", "<leader>bk", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = 'Buffer kill' })
+  vim.keymap.set("n", "<leader>bq", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = 'Buffer kill' })
 end

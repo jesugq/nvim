@@ -48,11 +48,12 @@ do
 
   -- editing
   require('plugins.marks')
-  require('keymaps.marks')
   require('plugins.nvim-autopairs')
 
   -- interface
   require('plugins.github-nvim-theme')
+  require('plugins.winbuf')
+  require('keymaps.winbuf')
   require('plugins.lualine')
   require('plugins.gitsigns')
   require('plugins.zen-mode')
@@ -71,3 +72,4 @@ do
   require('plugins.faster')
   require('plugins.paperplanes')
 end
+

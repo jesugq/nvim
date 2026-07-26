@@ -31,12 +31,12 @@ do
     },
     org_agenda_custom_commands = {
       a = {
-        description = 'Agenda',
+        description = 'Action',
         types = {
           {
-            type = 'agenda',
+            type = 'action',
             org_agenda_span = 15,
-            org_agenda_tag_filter_preset = '-A',
+            org_agenda_tag_filter_preset = '+A',
           },
         },
       },
@@ -46,7 +46,7 @@ do
           {
             type = 'agenda',
             org_agenda_span = 15,
-            org_agenda_tag_filter_preset = '+A',
+            org_agenda_tag_filter_preset = '-A',
           },
         },
       },

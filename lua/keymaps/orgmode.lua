@@ -125,7 +125,7 @@ do
       end, { desc = 'Org buffer open' })
 
       vim.keymap.set('n', '<leader>aa', function() orgmode.action('agenda.open_by_key', 'a') end, {
-        buffer = true, desc = 'Org agenda'
+        buffer = true, desc = 'Org action'
       })
       vim.keymap.set('n', '<leader>as', function() orgmode.action('agenda.open_by_key', 's') end, {
         buffer = true, desc = 'Org signal'

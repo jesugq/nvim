@@ -116,6 +116,10 @@
       "rev": "d5e6f5b843f1d813d9c4bfb242b751dc5ab6f8ae",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
+    "narrowing-nvim": {
+      "rev": "17615d0bdc0b45851f9df7fd16aab86f874ff2ba",
+      "src": "https://github.com/tkancf/narrowing-nvim"
+    },
     "neo-tree.nvim": {
       "rev": "83e7a2982fd12b9c3d35bc39dd5877cd91a02a61",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim"
@@ -283,6 +287,10 @@
     "whisk.nvim": {
       "rev": "a5d122ed7c08dcb8366ddc58b44df9458a263d23",
       "src": "https://github.com/josstei/whisk.nvim"
+    },
+    "winbuf.nvim": {
+      "rev": "40ac3b9e2589bff8d7451cb1c5f5b3ba214cb656",
+      "src": "https://github.com/e-sigs/winbuf.nvim"
     },
     "zen-mode.nvim": {
       "rev": "8564ce6d29ec7554eb9df578efa882d33b3c23a7",
