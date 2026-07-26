@@ -8,6 +8,10 @@
       "rev": "fdeef56c2840c6772b9f68c5774ed87e9340ec7d",
       "src": "https://github.com/arborist-ts/arborist.nvim"
     },
+    "auto-session": {
+      "rev": "6cde3874a9283c2db55627acca5f28e4fa402320",
+      "src": "https://github.com/rmagatti/auto-session"
+    },
     "barbar.nvim": {
       "rev": "337ecfadb8bf005050990bf2f624dc4fc828dabd",
       "src": "https://github.com/romgrk/barbar.nvim"
@@ -287,6 +291,10 @@
     "whisk.nvim": {
       "rev": "a5d122ed7c08dcb8366ddc58b44df9458a263d23",
       "src": "https://github.com/josstei/whisk.nvim"
+    },
+    "winbar.nvim": {
+      "rev": "47d991457cbe718e3f5c4a713ae0b9b1783e0729",
+      "src": "https://github.com/mateconpizza/winbar.nvim"
     },
     "winbuf.nvim": {
       "rev": "40ac3b9e2589bff8d7451cb1c5f5b3ba214cb656",

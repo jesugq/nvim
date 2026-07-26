@@ -52,8 +52,7 @@ do
 
   -- interface
   require('plugins.github-nvim-theme')
-  require('plugins.winbuf')
-  require('keymaps.winbuf')
+  require('plugins.winbar')
   require('plugins.lualine')
   require('plugins.gitsigns')
   require('plugins.zen-mode')

@@ -18,6 +18,7 @@ do
   end
 
   vim.keymap.set('n', '<C-w>c', '<Nop>', { desc = 'Close current window' })
+  vim.keymap.set('n', '<C-w>x', '<C-w>c', { remap = false, desc = 'Close current window' })
   vim.keymap.set('n', '<C-w>-', function() resize(75) end, { desc = 'Expand current window' })
 
   vim.keymap.set('n', '<C-w>H', '<Nop>', { desc = 'Move window left' })
