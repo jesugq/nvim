@@ -19,10 +19,12 @@ do
       vim.keymap.set('n', 'grx', function() vim.lsp.buf.codelens_run() end, {
         buffer = true, desc = 'LSP Codelens Run'
       })
-      vim.keymap.set('n', 'gO', '<Nop>', { desc = 'LSP Document Symbol' })
-      vim.keymap.set('n', 'grs', function() vim.lsp.buf.document_symbol() end, {
-        buffer = true, desc = 'LSP Document Symbol'
-      })
+      -- vim.keymap.set('n', 'gO', '<Nop>', {
+      --   buffer = true, desc = 'LSP Document Symbol'
+      -- })
+      -- vim.keymap.set('n', 'grs', function() vim.lsp.buf.document_symbol() end, {
+      --   buffer = true, desc = 'LSP Document Symbol'
+      -- })
 
       vim.keymap.set('n', 'grh', function() vim.lsp.buf.hover() end, {
         buffer = true, desc = 'LSP Hover'

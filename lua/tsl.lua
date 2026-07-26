@@ -18,5 +18,9 @@ do
     'glimmer_typescript',
     'markdown',
     'markdown_inline',
+    -- 'norg',
+    'svelte',
+    'typst',
+    'vue',
   }
 end

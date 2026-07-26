@@ -3,5 +3,5 @@ do
   vim.pack.add { 'https://github.com/neovim-treesitter/nvim-treesitter' }
   local treesitter = require('nvim-treesitter')
   treesitter.setup {}
-  treesitter.install( require('tss') )
+  treesitter.install( require('tsl') )
 end

@@ -21,6 +21,9 @@ do
   require('plugins.mason-lspconfig')
   require('plugins.mason-tool-installer')
   require('lspconf.lua-ls')
+  require('lspconf.yaml-composite')
+  require('lspconf.perl-disable')
+  require('configs.diagnostics')
 
   -- ts ordered
   require('plugins.treesitter-parser-registry')
@@ -43,10 +46,6 @@ do
   require('autocfg.obsidian')
   require('keymaps.obsidian')
 
-  -- notifications
-  require('plugins.fidget')
-  require('configs.diagnostics')
-
   -- editing
   require('plugins.marks')
   require('plugins.nvim-autopairs')
@@ -55,6 +54,7 @@ do
 
   -- interface
   require('plugins.github-nvim-theme')
+  require('plugins.dashboard')
   require('plugins.winbar')
   require('plugins.lualine')
   require('plugins.gitsigns')
