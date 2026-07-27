@@ -8,7 +8,7 @@ do
     'bashls',
     'lua_ls',
     'ts_ls',
-    'ruby_lsp',
+    'ruby-lsp',
     'ember',
     -- 'markdown-oxide',
     -- 'marksman',
