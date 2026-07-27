@@ -54,7 +54,6 @@ do
 
   -- interface
   require('plugins.github-nvim-theme')
-  require('plugins.dashboard')
   require('plugins.winbar')
   require('plugins.lualine')
   require('plugins.gitsigns')
