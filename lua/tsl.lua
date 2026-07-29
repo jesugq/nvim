@@ -22,5 +22,7 @@ do
     'svelte',
     'typst',
     'vue',
+    'tsx',
+    'regex',
   }
 end
