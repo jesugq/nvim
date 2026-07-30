@@ -81,23 +81,14 @@ do
       vim.keymap.set('n', 'q', ':bnext<CR>', {
         buffer = true, desc = 'Orgagenda exit', remap = false
       })
-      vim.keymap.set('n', '<C-[>', ':bnext<CR>', {
-        buffer = true, desc = 'Orgagenda exit', remap = false
-      })
       vim.keymap.set('n', '<CR>', function() orgmode.action('agenda.switch_to_item') end, {
         buffer = true, desc = 'Orgagenda switch to item'
       })
 
-      vim.keymap.set('n', '<A-h>', function() orgmode.action('agenda.advance_span', -1) end, {
+      vim.keymap.set('n', '<', function() orgmode.action('agenda.advance_span', -1) end, {
         buffer = true, desc = 'Orgagenda rewind span'
       })
-      vim.keymap.set('n', '<A-j>', function() orgmode.action('agenda.reset') end, {
-        buffer = true, desc = 'Orgagenda reset'
-      })
-      vim.keymap.set('n', '<A-k>', function() orgmode.action('agenda.goto_date') end, {
-        buffer = true, desc = 'Orgagenda go to date'
-      })
-      vim.keymap.set('n', '<A-l>', function() orgmode.action('agenda.advance_span', 1) end, {
+      vim.keymap.set('n', '>', function() orgmode.action('agenda.advance_span', 1) end, {
         buffer = true, desc = 'Orgagenda advance span'
       })
 
@@ -106,9 +97,15 @@ do
       })
       vim.keymap.set('n', '<C-c>d', function() orgmode.action('agenda.set_deadline') end, {
         buffer = true, desc = 'Orgagenda set deadline'
-      })
+        })
       vim.keymap.set('n', '<C-c>s', function() orgmode.action('agenda.set_schedule') end, {
         buffer = true, desc = 'Orgagenda set schedule'
+      })
+      vim.keymap.set('n', '<C-c>r', function() orgmode.action('agenda.reset') end, {
+        buffer = true, desc = 'Orgagenda reset'
+      })
+      vim.keymap.set('n', '<C-c>t', function() orgmode.action('agenda.goto_date') end, {
+        buffer = true, desc = 'Orgagenda go to date'
       })
     end,
   })
@@ -117,12 +114,6 @@ do
     pattern = { 'org', 'orgagenda' },
     callback = function()
       local orgmode = require('orgmode')
-
-      vim.keymap.set('n', '<leader>bc', function()
-        vim.cmd('enew')
-        vim.api.nvim_buf_set_name(0, 'untitled.org')
-        vim.cmd('filetype detect')
-      end, { desc = 'Org buffer open' })
 
       vim.keymap.set('n', '<leader>aa', function() orgmode.action('agenda.open_by_key', 'a') end, {
         buffer = true, desc = 'Org action'
