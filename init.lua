@@ -61,6 +61,7 @@ do
   require('keymaps.zen-mode')
 
   -- animation
+  require('plugins.dashboard')
   require('plugins.smear-cursor')
   require('plugins.tiny-glimmer')
   require('plugins.cellular-automaton')

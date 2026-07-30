@@ -8,6 +8,7 @@ do
     },
     picker = {
       enabled = true,
+      root = false,
       hidden = true,
       ignored = true,
       sources = {

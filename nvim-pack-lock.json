@@ -20,6 +20,10 @@
       "rev": "cbc7b02bb99fae35cb42f514762b89b5126651ef",
       "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
     },
+    "dashboard-nvim": {
+      "rev": "f787e3462c2ee2b6117b17c1aa4ddf66cb6f57fe",
+      "src": "https://github.com/nvimdev/dashboard-nvim"
+    },
     "faster.nvim": {
       "rev": "6b7cb8b1a9628d4b87009c4849d510d1a3a14319",
       "src": "https://github.com/pteroctopus/faster.nvim"

@@ -51,4 +51,12 @@ do
 
   -- checktime
   vim.o.autoread = true
+
+  -- splits
+  vim.opt.splitbelow = true
+  vim.opt.splitright = true
+
+  -- netrw
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
 end
