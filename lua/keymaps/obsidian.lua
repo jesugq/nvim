@@ -32,17 +32,17 @@ do
       vim.keymap.set('n', '<leader>ap', function()
         random_md('1-projects', true)
       end, { buffer = true, desc = 'Markdown project' })
+      vim.keymap.set('n', '<leader>an', function()
+        random_md('2-notepads', true)
+      end, { buffer = true, desc = 'Markdown notepad' })
       vim.keymap.set('n', '<leader>af', function()
-        random_md('2-features', true)
+        random_md('3-features', true)
       end, { buffer = true, desc = 'Markdown feature' })
       vim.keymap.set('n', '<leader>ai', function()
-        random_md('3-insights', true)
+        random_md('4-insights', true)
         vim.wo.wrap = true
         vim.wo.linebreak = true
       end, { buffer = true, desc = 'Markdown insight' })
-      vim.keymap.set('n', '<leader>an', function()
-        random_md('4-notepads', true)
-      end, { buffer = true, desc = 'Markdown notepad' })
     end,
   })
 end
