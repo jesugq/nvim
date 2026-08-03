@@ -16,8 +16,6 @@ do
     'glimmer',
     'glimmer_javascript',
     'glimmer_typescript',
-    'markdown',
-    'markdown_inline',
     -- 'norg',
     'svelte',
     'typst',

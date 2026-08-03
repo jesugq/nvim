@@ -97,7 +97,7 @@ do
       })
       vim.keymap.set('n', '<C-c>d', function() orgmode.action('agenda.set_deadline') end, {
         buffer = true, desc = 'Orgagenda set deadline'
-        })
+      })
       vim.keymap.set('n', '<C-c>s', function() orgmode.action('agenda.set_schedule') end, {
         buffer = true, desc = 'Orgagenda set schedule'
       })
@@ -115,23 +115,17 @@ do
     callback = function()
       local orgmode = require('orgmode')
 
-      vim.keymap.set('n', '<leader>aa', function() orgmode.action('agenda.open_by_key', 'a') end, {
-        buffer = true, desc = 'Org action'
+      vim.keymap.set('n', '<leader>an', function() orgmode.action('agenda.open_by_key', 'n') end, {
+        buffer = true, desc = 'Org notes'
       })
-      vim.keymap.set('n', '<leader>as', function() orgmode.action('agenda.open_by_key', 's') end, {
-        buffer = true, desc = 'Org signal'
-      })
-      vim.keymap.set('n', '<leader>aw', function() orgmode.action('agenda.open_by_key', 'w') end, {
-        buffer = true, desc = 'Org review'
-      })
-      vim.keymap.set('n', '<leader>ae', function() orgmode.action('agenda.open_by_key', 'e') end, {
-        buffer = true, desc = 'Org resume'
-      })
-      vim.keymap.set('n', '<leader>ao', function() orgmode.action('agenda.open_by_key', 'o') end, {
-        buffer = true, desc = 'Org oled'
+      vim.keymap.set('n', '<leader>am', function() orgmode.action('agenda.open_by_key', 'm') end, {
+        buffer = true, desc = 'Org moves'
       })
       vim.keymap.set('n', '<leader>ai', function() orgmode.action('agenda.open_by_key', 'i') end, {
         buffer = true, desc = 'Org inkd'
+      })
+      vim.keymap.set('n', '<leader>ao', function() orgmode.action('agenda.open_by_key', 'o') end, {
+        buffer = true, desc = 'Org oled'
       })
     end,
   })

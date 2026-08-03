@@ -44,7 +44,7 @@ do
           desc = 'Grep',
           group = 'String',
           action = function() Snacks.picker.grep() end,
-          key = 'n',
+          key = 'g',
         },
         {
           icon = '󰩈 ',

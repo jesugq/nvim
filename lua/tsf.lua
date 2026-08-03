@@ -16,6 +16,5 @@ do
     'ts',
     'ruby',
     'glimmer',
-    'markdown',
   }
 end

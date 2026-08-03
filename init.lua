@@ -39,9 +39,9 @@ do
   -- languages
   require('plugins.orgmode')
   require('keymaps.orgmode')
+  require('autocfg.orgmode')
   require('plugins.telescope-orgmode')
   require('keymaps.telescope-orgmode')
-  require('configs.orgmode')
   require('plugins.obsidian')
   require('autocfg.obsidian')
   require('keymaps.obsidian')
@@ -62,6 +62,7 @@ do
 
   -- animation
   require('plugins.dashboard')
+  require('keymaps.dashboard')
   require('plugins.smear-cursor')
   require('plugins.tiny-glimmer')
   require('plugins.cellular-automaton')

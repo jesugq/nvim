@@ -12,7 +12,7 @@ do
 
   -- loadtimes
   vim.o.updatetime = 250
-  vim.o.timeoutlen = 300
+  vim.o.timeoutlen = 250
 
   -- file
   vim.o.undofile = true
