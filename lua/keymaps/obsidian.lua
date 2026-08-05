@@ -2,46 +2,36 @@ do
   vim.api.nvim_create_autocmd('FileType', {
     pattern = 'markdown',
     callback = function()
-      local function random_md(path, replace)
-        local full_path = vim.fn.expand(path)
-        local safe_path = vim.fn.shellescape(full_path)
+      local folders = require('configs.folders')
 
-        local cmd = string.format('find %s -type f | shuf -n 1', safe_path)
-        local file = vim.fn.system(cmd):gsub('\n', '')
-
-        if file ~= '' then
-          local old_buf = vim.api.nvim_get_current_buf()
-          vim.cmd('edit ' .. file)
-          if vim.api.nvim_buf_is_valid(old_buf) and replace then
-            pcall(vim.cmd, 'bdelete ' .. old_buf)
-          end
-        end
-      end
-
-      vim.keymap.set({'n', 'i'}, '<C-c>p', ':Obsidian paste_img<CR>', {
+      vim.keymap.set('n', '<C-c>p', '<cmd>Obsidian paste_img<CR><cmd>', {
         buffer = true, desc = 'Markdown paste image'
       })
+      vim.keymap.set('n', '<C-c>r', '<cmd>Obsidian quick_switch<CR><cmd>', {
+        buffer = true, desc = 'Markdown quick switch'
+      })
+      vim.keymap.set('n', '<C-c>t', 'i[[]]<Esc>hhli', {
+        buffer = true, desc = 'Markdown link'
+      })
 
-      vim.keymap.set('n', '<C-c><', ':Obsidian backlinks<CR>', {
+      vim.keymap.set('n', '<C-c><', '<cmd>Obsidian backlinks<CR><cmd>', {
         buffer = true, desc = 'Markdown incoming links'
       })
-      vim.keymap.set('n', '<C-c>>', ':Obsidian links<CR>', {
+      vim.keymap.set('n', '<C-c>>', '<cmd>Obsidian links<CR><cmd>', {
         buffer = true, desc = 'Markdown outgoing links'
       })
 
-      vim.keymap.set('n', '<leader>ap', function()
-        random_md('1-projects', true)
+      vim.keymap.set('n', '<leader>a1', function()
+        folders.random_file('1-projects', { replace = true })
       end, { buffer = true, desc = 'Markdown project' })
-      vim.keymap.set('n', '<leader>an', function()
-        random_md('2-notepads', true)
+      vim.keymap.set('n', '<leader>a2', function()
+        folders.random_file('2-notepads', { replace = true })
       end, { buffer = true, desc = 'Markdown notepad' })
-      vim.keymap.set('n', '<leader>af', function()
-        random_md('3-features', true)
+      vim.keymap.set('n', '<leader>a3', function()
+        folders.random_file('3-features', { replace = true })
       end, { buffer = true, desc = 'Markdown feature' })
-      vim.keymap.set('n', '<leader>ai', function()
-        random_md('4-insights', true)
-        vim.wo.wrap = true
-        vim.wo.linebreak = true
+      vim.keymap.set('n', '<leader>a4', function()
+        folders.random_file('4-insights', { replace = true, wrap = true })
       end, { buffer = true, desc = 'Markdown insight' })
     end,
   })

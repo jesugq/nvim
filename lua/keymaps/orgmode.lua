@@ -11,11 +11,16 @@ do
       vim.keymap.set('n', '<S-TAB>', function() orgmode.action('org_mappings.global_cycle') end, {
         buffer = true, desc = 'Org global cycle'
       })
-      vim.keymap.set({'n', 'i'}, '<C-CR>', function() orgmode.action('org_mappings.insert_heading_respect_content') end, {
-        buffer = true, desc = 'Org insert heading respect content'
+      vim.keymap.set('n', '<CR>', function() orgmode.action('org_mappings.insert_heading_respect_content') end, {
+        buffer = true, desc = 'Org insert parent respect content'
       })
+      vim.keymap.set('n', '<C-CR>', function()
+        orgmode.action('org_mappings.insert_heading_respect_content')
+        orgmode.action('org_mappings.do_demote', true)
+        vim.cmd('normal! zx')
+      end, { buffer = true, desc = 'Org insert child respect content' })
 
-      vim.keymap.set({'n', 'i'}, '<A-CR>', function() orgmode.action('org_mappings.open_at_point') end, {
+      vim.keymap.set('n', '<A-CR>', function() orgmode.action('org_mappings.open_at_point') end, {
         buffer = true, desc = 'Org open at point'
       })
       vim.keymap.set('n', '<A-k>', function()
@@ -55,19 +60,19 @@ do
       vim.keymap.set('n', '<C-c>l', function() orgmode.action('org_mappings.todo_next_state') end, {
         buffer = true, desc = 'Org todo next state'
       })
-      vim.keymap.set({'n', 'i'}, '<C-c>p', function() orgmode.action('org_mappings.insert_link') end, {
+      vim.keymap.set('n', '<C-c>p', function() orgmode.action('org_mappings.insert_link') end, {
         buffer = true, desc = 'Org insert link to hyperlink'
       })
-      vim.keymap.set({'n', 'i'}, '<C-c>c', function() orgmode.action('org_mappings.set_tags') end, {
+      vim.keymap.set('n', '<C-c>c', function() orgmode.action('org_mappings.set_tags') end, {
         buffer = true, desc = 'Org set tags'
       })
-      vim.keymap.set({'n', 'i'}, '<C-c>a', function() orgmode.action('org_mappings.org_time_stamp') end, {
+      vim.keymap.set('n', '<C-c>a', function() orgmode.action('org_mappings.org_time_stamp') end, {
         buffer = true, desc = 'Org time stamp'
       })
-      vim.keymap.set({'n', 'i'}, '<C-c>s', function() orgmode.action('org_mappings.org_schedule') end, {
+      vim.keymap.set('n', '<C-c>s', function() orgmode.action('org_mappings.org_schedule') end, {
         buffer = true, desc = 'Org schedule'
       })
-      vim.keymap.set({'n', 'i'}, '<C-c>d', function() orgmode.action('org_mappings.org_deadline') end, {
+      vim.keymap.set('n', '<C-c>d', function() orgmode.action('org_mappings.org_deadline') end, {
         buffer = true, desc = 'Org deadline'
       })
     end,
@@ -114,6 +119,7 @@ do
     pattern = { 'org', 'orgagenda' },
     callback = function()
       local orgmode = require('orgmode')
+      local folders = require('configs.folders')
 
       vim.keymap.set('n', '<leader>an', function() orgmode.action('agenda.open_by_key', 'n') end, {
         buffer = true, desc = 'Org notes'
@@ -127,6 +133,19 @@ do
       vim.keymap.set('n', '<leader>ao', function() orgmode.action('agenda.open_by_key', 'o') end, {
         buffer = true, desc = 'Org oled'
       })
+
+      vim.keymap.set('n', '<leader>a1', function()
+        folders.random_file('1-projects', { replace = true })
+      end, { buffer = true, desc = 'Markdown project' })
+      vim.keymap.set('n', '<leader>a2', function()
+        folders.random_file('2-notepads', { replace = true })
+      end, { buffer = true, desc = 'Markdown notepad' })
+      vim.keymap.set('n', '<leader>a3', function()
+        folders.random_file('3-features', { replace = true })
+      end, { buffer = true, desc = 'Markdown feature' })
+      vim.keymap.set('n', '<leader>a4', function()
+        folders.random_file('4-insights', { replace = true, wrap = true })
+      end, { buffer = true, desc = 'Markdown insight' })
     end,
   })
 end

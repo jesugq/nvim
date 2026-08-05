@@ -42,7 +42,7 @@ do
 
   -- folds
   vim.opt.foldcolumn = "1"
-  vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldclose:▶,foldsep: ,foldinner: ]]
+  require('configs.fillchars').highlights()
 
   -- indents
   vim.opt.tabstop = 2

@@ -44,5 +44,6 @@ do
     indent = { enabled = true, },
     notifier = { enabled = true, },
     image = { enabled = true, },
+    bufdelete = { enabled = true },
   }
 end

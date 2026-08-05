@@ -2,6 +2,9 @@ do
   vim.keymap.set('n', '<leader>e', function() Snacks.explorer() end, { desc = 'Snacks explorer' })
   vim.keymap.set('n', '<leader>w', function() Snacks.picker.buffers() end, { desc = 'Snacks picker buffer' })
 
+  vim.keymap.set('n', '<leader>bx', function() Snacks.bufdelete() end, { desc = 'Snacks bufdelete' })
+  vim.keymap.set('n', '<leader>bX', function() Snacks.bufdelete.all() end, { desc = 'Snacks bufdelete all' })
+
   vim.keymap.set('n', '<leader>fb', function() Snacks.picker.buffers() end, { desc = 'Snacks picker buffer' })
   vim.keymap.set('n', '<leader>fr', function() Snacks.picker.recent({ limit = 500, filter = { cwd = true } }) end, { desc = 'Snacks picker recent' })
   vim.keymap.set('n', '<leader>ff', function() Snacks.picker.files({ hidden = true, ignored = true }) end, { desc = 'Snacks picker files' })
