@@ -18,15 +18,10 @@ do
       vim.keymap.del("n", "[o", { buffer = true })
 
       vim.keymap.set('n', '<CR>', function()
-        local line = vim.fn.line('.')
-        vim.fn.append(line, { '', '# ' })
-        vim.api.nvim_win_set_cursor(0, { line + 2, 2 })
+        vim.api.nvim_put({ '# ' }, 'c', false, true)
         vim.cmd('startinsert!')
       end, { buffer = true, desc = 'Mark insert parent' })
       vim.keymap.set('n', '<C-CR>', function()
-        local line = vim.fn.line('.')
-        vim.fn.append(line, { '', '' })
-        vim.api.nvim_win_set_cursor(0, { line + 2, 0 })
         vim.cmd('startinsert')
       end, { buffer = true, desc = 'Mark insert child' })
     end,
