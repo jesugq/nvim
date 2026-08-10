@@ -3,10 +3,14 @@ do
     pattern = 'markdown',
     callback = function()
       local folders = require('configs.folders')
+      local insert = require('configs.insert')
 
       vim.keymap.set('n', '<C-c>p', '<cmd>Obsidian paste_img<CR><cmd>', {
         buffer = true, desc = 'Markdown paste image'
       })
+      vim.keymap.set('n', '<C-c>c', function()
+        insert.new_space()
+      end, { buffer = true, desc = 'Markdown tags' })
       vim.keymap.set('n', '<C-c>r', '<cmd>Obsidian quick_switch<CR><cmd>', {
         buffer = true, desc = 'Markdown quick switch'
       })
@@ -20,6 +24,11 @@ do
       vim.keymap.set('n', '<C-c>>', '<cmd>Obsidian links<CR><cmd>', {
         buffer = true, desc = 'Markdown outgoing links'
       })
+
+      vim.keymap.set('n', '<leader>ak', '<cmd>Obsidian tags kindle<CR><cmd>', { buffer = true, desc = 'Markdown Kindle' })
+      vim.keymap.set('n', '<leader>al', '<cmd>Obsidian tags liquid<CR><cmd>', { buffer = true, desc = 'Markdown Liquid' })
+      vim.keymap.set('n', '<leader>ai', '<cmd>Obsidian tags inner<CR><cmd>', { buffer = true, desc = 'Markdown Inner' })
+      vim.keymap.set('n', '<leader>ao', '<cmd>Obsidian tags outer<CR><cmd>', { buffer = true, desc = 'Markdown Outer' })
 
       vim.keymap.set('n', '<leader>a1', function()
         folders.random_file('1-projects', { replace = true })

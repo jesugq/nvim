@@ -4,6 +4,7 @@ do
     pattern = 'org',
     callback = function()
       local orgmode = require('orgmode')
+      local insert = require('configs.insert')
 
       vim.keymap.set('n', '<TAB>', function() orgmode.action('org_mappings.cycle') end, {
         buffer = true, desc = 'Org cycle'
@@ -18,6 +19,7 @@ do
         orgmode.action('org_mappings.insert_heading_respect_content')
         orgmode.action('org_mappings.do_demote', true)
         vim.cmd('normal! zx')
+        insert.new_space()
       end, { buffer = true, desc = 'Org insert child respect content' })
 
       vim.keymap.set('n', '<A-CR>', function() orgmode.action('org_mappings.open_at_point') end, {
@@ -122,16 +124,22 @@ do
       local folders = require('configs.folders')
 
       vim.keymap.set('n', '<leader>an', function() orgmode.action('agenda.open_by_key', 'n') end, {
-        buffer = true, desc = 'Org notes'
+        buffer = true, desc = 'Org Notes'
       })
       vim.keymap.set('n', '<leader>am', function() orgmode.action('agenda.open_by_key', 'm') end, {
-        buffer = true, desc = 'Org moves'
+        buffer = true, desc = 'Org Moves'
+      })
+      vim.keymap.set('n', '<leader>ak', function() orgmode.action('agenda.open_by_key', 'k') end, {
+        buffer = true, desc = 'Org Kindle'
+      })
+      vim.keymap.set('n', '<leader>al', function() orgmode.action('agenda.open_by_key', 'l') end, {
+        buffer = true, desc = 'Org Liquid'
       })
       vim.keymap.set('n', '<leader>ai', function() orgmode.action('agenda.open_by_key', 'i') end, {
-        buffer = true, desc = 'Org inkd'
+        buffer = true, desc = 'Org Inner'
       })
       vim.keymap.set('n', '<leader>ao', function() orgmode.action('agenda.open_by_key', 'o') end, {
-        buffer = true, desc = 'Org oled'
+        buffer = true, desc = 'Org Outer'
       })
 
       vim.keymap.set('n', '<leader>a1', function()

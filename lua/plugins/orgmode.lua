@@ -51,22 +51,42 @@ do
           },
         },
       },
-      i = {
-        description = 'Inkd',
+      k = {
+        description = 'Kindle',
         types = {
           {
             type = 'tags',
-            match = '+inkd',
+            match = '+kindle',
+            org_agenda_sorting_strategy = { 'priority_down' },
+          },
+        },
+      },
+      l = {
+        description = 'Liquid',
+        types = {
+          {
+            type = 'tags',
+            match = '+liquid',
+            org_agenda_sorting_strategy = { 'priority_down' },
+          },
+        },
+      },
+      i = {
+        description = 'Inner',
+        types = {
+          {
+            type = 'tags',
+            match = '+inner',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
       },
       o = {
-        description = 'Oled',
+        description = 'Outer',
         types = {
           {
             type = 'tags',
-            match = '+oled',
+            match = '+outer',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },

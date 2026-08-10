@@ -13,16 +13,17 @@ do
   vim.api.nvim_create_autocmd("User", {
     pattern = "ObsidianNoteEnter",
     callback = function(ev)
+      local insert = require('configs.insert')
+
       vim.keymap.del("n", "<CR>", { buffer = true })
       vim.keymap.del("n", "]o", { buffer = true })
       vim.keymap.del("n", "[o", { buffer = true })
 
       vim.keymap.set('n', '<CR>', function()
-        vim.api.nvim_put({ '# ' }, 'c', false, true)
-        vim.cmd('startinsert!')
+        insert.new_parent()
       end, { buffer = true, desc = 'Mark insert parent' })
       vim.keymap.set('n', '<C-CR>', function()
-        vim.cmd('startinsert')
+        insert.new_child()
       end, { buffer = true, desc = 'Mark insert child' })
     end,
   })
