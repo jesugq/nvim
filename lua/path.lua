@@ -1,7 +1,7 @@
 do
   local os_name = vim.uv.os_uname().sysname
 
-  if os_name == "Darwin" then
+  if os_name == 'Darwin' then
     return {
       og_dir = '~/Development/orgmode',
       md_dir = '~/Development/markdown',

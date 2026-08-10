@@ -1,6 +1,7 @@
 ---@diagnostic disable: different-requires
 do
   local path = require('path')
+  local tags = require('tags')
 
   vim.pack.add { 'https://github.com/nvim-orgmode/orgmode' }
   local orgmode = require('orgmode')
@@ -13,12 +14,12 @@ do
     org_use_tag_inheritance = false,
     org_blank_before_new_entry = { heading = false, plain_list_item = false },
     win_split_mode = 'edit',
-    org_todo_keywords = { 'TODO', 'NOTES', 'MOVES', '|', 'DONE' },
+    org_todo_keywords = { 'TODO', 'NUKE', 'MAKE', '|', 'UNDO' },
     org_todo_keyword_faces = {
       TODO = ':foreground "#d24b83"',
-      DONE = ':foreground "#e55c7a"',
-      NOTES = ':foreground "#4d9391"',
-      MOVES = ':foreground "#57bfc2"',
+      UNDO = ':foreground "#e55c7a"',
+      NUKE = ':foreground "#4d9391"',
+      MAKE = ':foreground "#57bfc2"',
     },
     org_log_done = 'time',
     org_priority_default = 'D',
@@ -32,65 +33,27 @@ do
     },
     org_agenda_custom_commands = {
       n = {
-        description = 'Notes',
+        description = 'Nuke',
         types = {
           {
             type = 'tags',
-            match = 'TODO="NOTES"',
+            match = 'TODO="NUKE"',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
       },
       m = {
-        description = 'Moves',
+        description = 'MAKE',
         types = {
           {
             type = 'tags',
-            match = 'TODO="MOVES"',
+            match = 'TODO="MAKE"',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
       },
-      k = {
-        description = 'Kindle',
-        types = {
-          {
-            type = 'tags',
-            match = '+kindle',
-            org_agenda_sorting_strategy = { 'priority_down' },
-          },
-        },
-      },
-      l = {
-        description = 'Liquid',
-        types = {
-          {
-            type = 'tags',
-            match = '+liquid',
-            org_agenda_sorting_strategy = { 'priority_down' },
-          },
-        },
-      },
-      i = {
-        description = 'Inner',
-        types = {
-          {
-            type = 'tags',
-            match = '+inner',
-            org_agenda_sorting_strategy = { 'priority_down' },
-          },
-        },
-      },
-      o = {
-        description = 'Outer',
-        types = {
-          {
-            type = 'tags',
-            match = '+outer',
-            org_agenda_sorting_strategy = { 'priority_down' },
-          },
-        },
-      },
+      i = tags.og.inner,
+      o = tags.og.outer,
     },
   }
   vim.lsp.enable('org')

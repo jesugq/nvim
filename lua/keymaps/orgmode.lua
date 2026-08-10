@@ -124,16 +124,10 @@ do
       local folders = require('configs.folders')
 
       vim.keymap.set('n', '<leader>an', function() orgmode.action('agenda.open_by_key', 'n') end, {
-        buffer = true, desc = 'Org Notes'
+        buffer = true, desc = 'Org Nuke'
       })
       vim.keymap.set('n', '<leader>am', function() orgmode.action('agenda.open_by_key', 'm') end, {
-        buffer = true, desc = 'Org Moves'
-      })
-      vim.keymap.set('n', '<leader>ak', function() orgmode.action('agenda.open_by_key', 'k') end, {
-        buffer = true, desc = 'Org Kindle'
-      })
-      vim.keymap.set('n', '<leader>al', function() orgmode.action('agenda.open_by_key', 'l') end, {
-        buffer = true, desc = 'Org Liquid'
+        buffer = true, desc = 'Org Make'
       })
       vim.keymap.set('n', '<leader>ai', function() orgmode.action('agenda.open_by_key', 'i') end, {
         buffer = true, desc = 'Org Inner'
