@@ -64,7 +64,7 @@ do
 
   -- animation
   require('plugins.dashboard')
-  require('keymaps.dashboard')
+  require('autocfg.dashboard')
   require('plugins.smear-cursor')
   require('plugins.tiny-glimmer')
   require('plugins.cellular-automaton')
