@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "BufferTabs.nvim": {
+      "rev": "4b0872392a3d7430237c69b24a49b123aac88f5b",
+      "src": "https://github.com/tomiis4/BufferTabs.nvim"
+    },
     "auto-session": {
       "rev": "6cde3874a9283c2db55627acca5f28e4fa402320",
       "src": "https://github.com/rmagatti/auto-session"
@@ -39,6 +43,10 @@
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "luatab.nvim": {
+      "rev": "7ac54b014b542f02a73b62fcae65db7a2382a378",
+      "src": "https://github.com/alvarosevilla95/luatab.nvim"
     },
     "marks.nvim": {
       "rev": "f353e8c08c50f39e99a9ed474172df7eddd89b72",
