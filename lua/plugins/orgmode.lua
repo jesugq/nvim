@@ -14,10 +14,10 @@ do
     org_use_tag_inheritance = false,
     org_blank_before_new_entry = { heading = false, plain_list_item = false },
     win_split_mode = 'edit',
-    org_todo_keywords = { 'TODO', 'NUKE', 'MAKE', '|', 'UNDO' },
+    org_todo_keywords = { 'TODO', 'NUKE', 'MAKE', '|', 'REDO' },
     org_todo_keyword_faces = {
       TODO = ':foreground "#d24b83"',
-      UNDO = ':foreground "#e55c7a"',
+      REDO = ':foreground "#e55c7a"',
       NUKE = ':foreground "#4d9391"',
       MAKE = ':foreground "#57bfc2"',
     },
