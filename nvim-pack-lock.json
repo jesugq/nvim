@@ -8,6 +8,10 @@
       "rev": "6cde3874a9283c2db55627acca5f28e4fa402320",
       "src": "https://github.com/rmagatti/auto-session"
     },
+    "bufferline.nvim": {
+      "rev": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3",
+      "src": "https://github.com/akinsho/bufferline.nvim"
+    },
     "cellular-automaton.nvim": {
       "rev": "1606e9d5d04ff254023c3f3c62842d065708d6d3",
       "src": "https://github.com/Eandrju/cellular-automaton.nvim"

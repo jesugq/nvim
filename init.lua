@@ -54,10 +54,10 @@ do
 
   -- interface
   require('plugins.github-nvim-theme')
+  require('plugins.bufferline')
+  require('keymaps.bufferline')
   require('plugins.winbar')
   require('plugins.lualine')
-  require('plugins.buffertabs')
-  require('keymaps.buffertabs')
   require('plugins.gitsigns')
   require('plugins.zen-mode')
   require('keymaps.zen-mode')
