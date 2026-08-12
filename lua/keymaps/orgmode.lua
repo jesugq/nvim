@@ -68,7 +68,11 @@ do
       vim.keymap.set('n', '<C-c>c', function() orgmode.action('org_mappings.set_tags') end, {
         buffer = true, desc = 'Org set tags'
       })
-      vim.keymap.set('n', '<C-c>a', function() orgmode.action('org_mappings.org_time_stamp') end, {
+      vim.keymap.set('n', '<C-c>a', function()
+        insert.new_space()
+        vim.cmd('stopinsert')
+        orgmode.action('org_mappings.org_time_stamp')
+      end, {
         buffer = true, desc = 'Org time stamp'
       })
       vim.keymap.set('n', '<C-c>s', function() orgmode.action('org_mappings.org_schedule') end, {
