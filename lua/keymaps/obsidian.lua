@@ -10,7 +10,7 @@ do
         buffer = true, desc = 'Markdown paste image'
       })
       vim.keymap.set('n', '<C-c>c', function()
-        insert.new_space()
+        insert.new_hash()
       end, { buffer = true, desc = 'Markdown tags' })
       vim.keymap.set('n', '<C-c>r', '<cmd>Obsidian quick_switch<CR><cmd>', {
         buffer = true, desc = 'Markdown quick switch'

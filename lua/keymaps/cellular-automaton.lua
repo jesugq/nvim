@@ -5,5 +5,5 @@ do
   vim.keymap.set("n", "<leader>cl", "<cmd>CellularAutomaton right<CR>", { desc = 'Cellular Automaton right' })
   vim.keymap.set("n", "<leader>cs", "<cmd>CellularAutomaton scram<CR>", { desc = 'Cellular Automaton scram' })
   vim.keymap.set("n", "<leader>cf", "<cmd>CellularAutomaton fall<CR>", { desc = 'Cellular Automaton fall' })
-  vim.keymap.set("n", "<leader>cg", "<cmd>CellularAutomaton game<CR>", { desc = 'Cellular Automaton scram' })
+  vim.keymap.set("n", "<leader>cg", "<cmd>CellularAutomaton game<CR>", { desc = 'Cellular Automaton game' })
 end
