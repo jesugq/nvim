@@ -2,9 +2,12 @@ do
   vim.api.nvim_create_autocmd('FileType', {
     pattern = 'markdown',
     callback = function()
+      local api = require('obsidian.api')
       local folders = require('configs.folders')
       local insert = require('configs.insert')
       local tags = require('tags')
+
+      vim.keymap.set('n', '<A-CR>', api.smart_action, { expr = true,  desc = 'Markdown open at point' })
 
       vim.keymap.set('n', '<C-c>p', '<cmd>Obsidian paste_img<CR><cmd>', {
         buffer = true, desc = 'Markdown paste image'
