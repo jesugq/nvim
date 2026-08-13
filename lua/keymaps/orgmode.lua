@@ -6,6 +6,8 @@ do
       local orgmode = require('orgmode')
       local insert = require('configs.insert')
 
+      vim.keymap.set('n', '<leader>bn', '<cmd>e .org<CR><cmd>', {  desc = 'Orgmode new file' })
+
       vim.keymap.set('n', '<TAB>', function() orgmode.action('org_mappings.cycle') end, {
         buffer = true, desc = 'Org cycle'
       })

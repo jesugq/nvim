@@ -7,7 +7,9 @@ do
       local insert = require('configs.insert')
       local tags = require('tags')
 
-      vim.keymap.set('n', '<A-CR>', api.smart_action, { expr = true,  desc = 'Markdown open at point' })
+      vim.keymap.set('n', '<leader>bn', '<cmd>e .md<CR><cmd>', {  desc = 'Markdown new file' })
+
+      vim.keymap.set('n', '<A-CR>', api.smart_action, { expr = true, desc = 'Markdown open at point' })
 
       vim.keymap.set('n', '<C-c>p', '<cmd>Obsidian paste_img<CR><cmd>', {
         buffer = true, desc = 'Markdown paste image'
@@ -16,11 +18,16 @@ do
         insert.new_hash()
       end, { buffer = true, desc = 'Markdown tags' })
       vim.keymap.set('n', '<C-c>r', '<cmd>Obsidian quick_switch<CR><cmd>', {
-        buffer = true, desc = 'Markdown quick switch'
+        buffer = true, desc = 'Markdown "refile" text'
       })
-      vim.keymap.set('n', '<C-c>t', 'i[[]]<Esc>hhli', {
-        buffer = true, desc = 'Markdown link'
-      })
+      vim.keymap.set('n', '<C-c>f', function()
+        insert.new_space()
+        vim.cmd('stopinsert')
+        vim.cmd('normal! A[[]]')
+        vim.cmd('stopinsert')
+        vim.cmd('normal! h')
+        vim.cmd('startinsert')
+      end, { buffer = true, desc = 'Markdown insert link' })
 
       vim.keymap.set('n', '<C-c><', '<cmd>Obsidian backlinks<CR><cmd>', {
         buffer = true, desc = 'Markdown incoming links'
