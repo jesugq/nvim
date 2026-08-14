@@ -66,9 +66,6 @@ do
   require('autocfg.dashboard')
   require('plugins.smear-cursor')
   require('plugins.tiny-glimmer')
-  require('plugins.cellular-automaton')
-  require('configs.cellular-automaton')
-  require('keymaps.cellular-automaton')
 
   -- integration
   require('plugins.nvim-tmux-navigation')
