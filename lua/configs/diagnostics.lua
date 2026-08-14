@@ -1,24 +1,37 @@
 do
   vim.diagnostic.config({
-    severity_sort = true,
     update_in_insert = false,
+    severity_sort = true,
     float = {
       border = 'rounded',
       source = 'if_many',
     },
-    underline = true,
+    underline = {
+      severity = {
+        min = vim.diagnostic.severity.WARN,
+      }
+    },
     virtual_text = {
-      spacing = 2,
+      spacing = 0,
       source = 'if_many',
       prefix = '●',
     },
     signs = {
       text = {
-        [vim.diagnostic.severity.ERROR] = 'E',
-        [vim.diagnostic.severity.WARN] = 'W',
-        [vim.diagnostic.severity.INFO] = 'I',
-        [vim.diagnostic.severity.HINT] = 'H',
+        [vim.diagnostic.severity.ERROR] = '',
+        [vim.diagnostic.severity.WARN] = '',
+        [vim.diagnostic.severity.INFO] = '',
+        [vim.diagnostic.severity.HINT] = '',
       },
+    },
+    jump = {
+      on_jump = function(_, bufnr)
+        vim.diagnostic.open_float {
+          bufnr = bufnr,
+          scope = 'cursor',
+          focus = false,
+        }
+      end,
     },
   })
 end

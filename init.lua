@@ -6,6 +6,8 @@ do
   require('autocfg.editors')
   require('keymaps.buffers')
   require('keymaps.windows')
+  require('configs.diagnostics')
+  require('keymaps.diagnostics')
 
   -- packs ordered
   require('plugins.nvim-web-devicons')
@@ -23,7 +25,6 @@ do
   require('lspconf.lua-ls')
   require('lspconf.yaml-composite')
   require('lspconf.perl-disable')
-  require('configs.diagnostics')
 
   -- ts ordered
   require('plugins.treesitter-parser-registry')
