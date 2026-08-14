@@ -56,7 +56,6 @@ do
   require('plugins.github-nvim-theme')
   require('plugins.bufferline')
   require('keymaps.bufferline')
-  require('plugins.winbar')
   require('plugins.lualine')
   require('plugins.gitsigns')
   require('plugins.zen-mode')

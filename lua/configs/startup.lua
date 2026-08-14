@@ -21,6 +21,8 @@ do
 
   -- mode
   vim.o.showmode = false
+  vim.o.cmdheight = 0
+  vim.o.showtabline = 0
 
   -- search
   vim.o.ignorecase = true
