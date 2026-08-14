@@ -17,13 +17,13 @@ do
     vim.keymap.set('n', '<leader>hd', gitsigns.reset_hunk, {
       buffer = bufnr, desc = 'Hunk reset hunk'
     })
-    vim.keymap.set('v', '<leader>ha', function()
-      gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+    vim.keymap.set('x', '<leader>ha', function()
+      gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('x') })
     end, {
       buffer = bufnr, desc = 'Hunk stage hunk'
     })
-    vim.keymap.set('v', '<leader>hd', function()
-      gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+    vim.keymap.set('x', '<leader>hd', function()
+      gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('x') })
     end, {
       buffer = bufnr, desc = 'Hunk reset hunk'
     })

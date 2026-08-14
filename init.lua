@@ -6,6 +6,7 @@ do
   require('autocfg.editors')
   require('keymaps.buffers')
   require('keymaps.windows')
+  require('keymaps.context')
   require('configs.diagnostics')
   require('keymaps.diagnostics')
 

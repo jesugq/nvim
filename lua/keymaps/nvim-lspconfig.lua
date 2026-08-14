@@ -1,7 +1,7 @@
 do
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function()
-      vim.keymap.set({'n', 'v'}, 'gra', function() vim.lsp.buf.code_action() end, {
+      vim.keymap.set({'n', 'x'}, 'gra', function() vim.lsp.buf.code_action() end, {
         buffer = true, desc = 'LSP Code Action'
       })
       vim.keymap.set('n', 'gri', function() vim.lsp.buf.implementation() end, {
