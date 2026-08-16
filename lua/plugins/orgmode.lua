@@ -14,12 +14,12 @@ do
     org_use_tag_inheritance = false,
     org_blank_before_new_entry = { heading = false, plain_list_item = false },
     win_split_mode = 'edit',
-    org_todo_keywords = { 'TODO', 'NUKE', 'MAKE', '|', 'REDO' },
+    org_todo_keywords = { 'TODO', 'NUDGE', 'MERGE', '|', 'REDO' },
     org_todo_keyword_faces = {
       TODO = ':foreground "#d24b83"',
       REDO = ':foreground "#e55c7a"',
-      NUKE = ':foreground "#4d9391"',
-      MAKE = ':foreground "#57bfc2"',
+      NUDGE = ':foreground "#4d9391"',
+      MERGE = ':foreground "#57bfc2"',
     },
     org_log_done = 'time',
     org_priority_default = 'D',
@@ -33,21 +33,21 @@ do
     },
     org_agenda_custom_commands = {
       n = {
-        description = 'Nuke',
+        description = 'Nudge',
         types = {
           {
             type = 'tags',
-            match = 'TODO="NUKE"',
+            match = 'TODO="NUDGE"',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
       },
       m = {
-        description = 'MAKE',
+        description = 'Merge',
         types = {
           {
             type = 'tags',
-            match = 'TODO="MAKE"',
+            match = 'TODO="MERGE"',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
