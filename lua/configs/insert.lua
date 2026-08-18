@@ -2,31 +2,45 @@ do
   local FUNCTION = {}
 
   FUNCTION.new_parent = function()
-    vim.cmd('stopinsert')
+    local line = vim.fn.line(".")
+    local total_lines = vim.fn.line("$")
 
-    local current_line = vim.api.nvim_win_get_cursor(0)[1]
-    local line_content = vim.api.nvim_buf_get_lines(0, current_line - 1, current_line, false)[1]
+    vim.cmd("normal! I# ")
 
-    if line_content and line_content:match('^%s*$') == nil then
-      vim.cmd('normal! o')
+    if line < total_lines then
+      local line_below = vim.fn.getline(line + 1)
+      if line_below:match("%S") then
+        vim.fn.append(line, "")
+      end
     end
-    vim.cmd('normal! o')
 
-    vim.api.nvim_put({ '# ' }, 'c', false, true)
+    if line > 1 then
+      local line_above = vim.fn.getline(line - 1)
+      if line_above:match("%S") then
+        vim.fn.append(line - 1, "")
+      end
+    end
 
     vim.cmd('startinsert!')
   end
 
   FUNCTION.new_child = function()
-    vim.cmd('stopinsert')
+    local line = vim.fn.line(".")
+    local total_lines = vim.fn.line("$")
 
-    local current_line = vim.api.nvim_win_get_cursor(0)[1]
-    local line_content = vim.api.nvim_buf_get_lines(0, current_line - 1, current_line, false)[1]
-
-    if line_content and line_content:match('^%s*$') == nil then
-      vim.cmd('normal! o')
+    if line < total_lines then
+      local line_below = vim.fn.getline(line + 1)
+      if line_below:match("%S") then
+        vim.fn.append(line, "")
+      end
     end
-    vim.cmd('normal! o')
+
+    if line > 1 then
+      local line_above = vim.fn.getline(line - 1)
+      if line_above:match("%S") then
+        vim.fn.append(line - 1, "")
+      end
+    end
 
     vim.cmd('startinsert!')
   end
@@ -46,7 +60,6 @@ do
 
     vim.cmd('startinsert!')
   end
-
 
   FUNCTION.new_hash = function()
     vim.cmd('stopinsert')

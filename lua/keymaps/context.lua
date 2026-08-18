@@ -1,14 +1,14 @@
 do
-  local function yank_relative_path()
+  local function yank_relative_file()
     local info = vim.fn.expand('%:.')
 
     vim.fn.setreg('+', info)
     vim.fn.setreg('"', info)
 
-    vim.notify('Yanked relative path: ' .. info, vim.log.levels.INFO)
+    vim.notify('Yanked relative file: ' .. info, vim.log.levels.INFO)
   end
 
-  local function yank_relative_path_line_n()
+  local function yank_relative_file_line_n()
     local path = vim.fn.expand('%:.')
     local line = vim.api.nvim_win_get_cursor(0)[1]
 
@@ -17,10 +17,10 @@ do
     vim.fn.setreg('+', info)
     vim.fn.setreg('"', info)
 
-    vim.notify('Yanked relative path line: ' .. info, vim.log.levels.INFO)
+    vim.notify('Yanked relative file line: ' .. info, vim.log.levels.INFO)
   end
 
-  local function yank_relative_path_line_x()
+  local function yank_relative_file_line_x()
     local path = vim.fn.expand('%:.')
 
     local start_line = vim.fn.line('v')
@@ -37,7 +37,7 @@ do
     vim.fn.setreg('+', info)
     vim.fn.setreg('"', info)
 
-    vim.notify('Yanked relative path line: ' .. path, vim.log.levels.INFO)
+    vim.notify('Yanked relative file line: ' .. path, vim.log.levels.INFO)
   end
 
   local function yank_relative_buffer_paths()
@@ -87,9 +87,9 @@ do
     vim.notify('Yanked relative window paths:\n' .. info, vim.log.levels.INFO)
   end
 
-  vim.keymap.set('n', '<leader>yr', yank_relative_path, { desc = 'Yank relative path' })
-  vim.keymap.set('n', '<leader>yl', yank_relative_path_line_n, { desc = 'Yank relative path line' })
-  vim.keymap.set('x', '<leader>yl', yank_relative_path_line_x, { desc = 'Yank relative path line' })
+  vim.keymap.set('n', '<leader>yf', yank_relative_file, { desc = 'Yank relative file' })
+  vim.keymap.set('n', '<leader>yg', yank_relative_file_line_n, { desc = 'Yank relative file line' })
+  vim.keymap.set('x', '<leader>yg', yank_relative_file_line_x, { desc = 'Yank relative file line' })
   vim.keymap.set('n', '<leader>yb', yank_relative_buffer_paths, { desc = 'Yank relative buffer paths' })
   vim.keymap.set('n', '<leader>yw', yank_relative_window_paths, { desc = 'Yank relative window paths' })
 end
