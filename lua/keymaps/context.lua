@@ -1,6 +1,5 @@
 do
-  local function yank_relative_file()
-    local info = vim.fn.expand('%:.')
+  local function yank_relative_file() local info = vim.fn.expand('%:.')
 
     vim.fn.setreg('+', info)
     vim.fn.setreg('"', info)
@@ -88,8 +87,8 @@ do
   end
 
   vim.keymap.set('n', '<leader>yf', yank_relative_file, { desc = 'Yank relative file' })
-  vim.keymap.set('n', '<leader>yg', yank_relative_file_line_n, { desc = 'Yank relative file line' })
-  vim.keymap.set('x', '<leader>yg', yank_relative_file_line_x, { desc = 'Yank relative file line' })
+  vim.keymap.set('n', '<leader>yl', yank_relative_file_line_n, { desc = 'Yank relative file line' })
+  vim.keymap.set('x', '<leader>yl', yank_relative_file_line_x, { desc = 'Yank relative file line' })
   vim.keymap.set('n', '<leader>yb', yank_relative_buffer_paths, { desc = 'Yank relative buffer paths' })
   vim.keymap.set('n', '<leader>yw', yank_relative_window_paths, { desc = 'Yank relative window paths' })
 end
