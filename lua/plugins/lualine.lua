@@ -20,14 +20,13 @@ do
   end
 
   local function global_marks()
-    local buf = vim.api.nvim_get_current_buf()
     local marks = {}
 
     for i = string.byte('A'), string.byte('Z') do
       local char = string.char(i)
-      local pos = vim.api.nvim_buf_get_mark(buf, char)
+      local pos = vim.fn.getpos("'" .. char)
 
-      if pos[1] > 0 then
+      if pos[2] > 0 then
         table.insert(marks, char)
       end
     end
@@ -45,23 +44,23 @@ do
     winbar = {
       lualine_a = {},
       lualine_b = {},
-      lualine_c = { 'filename', { local_marks }, { global_marks }, 'diff', 'diagnostics' },
-      lualine_x = {},
+      lualine_c = { 'filename', { local_marks }, 'diff', 'diagnostics' },
+      lualine_x = { 'location', 'progress' },
       lualine_y = {},
       lualine_z = {},
     },
     inactive_winbar = {
       lualine_a = {},
       lualine_b = {},
-      lualine_c = { 'filename', { local_marks }, { global_marks }, 'diff', 'diagnostics' },
-      lualine_x = {},
+      lualine_c = { 'filename', { local_marks }, 'diff', 'diagnostics' },
+      lualine_x = { 'location', 'progress' },
       lualine_y = {},
       lualine_z = {},
     },
     sections = {
       lualine_a = {},
       lualine_b = { 'mode', 'searchcount', 'selectioncount' },
-      lualine_c = { 'branch' },
+      lualine_c = { 'branch', { global_marks } },
       lualine_x = { 'lsp_status'},
       lualine_y = { { current_date } },
       lualine_z = {},
