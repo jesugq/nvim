@@ -20,7 +20,7 @@ do
       vim.keymap.set('n', '<C-CR>', function()
         orgmode.action('org_mappings.insert_heading_respect_content')
         orgmode.action('org_mappings.do_demote', true)
-        vim.cmd('normal! zx')
+        -- vim.cmd('normal! zx')
         insert.new_space()
       end, { buffer = true, desc = 'Org insert child respect content' })
 
@@ -29,25 +29,25 @@ do
       })
       vim.keymap.set('n', '<A-k>', function()
         orgmode.action('org_mappings.move_subtree_up')
-        vim.cmd('normal! zx')
+        -- vim.cmd('normal! zx')
       end, {
         buffer = true, desc = 'Org move subtree up'
       })
       vim.keymap.set('n', '<A-j>', function()
         orgmode.action('org_mappings.move_subtree_down')
-        vim.cmd('normal! zx')
+        -- vim.cmd('normal! zx')
       end, {
         buffer = true, desc = 'Org move subtree down'
       })
       vim.keymap.set('n', '<A-h>', function()
         orgmode.action('org_mappings.do_promote', true)
-        vim.cmd('normal! zx')
+        -- vim.cmd('normal! zx')
       end, {
         buffer = true, desc = 'Org move subtree left'
       })
       vim.keymap.set('n', '<A-l>', function()
         orgmode.action('org_mappings.do_demote', true)
-        vim.cmd('normal! zx')
+        -- vim.cmd('normal! zx')
       end, {
         buffer = true, desc = 'Org move subtree right'
       })
