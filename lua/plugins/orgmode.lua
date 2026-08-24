@@ -14,6 +14,7 @@ do
     org_use_tag_inheritance = false,
     org_blank_before_new_entry = { heading = false, plain_list_item = false },
     win_split_mode = 'edit',
+    org_tags_column = 0,
     org_todo_keywords = { 'TODO', 'NUDGE', 'MERGE', '|', 'REDO' },
     org_todo_keyword_faces = {
       TODO = ':foreground "#d24b83"',
