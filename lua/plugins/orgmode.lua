@@ -17,18 +17,15 @@ do
     org_tags_column = 0,
     org_todo_keywords = { 'TODO', 'NUDGE', 'MERGE', '|', 'REDO' },
     org_todo_keyword_faces = {
-      TODO = ':foreground "#d24b83"',
-      REDO = ':foreground "#e55c7a"',
-      NUDGE = ':foreground "#4d9391"',
-      MERGE = ':foreground "#57bfc2"',
+      TODO = ':foreground "#e55c7a"',
+      NUDGE = ':foreground "#d24b83"',
+      MERGE = ':foreground "#cf44ac"',
+      REDO = ':foreground "#4d9391"',
     },
     org_log_done = 'time',
     org_priority_default = 'D',
     org_priority_highest = 'A',
     org_priority_lowest = 'D',
-    org_priority_faces = {
-      A = ':foreground "#ffffff',
-    },
     mappings = {
       disable_all = true,
     },

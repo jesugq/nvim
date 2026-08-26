@@ -28,6 +28,8 @@ do
     local line = vim.fn.line(".")
     local total_lines = vim.fn.line("$")
 
+    vim.cmd("normal! I## ")
+
     if line < total_lines then
       local line_below = vim.fn.getline(line + 1)
       if line_below:match("%S") then
