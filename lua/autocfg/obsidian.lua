@@ -3,6 +3,8 @@ do
     pattern = 'markdown',
     callback = function()
       require('configs.obsidian').indents()
+      require('configs.obsidian').prompts()
+      require('configs.obsidian').insight()
     end,
   })
 end

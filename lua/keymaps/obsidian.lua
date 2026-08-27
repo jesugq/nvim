@@ -50,8 +50,6 @@ do
       end, { buffer = true, desc = 'Markdown feature' })
       vim.keymap.set('n', '<leader>a4', function()
         folders.random_file('4-insights')
-        vim.wo.wrap = true
-        vim.wo.linebreak = true
       end, { buffer = true, desc = 'Markdown insight' })
     end,
   })

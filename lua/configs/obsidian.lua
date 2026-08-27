@@ -8,7 +8,17 @@ do
     vim.opt.tabstop = 2
     vim.opt.softtabstop = 2
 
+  end
+
+  FUNCTION.prompts = function()
     if vim.fn.expand('%:t') == 'prompt.md' then
+      vim.wo.wrap = true
+      vim.wo.linebreak = true
+    end
+  end
+
+  FUNCTION.insight = function()
+    if vim.fn.expand('%:p'):match('/4%-insights/') then
       vim.wo.wrap = true
       vim.wo.linebreak = true
     end
