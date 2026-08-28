@@ -14,14 +14,6 @@ do
       sources = {
         explorer = {
           auto_close = true,
-          win = {
-            list = {
-              keys = {
-                ["y"] = "yank_relative_cwd",
-                ["Y"] = "yank_relative_home",
-              }
-            }
-          },
         },
       },
     },
