@@ -6,6 +6,8 @@ do
       local folders = require('configs.folders')
       local insert = require('configs.insert')
       local tags = require('tags')
+      local is_tagged = false
+      local timer = nil
 
       vim.keymap.set('n', '<leader>bn', '<cmd>e .md<CR><cmd>', {  desc = 'Markdown new file' })
 
@@ -14,9 +16,6 @@ do
       vim.keymap.set('n', '<C-c>p', '<cmd>Obsidian paste_img<CR><cmd>', {
         buffer = true, desc = 'Markdown paste image'
       })
-      vim.keymap.set('n', '<C-c>c', function()
-        insert.new_hash()
-      end, { buffer = true, desc = 'Markdown tags' })
       vim.keymap.set('n', '<C-c>r', '<cmd>Obsidian quick_switch<CR><cmd>', {
         buffer = true, desc = 'Markdown "refile" text'
       })
@@ -28,6 +27,35 @@ do
         vim.cmd('normal! h')
         vim.cmd('startinsert')
       end, { buffer = true, desc = 'Markdown insert link' })
+      vim.keymap.set('n', '<C-c>i', function()
+        if not is_tagged then
+          is_tagged = true
+          insert.new_hash(tags.nm)
+        else
+          is_tagged = false
+          insert.bye_hash(tags.nm)
+          return
+        end
+
+        if timer then
+          timer:stop()
+        else
+          timer = vim.uv.new_timer()
+        end
+
+        timer:start(1000, 0,
+          vim.schedule_wrap(function()
+            is_tagged = false
+            if timer and not timer:is_closing() then
+              timer:close()
+              timer = nil
+            end
+          end)
+        )
+      end, { buffer = true, desc = 'Markdown tags' })
+      vim.keymap.set('n', '<C-c>o', function()
+        insert.new_hash()
+      end, { buffer = true, desc = 'Markdown tags' })
 
       vim.keymap.set('n', '<C-c><', '<cmd>Obsidian backlinks<CR><cmd>', {
         buffer = true, desc = 'Markdown incoming links'

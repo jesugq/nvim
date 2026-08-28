@@ -5,6 +5,9 @@ do
     callback = function()
       local orgmode = require('orgmode')
       local insert = require('configs.insert')
+      local tags = require('tags')
+      local is_tagged = false
+      local timer = nil
 
       vim.keymap.set('n', '<leader>bn', '<cmd>e .org<CR><cmd>', {  desc = 'Orgmode new file' })
 
@@ -67,9 +70,6 @@ do
       vim.keymap.set('n', '<C-c>p', function() orgmode.action('org_mappings.insert_link') end, {
         buffer = true, desc = 'Org insert link to hyperlink'
       })
-      vim.keymap.set('n', '<C-c>c', function() orgmode.action('org_mappings.set_tags') end, {
-        buffer = true, desc = 'Org set tags'
-      })
       vim.keymap.set('n', '<C-c>a', function()
         insert.new_space()
         vim.cmd('stopinsert')
@@ -83,6 +83,35 @@ do
       vim.keymap.set('n', '<C-c>d', function() orgmode.action('org_mappings.org_deadline') end, {
         buffer = true, desc = 'Org deadline'
       })
+      vim.keymap.set('n', '<C-c>i', function()
+        if not is_tagged then
+          is_tagged = true
+          orgmode.action('org_mappings.set_tags', tags.nm)
+        else
+          is_tagged = false
+          orgmode.action('org_mappings.set_tags', '')
+          return
+        end
+
+        if timer then
+          timer:stop()
+        else
+          timer = vim.uv.new_timer()
+        end
+
+        timer:start(1000, 0,
+          vim.schedule_wrap(function()
+            is_tagged = false
+            if timer and not timer:is_closing() then
+              timer:close()
+              timer = nil
+            end
+          end)
+        )
+      end, { buffer = true, desc = 'Org set inner tags' })
+      vim.keymap.set('n', '<C-c>o', function()
+        orgmode.action('org_mappings.set_tags')
+      end, { buffer = true, desc = 'Org set outer tags' })
     end,
   })
 
