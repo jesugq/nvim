@@ -28,8 +28,8 @@ do
     )
   end
 
-  vim.keymap.set('n', '[b', function() show_tabline('BufferLineCyclePrev') end, { desc = "Previous buffer" })
-  vim.keymap.set('n', ']b', function() show_tabline('BufferLineCycleNext') end, { desc = "Next buffer" })
-  vim.keymap.set("n", '<leader>b[', function() show_tabline('BufferLineMovePrev') end, { desc = "Move Buffer prev" })
-  vim.keymap.set("n", '<leader>b]', function() show_tabline('BufferLineMoveNext') end, { desc = "Move Buffer next" })
+  -- vim.keymap.set('n', '[b', function() show_tabline('BufferLineCyclePrev') end, { desc = "Previous buffer" })
+  -- vim.keymap.set('n', ']b', function() show_tabline('BufferLineCycleNext') end, { desc = "Next buffer" })
+  -- vim.keymap.set("n", '<leader>b[', function() show_tabline('BufferLineMovePrev') end, { desc = "Move Buffer prev" })
+  -- vim.keymap.set("n", '<leader>b]', function() show_tabline('BufferLineMoveNext') end, { desc = "Move Buffer next" })
 end

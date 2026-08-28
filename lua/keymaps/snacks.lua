@@ -1,6 +1,6 @@
 do
   vim.keymap.set('n', '<leader>e', function() Snacks.explorer() end, { desc = 'Snacks explorer' })
-  vim.keymap.set('n', '<leader>w', function() Snacks.picker.buffers() end, { desc = 'Snacks picker buffer' })
+  vim.keymap.set('n', '<leader>w', function() Snacks.picker.buffers({ focus = 'list' }) end, { desc = 'Snacks picker buffer' })
 
   vim.keymap.set('n', '<leader>bx', function() Snacks.bufdelete() end, { desc = 'Snacks bufdelete' })
   vim.keymap.set('n', '<leader>bX', function() Snacks.bufdelete.all() end, { desc = 'Snacks bufdelete all' })
