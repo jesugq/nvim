@@ -158,11 +158,8 @@ do
       local orgmode = require('orgmode')
       local folders = require('configs.folders')
 
-      vim.keymap.set('n', '<leader>an', function() orgmode.action('agenda.open_by_key', 'n') end, {
-        buffer = true, desc = 'Org Nudge'
-      })
-      vim.keymap.set('n', '<leader>am', function() orgmode.action('agenda.open_by_key', 'm') end, {
-        buffer = true, desc = 'Org Merge'
+      vim.keymap.set('n', '<leader>aa', function() orgmode.action('agenda.open_by_key', 'a') end, {
+        buffer = true, desc = 'Org Live'
       })
       vim.keymap.set('n', '<leader>ai', function() orgmode.action('agenda.open_by_key', 'i') end, {
         buffer = true, desc = 'Org Inner'

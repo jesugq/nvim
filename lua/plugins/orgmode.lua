@@ -15,12 +15,11 @@ do
     org_blank_before_new_entry = { heading = false, plain_list_item = false },
     win_split_mode = 'edit',
     org_tags_column = 0,
-    org_todo_keywords = { 'TODO', 'NUDGE', 'MERGE', '|', 'REDO' },
+    org_todo_keywords = { 'OPEN', 'LIVE', '|', 'DONE' },
     org_todo_keyword_faces = {
-      TODO = ':foreground "#e55c7a"',
-      NUDGE = ':foreground "#d24b83"',
-      MERGE = ':foreground "#cf44ac"',
-      REDO = ':foreground "#4d9391"',
+      OPEN = ':foreground "#d24b83"',
+      LIVE = ':foreground "#cf44ac"',
+      DONE = ':foreground "#4d9391"',
     },
     org_log_done = 'time',
     org_priority_default = 'D',
@@ -30,22 +29,12 @@ do
       disable_all = true,
     },
     org_agenda_custom_commands = {
-      n = {
-        description = 'Nudge',
+      a = {
+        description = 'Live',
         types = {
           {
             type = 'tags',
-            match = 'TODO="NUDGE"',
-            org_agenda_sorting_strategy = { 'priority_down' },
-          },
-        },
-      },
-      m = {
-        description = 'Merge',
-        types = {
-          {
-            type = 'tags',
-            match = 'TODO="MERGE"',
+            match = 'TODO="LIVE"',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
