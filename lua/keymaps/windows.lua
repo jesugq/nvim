@@ -1,4 +1,24 @@
 do
+  local function resize_window(size)
+    if not size then
+      return
+    end
+    local ratio = size / 100
+
+    local original_cmdheight = vim.o.cmdheight
+
+    local total_cols = vim.o.columns
+    local total_lines = vim.o.lines - original_cmdheight - (vim.o.laststatus > 0 and 1 or 0)
+
+    local target_cols = math.floor(total_cols * ratio)
+    local target_lines = math.floor(total_lines * ratio)
+
+    pcall(vim.api.nvim_win_set_width, 0, target_cols)
+    pcall(vim.api.nvim_win_set_height, 0, target_lines)
+
+    vim.o.cmdheight = original_cmdheight
+  end
+
   local function swap_window(direction)
     local source_win = vim.api.nvim_get_current_win()
     vim.cmd('wincmd ' .. direction)
@@ -15,6 +35,7 @@ do
 
   vim.keymap.set('n', '<C-w>c', '<Nop>', { desc = 'Close current window' })
   vim.keymap.set('n', '<C-w>x', '<C-w>c', { remap = false, desc = 'Close current window' })
+  vim.keymap.set('n', '<C-w>-', function() resize_window(25) end, { desc = 'Window minimum dimensions' })
 
   vim.keymap.set('n', '<C-w>H', '<Nop>', { desc = 'Move window left' })
   vim.keymap.set('n', '<C-w>J', '<Nop>', { desc = 'Move window down' })
