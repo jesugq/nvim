@@ -9,14 +9,14 @@ do
       local is_tagged = false
       local timer = nil
 
-      vim.keymap.set('n', '<leader>bn', '<cmd>e .md<CR><cmd>', {  desc = 'Markdown new file' })
+      vim.keymap.set('n', '<leader>bn', function() vim.cmd('e .md') end, {  desc = 'Markdown new file' })
 
       vim.keymap.set('n', '<A-CR>', api.smart_action, { expr = true, desc = 'Markdown open at point' })
 
-      vim.keymap.set('n', '<C-c>p', '<cmd>Obsidian paste_img<CR><cmd>', {
+      vim.keymap.set('n', '<C-c>p', function() vim.cmd('Obsidian paste_img') end, {
         buffer = true, desc = 'Markdown paste image'
       })
-      vim.keymap.set('n', '<C-c>r', '<cmd>Obsidian quick_switch<CR><cmd>', {
+      vim.keymap.set('n', '<C-c>r', function() vim.cmd('Obsidian quick_switch') end, {
         buffer = true, desc = 'Markdown "refile" text'
       })
       vim.keymap.set('n', '<C-c>f', function()

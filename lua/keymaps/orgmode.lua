@@ -9,7 +9,7 @@ do
       local is_tagged = false
       local timer = nil
 
-      vim.keymap.set('n', '<leader>bn', '<cmd>e .org<CR><cmd>', {  desc = 'Orgmode new file' })
+      vim.keymap.set('n', '<leader>bn', function() vim.cmd('e .org') end, {  desc = 'Orgmode new file' })
 
       vim.keymap.set('n', '<TAB>', function() orgmode.action('org_mappings.cycle') end, {
         buffer = true, desc = 'Org cycle'
