@@ -55,6 +55,9 @@ do
         buffer = true, desc = 'Org move subtree right'
       })
 
+      vim.keymap.set('n', '<C-c>e', function() orgmode.action('org_mappings.insert_link') end, {
+        buffer = true, desc = 'Org insert external link'
+      })
       vim.keymap.set('n', '<C-c>k', function() orgmode.action('org_mappings.priority_up') end, {
         buffer = true, desc = 'Org priority up'
       })
@@ -66,9 +69,6 @@ do
       })
       vim.keymap.set('n', '<C-c>l', function() orgmode.action('org_mappings.todo_next_state') end, {
         buffer = true, desc = 'Org todo next state'
-      })
-      vim.keymap.set('n', '<C-c>p', function() orgmode.action('org_mappings.insert_link') end, {
-        buffer = true, desc = 'Org insert link to hyperlink'
       })
       vim.keymap.set('n', '<C-c>a', function()
         insert.new_space()
@@ -132,22 +132,6 @@ do
       })
       vim.keymap.set('n', '>', function() orgmode.action('agenda.advance_span', 1) end, {
         buffer = true, desc = 'Orgagenda advance span'
-      })
-
-      vim.keymap.set('n', '<C-c>c', function() orgmode.action('agenda.set_tags') end, {
-        buffer = true, desc = 'Orgagenda set tags'
-      })
-      vim.keymap.set('n', '<C-c>d', function() orgmode.action('agenda.set_deadline') end, {
-        buffer = true, desc = 'Orgagenda set deadline'
-      })
-      vim.keymap.set('n', '<C-c>s', function() orgmode.action('agenda.set_schedule') end, {
-        buffer = true, desc = 'Orgagenda set schedule'
-      })
-      vim.keymap.set('n', '<C-c>r', function() orgmode.action('agenda.reset') end, {
-        buffer = true, desc = 'Orgagenda reset'
-      })
-      vim.keymap.set('n', '<C-c>t', function() orgmode.action('agenda.goto_date') end, {
-        buffer = true, desc = 'Orgagenda go to date'
       })
     end,
   })

@@ -13,20 +13,30 @@ do
 
       vim.keymap.set('n', '<A-CR>', api.smart_action, { expr = true, desc = 'Markdown open at point' })
 
-      vim.keymap.set('n', '<C-c>p', function() vim.cmd('Obsidian paste_img') end, {
-        buffer = true, desc = 'Markdown paste image'
-      })
+      vim.keymap.set('n', '<C-c>e', function()
+        local url = vim.fn.getreg('+'):gsub('^%s+', ''):gsub('%s+$', '')
+
+        local row = vim.api.nvim_win_get_cursor(0)[1]
+        local line = vim.api.nvim_get_current_line()
+        local end_col = #line
+
+        local text = '[](' .. url .. ')'
+        vim.api.nvim_buf_set_text(0, row - 1, end_col, row - 1, end_col, { text })
+
+        vim.api.nvim_win_set_cursor(0, { row, end_col + 1 })
+        vim.cmd('startinsert')
+      end, { buffer = true, desc = 'Markdown insert external link' })
       vim.keymap.set('n', '<C-c>r', function() vim.cmd('Obsidian quick_switch') end, {
-        buffer = true, desc = 'Markdown "refile" text'
+        buffer = true, desc = 'Markdown refile text'
       })
-      vim.keymap.set('n', '<C-c>f', function()
+      vim.keymap.set('n', '<C-c>t', function()
         insert.new_space()
         vim.cmd('stopinsert')
         vim.cmd('normal! A[[]]')
         vim.cmd('stopinsert')
         vim.cmd('normal! h')
         vim.cmd('startinsert')
-      end, { buffer = true, desc = 'Markdown insert link' })
+      end, { buffer = true, desc = 'Markdown insert link to' })
       vim.keymap.set('n', '<C-c>i', function()
         if not is_tagged then
           is_tagged = true
