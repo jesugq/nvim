@@ -83,16 +83,10 @@ do
       vim.keymap.set('n', '<C-c>d', function() orgmode.action('org_mappings.org_deadline') end, {
         buffer = true, desc = 'Org deadline'
       })
-      vim.keymap.set('n', '<C-c>P', function()
-        local tag = vim.fn.input('New tag: ')
-        if tag ~= '' then
-          tags.new_tag(tag)
-        end
-      end, { buffer = true, desc = 'New tag' })
       vim.keymap.set('n', '<C-c>p', function()
         if not is_tagged then
           is_tagged = true
-          orgmode.action('org_mappings.set_tags', tags.tag)
+          orgmode.action('org_mappings.set_tags', tags.plan)
         else
           is_tagged = false
           orgmode.action('org_mappings.set_tags', '')
@@ -114,7 +108,13 @@ do
             end
           end)
         )
-      end, { buffer = true, desc = 'Org set tag' })
+      end, { buffer = true, desc = 'Org set plan' })
+      vim.keymap.set('n', '<C-c>P', function()
+        local plan = vim.fn.input('New plan: ')
+        if plan ~= '' then
+          tags.new_plan(plan)
+        end
+      end, { buffer = true, desc = 'New plan' })
     end,
   })
 
@@ -149,15 +149,15 @@ do
       vim.keymap.set('n', '<leader>aa', function() orgmode.action('agenda.open_by_key', 'a') end, {
         buffer = true, desc = 'Org Live'
       })
-      vim.keymap.set('n', '<leader>aP', function()
-        local tag = vim.fn.input('New tag: ')
-        if tag ~= '' then
-          tags.new_tag(tag)
-        end
-      end, { buffer = true, desc = 'New tag' })
       vim.keymap.set('n', '<leader>ap', function() orgmode.action('agenda.open_by_key', 'p') end, {
-        buffer = true, desc = 'Org Tag'
+        buffer = true, desc = 'Org Plan'
       })
+      vim.keymap.set('n', '<leader>aP', function()
+        local plan = vim.fn.input('New plan: ')
+        if plan ~= '' then
+          tags.new_plan(plan)
+        end
+      end, { buffer = true, desc = 'New plan' })
 
       vim.keymap.set('n', '<leader>a1', function()
         folders.random_file('1-projects')

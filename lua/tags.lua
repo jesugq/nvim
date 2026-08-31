@@ -1,11 +1,13 @@
 do
   local FUNCTION = {}
-  FUNCTION.tag = ''
+  FUNCTION.plan = ''
 
-  FUNCTION.md = 'Obsidian tags '
+  FUNCTION.md = {
+    plan = 'Obsidian tags '
+  }
   FUNCTION.og = {
-    tag_search = {
-      description = 'Tag Search',
+    plan = {
+      description = 'Plan',
       types = {
         {
           type = 'tags',
@@ -17,13 +19,13 @@ do
   }
 
   local function refresh()
-    FUNCTION.md = 'Obsidian tags ' .. FUNCTION.tag
-    FUNCTION.og.tag_search.types[1].match = FUNCTION.tag
+    FUNCTION.md.plan = 'Obsidian tags ' .. FUNCTION.plan
+    FUNCTION.og.plan.types[1].match = FUNCTION.plan
   end
   refresh()
 
-  function FUNCTION.new_tag(tag)
-    FUNCTION.tag = tag
+  function FUNCTION.new_plan(plan)
+    FUNCTION.plan = plan
     refresh()
   end
 
