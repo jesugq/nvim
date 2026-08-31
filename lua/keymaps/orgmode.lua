@@ -83,10 +83,16 @@ do
       vim.keymap.set('n', '<C-c>d', function() orgmode.action('org_mappings.org_deadline') end, {
         buffer = true, desc = 'Org deadline'
       })
-      vim.keymap.set('n', '<C-c>i', function()
+      vim.keymap.set('n', '<C-c>P', function()
+        local tag = vim.fn.input('New tag: ')
+        if tag ~= '' then
+          tags.new_tag(tag)
+        end
+      end, { buffer = true, desc = 'New tag' })
+      vim.keymap.set('n', '<C-c>p', function()
         if not is_tagged then
           is_tagged = true
-          orgmode.action('org_mappings.set_tags', tags.nm)
+          orgmode.action('org_mappings.set_tags', tags.tag)
         else
           is_tagged = false
           orgmode.action('org_mappings.set_tags', '')
@@ -108,10 +114,7 @@ do
             end
           end)
         )
-      end, { buffer = true, desc = 'Org set inner tags' })
-      vim.keymap.set('n', '<C-c>o', function()
-        orgmode.action('org_mappings.set_tags')
-      end, { buffer = true, desc = 'Org set outer tags' })
+      end, { buffer = true, desc = 'Org set tag' })
     end,
   })
 
@@ -141,15 +144,19 @@ do
     callback = function()
       local orgmode = require('orgmode')
       local folders = require('configs.folders')
+      local tags = require('tags')
 
       vim.keymap.set('n', '<leader>aa', function() orgmode.action('agenda.open_by_key', 'a') end, {
         buffer = true, desc = 'Org Live'
       })
-      vim.keymap.set('n', '<leader>ai', function() orgmode.action('agenda.open_by_key', 'i') end, {
-        buffer = true, desc = 'Org Inner'
-      })
-      vim.keymap.set('n', '<leader>ao', function() orgmode.action('agenda.open_by_key', 'o') end, {
-        buffer = true, desc = 'Org Outer'
+      vim.keymap.set('n', '<leader>aP', function()
+        local tag = vim.fn.input('New tag: ')
+        if tag ~= '' then
+          tags.new_tag(tag)
+        end
+      end, { buffer = true, desc = 'New tag' })
+      vim.keymap.set('n', '<leader>ap', function() orgmode.action('agenda.open_by_key', 'p') end, {
+        buffer = true, desc = 'Org Tag'
       })
 
       vim.keymap.set('n', '<leader>a1', function()

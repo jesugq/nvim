@@ -37,13 +37,13 @@ do
         vim.cmd('normal! h')
         vim.cmd('startinsert')
       end, { buffer = true, desc = 'Markdown insert link to' })
-      vim.keymap.set('n', '<C-c>i', function()
+      vim.keymap.set('n', '<C-c>p', function()
         if not is_tagged then
           is_tagged = true
-          insert.new_hash(tags.nm)
+          insert.new_hash(tags.tag)
         else
           is_tagged = false
-          insert.bye_hash(tags.nm)
+          insert.bye_hash(tags.tag)
           return
         end
 
@@ -63,9 +63,12 @@ do
           end)
         )
       end, { buffer = true, desc = 'Markdown tags' })
-      vim.keymap.set('n', '<C-c>o', function()
-        insert.new_hash()
-      end, { buffer = true, desc = 'Markdown tags' })
+      vim.keymap.set('n', '<C-c>P', function()
+        local tag = vim.fn.input('New tag: ')
+        if tag ~= '' then
+          tags.new_tag(tag)
+        end
+      end, { buffer = true, desc = 'New tag' })
 
       vim.keymap.set('n', '<C-c><', '<cmd>Obsidian backlinks<CR><cmd>', {
         buffer = true, desc = 'Markdown incoming links'
@@ -74,8 +77,13 @@ do
         buffer = true, desc = 'Markdown outgoing links'
       })
 
-      vim.keymap.set('n', '<leader>ai', tags.md.inner, { buffer = true, desc = 'Markdown Inner' })
-      vim.keymap.set('n', '<leader>ao', tags.md.outer, { buffer = true, desc = 'Markdown Outer' })
+      vim.keymap.set('n', '<leader>aP', function()
+        local tag = vim.fn.input('New tag: ')
+        if tag ~= '' then
+          tags.new_tag(tag)
+        end
+      end, { buffer = true, desc = 'New tag' })
+      vim.keymap.set('n', '<leader>ap', function() vim.cmd(tags.md) end, { buffer = true, desc = 'Markdown Tag Search' })
 
       vim.keymap.set('n', '<leader>a1', function()
         folders.random_file('1-projects')

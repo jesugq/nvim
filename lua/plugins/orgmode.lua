@@ -39,8 +39,7 @@ do
           },
         },
       },
-      i = tags.og.inner,
-      o = tags.og.outer,
+      p = tags.og.tag_search,
     },
   }
   vim.lsp.enable('org')
