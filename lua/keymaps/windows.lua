@@ -33,6 +33,7 @@ do
     end
   end
 
+  vim.keymap.set('i', '<C-w>', '<Esc><C-n><C-w>')
   vim.keymap.set('n', '<C-w>c', '<Nop>', { desc = 'Close current window' })
   vim.keymap.set('n', '<C-w>x', '<C-w>c', { remap = false, desc = 'Close current window' })
   vim.keymap.set('n', '<C-w>-', function() resize_window(25) end, { desc = 'Window minimum dimensions' })

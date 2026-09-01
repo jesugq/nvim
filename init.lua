@@ -68,8 +68,6 @@ do
   require('plugins.tiny-glimmer')
 
   -- integration
-  require('plugins.nvim-tmux-navigation')
-  require('keymaps.nvim-tmux-navigation')
   require('plugins.whichkey')
   require('plugins.faster')
   require('plugins.paperplanes')
