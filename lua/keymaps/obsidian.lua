@@ -70,10 +70,10 @@ do
         end
       end, { buffer = true, desc = 'New plan' })
 
-      vim.keymap.set('n', '<C-c><', '<cmd>Obsidian backlinks<CR><cmd>', {
+      vim.keymap.set('n', '<C-c><', function() vim.cmd('Obsidian backlinks') end, {
         buffer = true, desc = 'Markdown incoming links'
       })
-      vim.keymap.set('n', '<C-c>>', '<cmd>Obsidian links<CR><cmd>', {
+      vim.keymap.set('n', '<C-c>>', function() vim.cmd('Obsidian links') end, {
         buffer = true, desc = 'Markdown outgoing links'
       })
 
