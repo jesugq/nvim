@@ -97,6 +97,16 @@ do
       vim.keymap.set('n', '<leader>a4', function()
         folders.random_file('4-insights')
       end, { buffer = true, desc = 'Markdown insight' })
+
+      vim.keymap.set('n', '<CR>', function()
+        insert.new_parent()
+      end, { buffer = true, desc = 'Mark insert parent' })
+      vim.keymap.set('n', '<C-CR>', function()
+        insert.new_child()
+      end, { buffer = true, desc = 'Mark insert child' })
+      vim.keymap.set('n', '<A-CR>', function()
+        insert.new_dashed()
+      end, { buffer = true, desc = 'Mark insert dashed' })
     end,
   })
 
@@ -115,6 +125,9 @@ do
       vim.keymap.set('n', '<C-CR>', function()
         insert.new_child()
       end, { buffer = true, desc = 'Mark insert child' })
+      vim.keymap.set('n', '<A-CR>', function()
+        insert.new_dashed()
+      end, { buffer = true, desc = 'Mark insert dashed' })
     end,
   })
 end

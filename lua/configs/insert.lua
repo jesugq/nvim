@@ -47,6 +47,27 @@ do
     vim.cmd('startinsert!')
   end
 
+  FUNCTION.new_dashed = function()
+    local line = vim.fn.line(".")
+    local total_lines = vim.fn.line("$")
+
+    vim.cmd("normal! I----")
+
+    if line < total_lines then
+      local line_below = vim.fn.getline(line + 1)
+      if line_below:match("%S") then
+        vim.fn.append(line, "")
+      end
+    end
+
+    if line > 1 then
+      local line_above = vim.fn.getline(line - 1)
+      if line_above:match("%S") then
+        vim.fn.append(line - 1, "")
+      end
+    end
+  end
+
   FUNCTION.new_space = function()
     vim.cmd('stopinsert')
 
