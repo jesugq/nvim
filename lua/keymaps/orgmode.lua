@@ -163,8 +163,8 @@ do
       end, { buffer = true, desc = 'New plan' })
 
       vim.keymap.set('n', '<leader>a1', function()
-        folders.random_file('1-projects')
-      end, { buffer = true, desc = 'Markdown project' })
+        folders.random_file('1-programs')
+      end, { buffer = true, desc = 'Markdown program' })
       vim.keymap.set('n', '<leader>a2', function()
         folders.random_file('2-notepads')
       end, { buffer = true, desc = 'Markdown notepad' })
