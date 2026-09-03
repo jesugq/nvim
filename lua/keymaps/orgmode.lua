@@ -25,7 +25,7 @@ do
         orgmode.action('org_mappings.do_demote', true)
         insert.new_space()
       end, { buffer = true, desc = 'Org insert child respect content' })
-      vim.keymap.set('n', '<C-CR>', function()
+      vim.keymap.set('n', '<A-CR>', function()
         orgmode.action('org_mappings.insert_heading_respect_content')
         insert.new_dashed()
       end, { buffer = true, desc = 'Org insert child respect content' })
