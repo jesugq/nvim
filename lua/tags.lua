@@ -29,5 +29,9 @@ do
     refresh()
   end
 
+  function FUNCTION.get_plan()
+    return FUNCTION.plan
+  end
+
   return FUNCTION
 end

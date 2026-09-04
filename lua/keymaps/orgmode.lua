@@ -113,9 +113,10 @@ do
         )
       end, { buffer = true, desc = 'Org set plan' })
       vim.keymap.set('n', '<C-c>P', function()
-        local plan = vim.fn.input('New plan: ')
+        local plan = vim.fn.getreg('+'):gsub('^%s+', ''):gsub('%s+$', '')
         if plan ~= '' then
           tags.new_plan(plan)
+          vim.notify('New plan: ' .. plan, vim.log.levels.INFO)
         end
       end, { buffer = true, desc = 'New plan' })
     end,
@@ -156,11 +157,8 @@ do
         buffer = true, desc = 'Org Plan'
       })
       vim.keymap.set('n', '<leader>aP', function()
-        local plan = vim.fn.input('New plan: ')
-        if plan ~= '' then
-          tags.new_plan(plan)
-        end
-      end, { buffer = true, desc = 'New plan' })
+        vim.notify('Get plan: ' .. tags.get_plan(), vim.log.levels.INFO)
+      end, { buffer = true, desc = 'Get plan' })
 
       vim.keymap.set('n', '<leader>a1', function()
         folders.random_file('1-programs')
