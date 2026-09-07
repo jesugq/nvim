@@ -11,7 +11,6 @@ do
 
       vim.keymap.set('n', '<leader>bn', function() vim.cmd('e .md') end, {  desc = 'Markdown new file' })
 
-      vim.keymap.set('n', '<A-CR>', api.smart_action, { expr = true, desc = 'Markdown open at point' })
 
       vim.keymap.set('n', '<C-c>e', function()
         local url = vim.fn.getreg('+'):gsub('^%s+', ''):gsub('%s+$', '')
@@ -102,15 +101,14 @@ do
       vim.keymap.set('n', '<C-CR>', function()
         insert.new_child()
       end, { buffer = true, desc = 'Mark insert child' })
-      vim.keymap.set('n', '<A-CR>', function()
-        insert.new_dashed()
-      end, { buffer = true, desc = 'Mark insert dashed' })
+      vim.keymap.set('n', '<A-CR>', api.smart_action, { expr = true, desc = 'Markdown open at point' })
     end,
   })
 
   vim.api.nvim_create_autocmd("User", {
     pattern = "ObsidianNoteEnter",
     callback = function(ev)
+      local api = require('obsidian.api')
       local insert = require('configs.insert')
 
       vim.keymap.del("n", "<CR>", { buffer = true })
@@ -123,9 +121,7 @@ do
       vim.keymap.set('n', '<C-CR>', function()
         insert.new_child()
       end, { buffer = true, desc = 'Mark insert child' })
-      vim.keymap.set('n', '<A-CR>', function()
-        insert.new_dashed()
-      end, { buffer = true, desc = 'Mark insert dashed' })
+      vim.keymap.set('n', '<A-CR>', api.smart_action, { expr = true, desc = 'Markdown open at point' })
     end,
   })
 end
