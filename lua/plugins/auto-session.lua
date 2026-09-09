@@ -3,7 +3,7 @@ do
   vim.pack.add { 'https://github.com/rmagatti/auto-session' }
   require('auto-session').setup {
     auto_create = false,
-    auto_save_enabled = false,
+    auto_save_enabled = true,
     close_unsupported_windows = true,
     post_restore_cmds = {
       function()
