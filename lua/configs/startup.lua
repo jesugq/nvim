@@ -1,6 +1,7 @@
 do
   -- system
   vim.loader.enable()
+  vim.g.python3_host_prog = vim.fs.joinpath(vim.fn.stdpath('data'), 'venv', 'bin', 'python')
   vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
   -- leader
