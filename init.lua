@@ -57,8 +57,6 @@ do
   require('plugins.github-nvim-theme')
   require('plugins.lualine')
   require('plugins.gitsigns')
-  require('plugins.zen-mode')
-  require('keymaps.zen-mode')
 
   -- animation
   require('plugins.dashboard')
