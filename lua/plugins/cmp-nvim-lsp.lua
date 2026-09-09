@@ -5,7 +5,7 @@ do
 
   for _, ensured in ipairs(ensure_installed) do
     vim.lsp.config(ensured, {
-      capabilities = capabilities
+      capabilities = capabilities,
     })
     -- vim.lsp.enable(ensured)
   end

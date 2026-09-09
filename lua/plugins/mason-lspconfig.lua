@@ -4,7 +4,7 @@ do
     automatic_enable = {
       exclude = {
         'lua_ls',
-      }
-    }
+      },
+    },
   }
 end

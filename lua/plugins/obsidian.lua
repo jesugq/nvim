@@ -8,7 +8,7 @@ do
       {
         name = 'Markdown',
         path = path.md_dir,
-      }
+      },
     },
     picker = {
       name = 'snacks.picker',

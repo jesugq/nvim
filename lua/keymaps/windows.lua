@@ -1,5 +1,5 @@
 do
-  local opposites = { h = 'l', l = 'h', k = 'j', j = 'k' }
+  local opposites = { h = 'l', l = 'h', k = 'j', j = 'k', }
 
   local function swap_window(direction)
     local source_win = vim.api.nvim_get_current_win()

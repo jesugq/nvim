@@ -23,7 +23,7 @@ do
         vim.cmd('startinsert')
       end, { buffer = true, desc = 'Markdown insert external link' })
       vim.keymap.set('n', '<C-c>r', function() vim.cmd('Obsidian quick_switch') end, {
-        buffer = true, desc = 'Markdown refile text'
+        buffer = true, desc = 'Markdown refile text',
       })
       vim.keymap.set('n', '<C-c>t', function()
         insert.new_space()
@@ -35,10 +35,10 @@ do
       end, { buffer = true, desc = 'Markdown insert link to' })
 
       vim.keymap.set('n', '<C-c><', function() vim.cmd('Obsidian backlinks') end, {
-        buffer = true, desc = 'Markdown incoming links'
+        buffer = true, desc = 'Markdown incoming links',
       })
       vim.keymap.set('n', '<C-c>>', function() vim.cmd('Obsidian links') end, {
-        buffer = true, desc = 'Markdown outgoing links'
+        buffer = true, desc = 'Markdown outgoing links',
       })
 
       vim.keymap.set('n', '<leader>a1', function()

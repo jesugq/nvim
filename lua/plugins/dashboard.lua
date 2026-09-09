@@ -55,9 +55,9 @@ do
           key = 'q',
         },
       },
-      packages = { enable = true },
-      project = { enable = false },
-      mru = { enable = true, limit = 9, cwd_only = true, icon = '󱉊' },
+      packages = { enable = true, },
+      project = { enable = false, },
+      mru = { enable = true, limit = 9, cwd_only = true, icon = '󱉊', },
       footer = {},
     },
   })

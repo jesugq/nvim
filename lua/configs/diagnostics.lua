@@ -9,7 +9,7 @@ do
     underline = {
       severity = {
         min = vim.diagnostic.severity.WARN,
-      }
+      },
     },
     virtual_text = {
       spacing = 0,

@@ -28,7 +28,7 @@ do
     local prev_sibling = vim.fs.dirname(prev_name) == vim.fs.dirname(next_name)
 
     if prev_valid and prev_diff and prev_sibling then
-      pcall(Snacks.bufdelete.delete, { buf = prev_buffer })
+      pcall(Snacks.bufdelete.delete, { buf = prev_buffer, })
     end
   end
 

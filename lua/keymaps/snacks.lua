@@ -1,20 +1,20 @@
 do
   vim.keymap.set('n', '<leader>e', function() Snacks.explorer() end, { desc = 'Snacks explorer' })
-  vim.keymap.set('n', '<leader>w', function() Snacks.picker.buffers({ focus = 'list' }) end, { desc = 'Snacks window' })
-  vim.keymap.set('n', '<leader>r', function() Snacks.picker.recent({ focus = 'list', limit = 500, filter = { cwd = true } }) end, { desc = 'Snacks recent' })
+  vim.keymap.set('n', '<leader>w', function() Snacks.picker.buffers({ focus = 'list', }) end, { desc = 'Snacks window' })
+  vim.keymap.set('n', '<leader>r', function() Snacks.picker.recent({ focus = 'list', limit = 500, filter = { cwd = true, }, }) end, { desc = 'Snacks recent' })
 
   vim.keymap.set('n', '<leader>bx', function() Snacks.bufdelete() end, { desc = 'Snacks bufdelete' })
   vim.keymap.set('n', '<leader>bX', function() Snacks.bufdelete.all() end, { desc = 'Snacks bufdelete all' })
 
-  vim.keymap.set('n', '<leader>sf', function() Snacks.picker.files({ hidden = true, ignored = true }) end, { desc = 'Snacks picker files' })
+  vim.keymap.set('n', '<leader>sf', function() Snacks.picker.files({ hidden = true, ignored = true, }) end, { desc = 'Snacks picker files' })
   vim.keymap.set('n', '<leader>sg', function() Snacks.picker.grep() end, { desc = 'Snacks picker grep' })
   vim.keymap.set('n', '<leader>sb', function() Snacks.picker.grep_buffers() end, { desc = 'Snacks picker grep buffers' })
   vim.keymap.set('n', '<leader>ss', function() Snacks.picker.resume() end, { desc = 'Snacks picker resume' })
   vim.keymap.set('n', '<leader>s:', function() Snacks.picker.command_history() end, { desc = 'Snacks picker command history' })
   vim.keymap.set('n', '<leader>s/', function() Snacks.picker.search_history() end, { desc = 'Snacks picker search history' })
   vim.keymap.set('n', '<leader>s"', function() Snacks.picker.registers() end, { desc = 'Snacks picker registers' })
-  vim.keymap.set('n', '<leader>sm', function() Snacks.picker.marks({ global = false }) end, { desc = 'Snacks picker marks local' })
-  vim.keymap.set('n', '<leader>sM', function() Snacks.picker.marks({ ['local'] = false }) end, { desc = 'Snacks picker marks global' })
+  vim.keymap.set('n', '<leader>sm', function() Snacks.picker.marks({ global = false, }) end, { desc = 'Snacks picker marks local' })
+  vim.keymap.set('n', '<leader>sM', function() Snacks.picker.marks({ ['local'] = false, }) end, { desc = 'Snacks picker marks global' })
   vim.keymap.set('n', '<leader>sh', function() Snacks.picker.help() end, { desc = 'Snacks picker help' })
   vim.keymap.set('n', '<leader>sk', function() Snacks.picker.keymaps() end, { desc = 'Snacks picker keymaps' })
 

@@ -6,14 +6,14 @@ do
       local buf_name = vim.api.nvim_buf_get_name(buf)
 
       if buf_name ~= '' and vim.fn.isdirectory(buf_name) == 1 then
-        vim.api.nvim_buf_delete(buf, { force = true })
+        vim.api.nvim_buf_delete(buf, { force = true, })
         vim.cmd('Dashboard')
       end
     end,
   })
 
   vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 'dashboard', 'dashboard-nvim' },
+    pattern = { 'dashboard', 'dashboard-nvim', },
     callback = function()
       vim.schedule(function()
         vim.fn.clearmatches()

@@ -11,10 +11,10 @@ do
     org_hide_leading_stars = true,
     org_hide_emphasis_markers = true,
     org_use_tag_inheritance = false,
-    org_blank_before_new_entry = { heading = false, plain_list_item = false },
+    org_blank_before_new_entry = { heading = false, plain_list_item = false, },
     win_split_mode = 'edit',
     org_tags_column = 0,
-    org_todo_keywords = { 'OPEN', 'LIVE', '|', 'DONE' },
+    org_todo_keywords = { 'OPEN', 'LIVE', '|', 'DONE', },
     org_todo_keyword_faces = {
       OPEN = ':foreground "#d24b83"',
       LIVE = ':foreground "#cf44ac"',
@@ -34,7 +34,7 @@ do
           {
             type = 'tags',
             match = 'TODO="LIVE"',
-            org_agenda_sorting_strategy = { 'priority_down' },
+            org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
       },

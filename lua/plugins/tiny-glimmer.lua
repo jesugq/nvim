@@ -25,6 +25,6 @@ do
         enabled = true,
         redo_mapping = '<C-r>',
       },
-    }
+    },
   }
 end

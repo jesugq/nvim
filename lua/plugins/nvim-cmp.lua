@@ -12,26 +12,26 @@ do
       require('keymaps.nvim-cmp').mappings(cmp)
     ),
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
+      { name = 'nvim_lsp', },
     }, {
-      { name = 'buffer' },
-    })
+      { name = 'buffer', },
+    }),
   }
 
-  cmp.setup.cmdline({ '/', '?' }, {
+  cmp.setup.cmdline({ '/', '?', }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-      { name = 'buffer' }
-    }
+      { name = 'buffer', },
+    },
   })
 
   cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-      { name = 'path' }
+      { name = 'path', },
     }, {
-      { name = 'cmdline' }
+      { name = 'cmdline', },
     }),
-    matching = { disallow_symbol_nonprefix_matching = false }
+    matching = { disallow_symbol_nonprefix_matching = false, },
   })
 end
