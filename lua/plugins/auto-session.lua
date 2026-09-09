@@ -7,20 +7,20 @@ do
     close_unsupported_windows = true,
     post_restore_cmds = {
       function()
-        local session_name = require("auto-session.lib").current_session_name()
+        local session_name = require('auto-session.lib').current_session_name()
 
         vim.notify(tostring(session_name), vim.log.levels.INFO, {
-          title = "Auto Session",
+          title = 'Auto Session',
         })
       end,
     },
     no_restore_cmds = {
       function()
-        vim.notify("None", vim.log.levels.INFO, {
-          title = "Auto Session",
+        vim.notify('None', vim.log.levels.INFO, {
+          title = 'Auto Session',
         })
       end,
     },
   }
-  vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+  vim.o.sessionoptions='blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 end

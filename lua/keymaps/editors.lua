@@ -13,5 +13,5 @@ do
       vim.cmd('normal! zR')
     end
   end, { noremap = true, silent = true })
-  vim.keymap.set("n", "<C-i>", "<C-i>", { noremap = true })
+  vim.keymap.set('n', '<C-i>', '<C-i>', { noremap = true })
 end

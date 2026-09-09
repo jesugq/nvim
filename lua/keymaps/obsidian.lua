@@ -64,15 +64,15 @@ do
     end,
   })
 
-  vim.api.nvim_create_autocmd("User", {
-    pattern = "ObsidianNoteEnter",
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'ObsidianNoteEnter',
     callback = function(ev)
       local api = require('obsidian.api')
       local insert = require('configs.insert')
 
-      vim.keymap.del("n", "<CR>", { buffer = true })
-      vim.keymap.del("n", "]o", { buffer = true })
-      vim.keymap.del("n", "[o", { buffer = true })
+      vim.keymap.del('n', '<CR>', { buffer = true })
+      vim.keymap.del('n', ']o', { buffer = true })
+      vim.keymap.del('n', '[o', { buffer = true })
 
       vim.keymap.set('n', '<CR>', function()
         insert.new_parent()

@@ -18,7 +18,7 @@ do
     attachments = {
       folder = 'attachments',
       img_name_func = function()
-        return string.format("%s ", os.date("%Y-%m-%d"))
+        return string.format('%s ', os.date('%Y-%m-%d'))
       end,
     },
   }

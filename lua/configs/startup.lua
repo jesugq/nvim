@@ -30,7 +30,7 @@ do
   vim.o.inccommand = 'split'
 
   -- cursor
-  vim.opt.guicursor = ""
+  vim.opt.guicursor = ''
   vim.o.number = true
   vim.o.cursorline = true
   vim.o.scrolloff = 8
@@ -44,7 +44,7 @@ do
   vim.o.list = true
 
   -- folds
-  vim.opt.foldcolumn = "1"
+  vim.opt.foldcolumn = '1'
   require('configs.fillchars').highlights()
 
   -- indents

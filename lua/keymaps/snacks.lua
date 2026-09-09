@@ -14,7 +14,7 @@ do
   vim.keymap.set('n', '<leader>s/', function() Snacks.picker.search_history() end, { desc = 'Snacks picker search history' })
   vim.keymap.set('n', '<leader>s"', function() Snacks.picker.registers() end, { desc = 'Snacks picker registers' })
   vim.keymap.set('n', '<leader>sm', function() Snacks.picker.marks({ global = false }) end, { desc = 'Snacks picker marks local' })
-  vim.keymap.set('n', '<leader>sM', function() Snacks.picker.marks({ ["local"] = false }) end, { desc = 'Snacks picker marks global' })
+  vim.keymap.set('n', '<leader>sM', function() Snacks.picker.marks({ ['local'] = false }) end, { desc = 'Snacks picker marks global' })
   vim.keymap.set('n', '<leader>sh', function() Snacks.picker.help() end, { desc = 'Snacks picker help' })
   vim.keymap.set('n', '<leader>sk', function() Snacks.picker.keymaps() end, { desc = 'Snacks picker keymaps' })
 

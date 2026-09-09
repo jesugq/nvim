@@ -1,6 +1,6 @@
 do
   local function current_date()
-    return os.date("%Y-%m-%d")
+    return os.date('%Y-%m-%d')
   end
 
   local function local_marks()

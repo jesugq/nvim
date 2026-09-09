@@ -2,22 +2,22 @@ do
   local FUNCTION = {}
 
   FUNCTION.new_parent = function()
-    local line = vim.fn.line(".")
-    local total_lines = vim.fn.line("$")
+    local line = vim.fn.line('.')
+    local total_lines = vim.fn.line('$')
 
-    vim.cmd("normal! I# ")
+    vim.cmd('normal! I# ')
 
     if line < total_lines then
       local line_below = vim.fn.getline(line + 1)
-      if line_below:match("%S") then
-        vim.fn.append(line, "")
+      if line_below:match('%S') then
+        vim.fn.append(line, '')
       end
     end
 
     if line > 1 then
       local line_above = vim.fn.getline(line - 1)
-      if line_above:match("%S") then
-        vim.fn.append(line - 1, "")
+      if line_above:match('%S') then
+        vim.fn.append(line - 1, '')
       end
     end
 
@@ -25,22 +25,22 @@ do
   end
 
   FUNCTION.new_child = function()
-    local line = vim.fn.line(".")
-    local total_lines = vim.fn.line("$")
+    local line = vim.fn.line('.')
+    local total_lines = vim.fn.line('$')
 
-    vim.cmd("normal! I## ")
+    vim.cmd('normal! I## ')
 
     if line < total_lines then
       local line_below = vim.fn.getline(line + 1)
-      if line_below:match("%S") then
-        vim.fn.append(line, "")
+      if line_below:match('%S') then
+        vim.fn.append(line, '')
       end
     end
 
     if line > 1 then
       local line_above = vim.fn.getline(line - 1)
-      if line_above:match("%S") then
-        vim.fn.append(line - 1, "")
+      if line_above:match('%S') then
+        vim.fn.append(line - 1, '')
       end
     end
 
@@ -48,22 +48,22 @@ do
   end
 
   FUNCTION.new_dashed = function()
-    local line = vim.fn.line(".")
-    local total_lines = vim.fn.line("$")
+    local line = vim.fn.line('.')
+    local total_lines = vim.fn.line('$')
 
-    vim.cmd("normal! I----")
+    vim.cmd('normal! I----')
 
     if line < total_lines then
       local line_below = vim.fn.getline(line + 1)
-      if line_below:match("%S") then
-        vim.fn.append(line, "")
+      if line_below:match('%S') then
+        vim.fn.append(line, '')
       end
     end
 
     if line > 1 then
       local line_above = vim.fn.getline(line - 1)
-      if line_above:match("%S") then
-        vim.fn.append(line - 1, "")
+      if line_above:match('%S') then
+        vim.fn.append(line - 1, '')
       end
     end
   end
@@ -88,8 +88,8 @@ do
     local line = vim.api.nvim_get_current_line()
 
     if tag and tag ~= '' then
-      local escaped_tag = tag:gsub("[%^%$%(%)%%%.%[%]%*%+%-%?]", "%%%1")
-      if line:find(" #" .. escaped_tag) then
+      local escaped_tag = tag:gsub('[%^%$%(%)%%%.%[%]%*%+%-%?]', '%%%1')
+      if line:find(' #' .. escaped_tag) then
         return
       end
     end
@@ -121,8 +121,8 @@ do
       vim.cmd('stopinsert')
 
       local line = vim.api.nvim_get_current_line()
-      local escaped_tag = tag:gsub("[%^%$%(%)%%%.%[%]%*%+%-%?]", "%%%1")
-      local new_line = line:gsub(" #" .. escaped_tag, "")
+      local escaped_tag = tag:gsub('[%^%$%(%)%%%.%[%]%*%+%-%?]', '%%%1')
+      local new_line = line:gsub(' #' .. escaped_tag, '')
 
       if new_line ~= line then
         vim.api.nvim_set_current_line(new_line)
