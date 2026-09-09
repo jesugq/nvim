@@ -25,7 +25,6 @@ do
   require('plugins.mason-tool-installer')
   require('lspconf.lua-ls')
   require('lspconf.yaml-composite')
-  require('lspconf.perl-disable')
 
   -- ts ordered
   require('plugins.treesitter-parser-registry')

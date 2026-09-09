@@ -1,8 +1,11 @@
 do
   -- system
   vim.loader.enable()
-  vim.g.python3_host_prog = vim.fs.joinpath(vim.fn.stdpath('data'), 'venv', 'bin', 'python')
   vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+
+  -- provider
+  vim.g.loaded_perl_provider = 0
+  vim.g.python3_host_prog = vim.fs.joinpath(vim.fn.stdpath('data'), 'venv', 'bin', 'python')
 
   -- leader
   vim.g.mapleader = ' '
