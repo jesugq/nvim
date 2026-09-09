@@ -5,9 +5,6 @@ do
       local api = require('obsidian.api')
       local folders = require('configs.folders')
       local insert = require('configs.insert')
-      local tags = require('tags')
-      local is_tagged = false
-      local timer = nil
 
       vim.keymap.set('n', '<leader>bn', function() vim.cmd('e .md') end, {  desc = 'Markdown new file' })
 

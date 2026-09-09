@@ -84,27 +84,6 @@ do
     vim.cmd('startinsert!')
   end
 
-  -- FUNCTION.new_hash = function(tag)
-  --   vim.cmd('stopinsert')
-  --
-  --   local line = vim.api.nvim_get_current_line()
-  --
-  --   if #line > 0 and line:sub(-1) ~= ' ' then
-  --     if tag then
-  --       line = line .. ' #' .. tag
-  --     else
-  --       line = line .. ' #'
-  --     end
-  --     vim.api.nvim_set_current_line(line)
-  --   end
-  --
-  --   local row = vim.api.nvim_win_get_cursor(0)[1]
-  --   vim.api.nvim_win_set_cursor(0, { row, math.max(0, #line - 1) })
-  --
-  --   if not tag then
-  --     vim.cmd('startinsert!')
-  --   end
-  -- end
   FUNCTION.new_hash = function(tag)
     local line = vim.api.nvim_get_current_line()
 
