@@ -8,6 +8,7 @@ do
 
   vim.keymap.set('n', '<leader>sf', function() Snacks.picker.files({ hidden = true, ignored = true }) end, { desc = 'Snacks picker files' })
   vim.keymap.set('n', '<leader>sg', function() Snacks.picker.grep() end, { desc = 'Snacks picker grep' })
+  vim.keymap.set('n', '<leader>sb', function() Snacks.picker.grep_buffers() end, { desc = 'Snacks picker grep buffers' })
   vim.keymap.set('n', '<leader>ss', function() Snacks.picker.resume() end, { desc = 'Snacks picker resume' })
   vim.keymap.set('n', '<leader>s:', function() Snacks.picker.command_history() end, { desc = 'Snacks picker command history' })
   vim.keymap.set('n', '<leader>s/', function() Snacks.picker.search_history() end, { desc = 'Snacks picker search history' })
