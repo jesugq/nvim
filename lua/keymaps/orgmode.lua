@@ -87,7 +87,7 @@ do
     callback = function()
       local orgmode = require('orgmode')
 
-      vim.keymap.set('n', 'q', ':bnext<CR>', {
+      vim.keymap.set('n', 'q', function() vim.cmd('bnext') end, {
         buffer = true, desc = 'Orgagenda exit', remap = false
       })
       vim.keymap.set('n', '<CR>', function() orgmode.action('agenda.switch_to_item') end, {
