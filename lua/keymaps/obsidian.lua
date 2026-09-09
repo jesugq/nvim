@@ -36,39 +36,6 @@ do
         vim.cmd('normal! h')
         vim.cmd('startinsert')
       end, { buffer = true, desc = 'Markdown insert link to' })
-      vim.keymap.set('n', '<C-c>p', function()
-        if not is_tagged then
-          is_tagged = true
-          insert.new_hash(tags.plan)
-        else
-          is_tagged = false
-          insert.bye_hash(tags.plan)
-          return
-        end
-
-        if timer then
-          timer:stop()
-        else
-          timer = vim.uv.new_timer()
-        end
-
-        timer:start(1000, 0,
-          vim.schedule_wrap(function()
-            is_tagged = false
-            if timer and not timer:is_closing() then
-              timer:close()
-              timer = nil
-            end
-          end)
-        )
-      end, { buffer = true, desc = 'Markdown Plan' })
-      vim.keymap.set('n', '<C-c>P', function()
-        local plan = vim.fn.getreg('+'):gsub('^%s+', ''):gsub('%s+$', '')
-        if plan ~= '' then
-          tags.new_plan(plan)
-          vim.notify('New plan: ' .. plan, vim.log.levels.INFO)
-        end
-      end, { buffer = true, desc = 'New plan' })
 
       vim.keymap.set('n', '<C-c><', function() vim.cmd('Obsidian backlinks') end, {
         buffer = true, desc = 'Markdown incoming links'
@@ -76,11 +43,6 @@ do
       vim.keymap.set('n', '<C-c>>', function() vim.cmd('Obsidian links') end, {
         buffer = true, desc = 'Markdown outgoing links'
       })
-
-      vim.keymap.set('n', '<leader>ap', function() vim.cmd(tags.md.plan) end, { buffer = true, desc = 'Markdown Plan' })
-      vim.keymap.set('n', '<leader>aP', function()
-        vim.notify('Get plan: ' .. tags.get_plan(), vim.log.levels.INFO)
-      end, { buffer = true, desc = 'Get plan' })
 
       vim.keymap.set('n', '<leader>a1', function()
         folders.random_file('1-programs')

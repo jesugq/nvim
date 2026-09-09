@@ -1,7 +1,6 @@
 ---@diagnostic disable: different-requires
 do
   local path = require('path')
-  local tags = require('tags')
 
   vim.pack.add { 'https://github.com/nvim-orgmode/orgmode' }
   local orgmode = require('orgmode')
@@ -39,7 +38,6 @@ do
           },
         },
       },
-      p = tags.og.plan,
     },
   }
   vim.lsp.enable('org')

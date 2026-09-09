@@ -5,9 +5,6 @@ do
     callback = function()
       local orgmode = require('orgmode')
       local insert = require('configs.insert')
-      local tags = require('tags')
-      local is_tagged = false
-      local timer = nil
 
       vim.keymap.set('n', '<leader>bn', function() vim.cmd('e .org') end, {  desc = 'Orgmode new file' })
 
@@ -82,39 +79,6 @@ do
       vim.keymap.set('n', '<C-c>d', function() orgmode.action('org_mappings.org_deadline') end, {
         buffer = true, desc = 'Org deadline'
       })
-      vim.keymap.set('n', '<C-c>p', function()
-        if not is_tagged then
-          is_tagged = true
-          orgmode.action('org_mappings.set_tags', tags.plan)
-        else
-          is_tagged = false
-          orgmode.action('org_mappings.set_tags', '')
-          return
-        end
-
-        if timer then
-          timer:stop()
-        else
-          timer = vim.uv.new_timer()
-        end
-
-        timer:start(1000, 0,
-          vim.schedule_wrap(function()
-            is_tagged = false
-            if timer and not timer:is_closing() then
-              timer:close()
-              timer = nil
-            end
-          end)
-        )
-      end, { buffer = true, desc = 'Org set plan' })
-      vim.keymap.set('n', '<C-c>P', function()
-        local plan = vim.fn.getreg('+'):gsub('^%s+', ''):gsub('%s+$', '')
-        if plan ~= '' then
-          tags.new_plan(plan)
-          vim.notify('New plan: ' .. plan, vim.log.levels.INFO)
-        end
-      end, { buffer = true, desc = 'New plan' })
     end,
   })
 
@@ -144,17 +108,10 @@ do
     callback = function()
       local orgmode = require('orgmode')
       local folders = require('configs.folders')
-      local tags = require('tags')
 
       vim.keymap.set('n', '<leader>aa', function() orgmode.action('agenda.open_by_key', 'a') end, {
         buffer = true, desc = 'Org Live'
       })
-      vim.keymap.set('n', '<leader>ap', function() orgmode.action('agenda.open_by_key', 'p') end, {
-        buffer = true, desc = 'Org Plan'
-      })
-      vim.keymap.set('n', '<leader>aP', function()
-        vim.notify('Get plan: ' .. tags.get_plan(), vim.log.levels.INFO)
-      end, { buffer = true, desc = 'Get plan' })
 
       vim.keymap.set('n', '<leader>a1', function()
         folders.random_file('1-programs')
