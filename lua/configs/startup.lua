@@ -30,6 +30,7 @@ do
   vim.o.inccommand = 'split'
 
   -- cursor
+  vim.opt.guicursor = ""
   vim.o.number = true
   vim.o.cursorline = true
   vim.o.scrolloff = 8
