@@ -14,6 +14,6 @@ do
       vim.wo.linebreak = not current_state
   end, { desc = 'Toggle word wrap' })
   vim.keymap.set('n', '<leader>bl', function()
-    vim.opt.relativenumber = not vim.opt.relativenumber:get()
+    vim.opt.relativenumber = not vim.opt.relativenumber
   end, { desc = 'Toggle relative numbers' })
 end
