@@ -34,10 +34,10 @@ do
       buffer = bufnr, desc = 'Hunk blame verify',
     })
 
-    vim.keymap.set('n', '<leader>bh', gitsigns.setqflist, {
+    vim.keymap.set('n', '<C-b>h', gitsigns.setqflist, {
       buffer = bufnr, desc = 'Buffer hunk list',
     })
-    vim.keymap.set('n', '<leader>bH', function()
+    vim.keymap.set('n', '<C-b>H', function()
       gitsigns.setqflist('all')
     end, {
       buffer = bufnr, desc = 'Buffer hunk list',

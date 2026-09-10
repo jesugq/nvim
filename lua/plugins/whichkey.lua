@@ -8,12 +8,18 @@ do
     spec = { },
   }
   which_key.add({
-    { '<leader>b', group = 'Buffer', },
-    { '<leader>f', group = 'File', },
+    { '<leader>e', group = 'Explorer', },
+    { '<leader>w', group = 'Windows', },
+    { '<leader>r', group = 'Recents', },
     { '<leader>h', group = 'Hunk', },
     { '<leader>q', group = 'Quit', },
     { '<leader>s', group = 'Search', },
+    { '<leader>y', group = 'Yank', },
     { '<C-w>c', hidden = true, },
+    { '<C-w>h', hidden = true, },
+    { '<C-w>j', hidden = true, },
+    { '<C-w>k', hidden = true, },
+    { '<C-w>l', hidden = true, },
     { 'gO', hidden = true, },
   })
 end

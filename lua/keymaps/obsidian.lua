@@ -6,7 +6,7 @@ do
       local folders = require('configs.folders')
       local insert = require('configs.insert')
 
-      vim.keymap.set('n', '<leader>bn', function() vim.cmd('e .md') end, {  desc = 'Markdown new file' })
+      vim.keymap.set('n', '<C-b>n', function() vim.cmd('e .md') end, {  desc = 'Markdown new file' })
 
 
       vim.keymap.set('n', '<C-c>e', function()

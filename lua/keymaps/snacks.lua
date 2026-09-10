@@ -3,8 +3,8 @@ do
   vim.keymap.set('n', '<leader>w', function() Snacks.picker.buffers({ focus = 'list', }) end, { desc = 'Snacks window' })
   vim.keymap.set('n', '<leader>r', function() Snacks.picker.recent({ focus = 'list', limit = 500, filter = { cwd = true, }, }) end, { desc = 'Snacks recent' })
 
-  vim.keymap.set('n', '<leader>bx', function() Snacks.bufdelete() end, { desc = 'Snacks bufdelete' })
-  vim.keymap.set('n', '<leader>bX', function() Snacks.bufdelete.all() end, { desc = 'Snacks bufdelete all' })
+  vim.keymap.set('n', '<C-b>x', function() Snacks.bufdelete() end, { desc = 'Snacks bufdelete' })
+  vim.keymap.set('n', '<C-b>X', function() Snacks.bufdelete.all() end, { desc = 'Snacks bufdelete all' })
 
   vim.keymap.set('n', '<leader>sf', function() Snacks.picker.files({ hidden = true, ignored = true, }) end, { desc = 'Snacks picker files' })
   vim.keymap.set('n', '<leader>sg', function() Snacks.picker.grep() end, { desc = 'Snacks picker grep' })
