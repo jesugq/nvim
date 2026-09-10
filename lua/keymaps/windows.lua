@@ -1,4 +1,6 @@
 do
+  local windows = require('configs.windows')
+
   local opposites = { h = 'l', l = 'h', k = 'j', j = 'k', }
 
   local function swap_window(direction)
@@ -29,7 +31,7 @@ do
   vim.keymap.set('i', '<C-w>', '<Esc><C-n><C-w>')
   vim.keymap.set('n', '<C-w>c', '<Nop>', { desc = 'Close current window' })
   vim.keymap.set('n', '<C-w>x', '<C-w>c', { remap = false, desc = 'Close current window' })
-  vim.keymap.set('n', '<C-w>-', function() vim.api.nvim_win_set_height(0, math.floor(vim.o.lines * 0.20)) end, { desc = 'Deequalize window' })
+  vim.keymap.set('n', '<C-w>-', windows.deequalize, { desc = 'Deequalize window' })
   vim.keymap.set('n', '<C-w>=', '<C-w>=', { remap = false, desc = 'Equalize windows' })
 
   vim.keymap.set('n', '<C-w>H', '<Nop>', { desc = 'Move window left' })

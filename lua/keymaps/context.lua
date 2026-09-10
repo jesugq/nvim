@@ -45,6 +45,8 @@ do
     vim.fn.setreg('+', info)
     vim.fn.setreg('"', info)
 
+    vim.cmd('stopinsert')
+
     vim.notify('Yanked relative file line: ' .. path, vim.log.levels.INFO)
   end
 
