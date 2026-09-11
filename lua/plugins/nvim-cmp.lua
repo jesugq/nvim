@@ -8,6 +8,7 @@ do
         vim.snippet.expand(args.body)
       end,
     },
+    preselect = cmp.PreselectMode.None,
     mapping = cmp.mapping.preset.insert(
       require('keymaps.nvim-cmp').mappings(cmp)
     ),
