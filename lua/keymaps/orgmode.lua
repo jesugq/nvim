@@ -8,12 +8,6 @@ do
 
       vim.keymap.set('n', '<C-b>n', function() vim.cmd('e .org') end, {  desc = 'Orgmode new file' })
 
-      vim.keymap.set('n', '<TAB>', function() orgmode.action('org_mappings.cycle') end, {
-        buffer = true, desc = 'Org cycle',
-      })
-      vim.keymap.set('n', '<S-TAB>', function() orgmode.action('org_mappings.global_cycle') end, {
-        buffer = true, desc = 'Org global cycle',
-      })
       vim.keymap.set('n', '<CR>', function() orgmode.action('org_mappings.insert_heading_respect_content') end, {
         buffer = true, desc = 'Org insert parent respect content',
       })
@@ -28,25 +22,21 @@ do
 
       vim.keymap.set('n', '<A-k>', function()
         orgmode.action('org_mappings.move_subtree_up')
-        vim.cmd('normal! zx')
       end, {
         buffer = true, desc = 'Org move subtree up',
       })
       vim.keymap.set('n', '<A-j>', function()
         orgmode.action('org_mappings.move_subtree_down')
-        vim.cmd('normal! zx')
       end, {
         buffer = true, desc = 'Org move subtree down',
       })
       vim.keymap.set('n', '<A-h>', function()
         orgmode.action('org_mappings.do_promote', true)
-        vim.cmd('normal! zx')
       end, {
         buffer = true, desc = 'Org move subtree left',
       })
       vim.keymap.set('n', '<A-l>', function()
         orgmode.action('org_mappings.do_demote', true)
-        vim.cmd('normal! zx')
       end, {
         buffer = true, desc = 'Org move subtree right',
       })

@@ -49,6 +49,7 @@ do
 
   -- folds
   vim.opt.foldcolumn = '1'
+  vim.o.foldlevel = 99
   require('configs.fillchars').highlights()
 
   -- indents
