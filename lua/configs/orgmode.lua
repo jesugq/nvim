@@ -2,11 +2,11 @@ do
   local FUNCTION = {}
 
   FUNCTION.highlights = function()
-    vim.api.nvim_set_hl(0, 'OrgDoneLine', { fg = '#768390', })
-    vim.api.nvim_set_hl(0, 'OrgDoneWord', { fg = '#4d9391', bold = true, })
-    vim.fn.matchadd('OrgDoneLine', [[\v^\*+\s+\zsDONE.*$]])
-    vim.fn.matchadd('OrgDoneLine', [[\v(^|\n)\*+\s+DONE\_s*.*(\n\zs[^*].*)*]])
-    vim.fn.matchadd('OrgDoneWord', [[\v^\*+\s+\zsDONE\ze\s+]])
+    vim.api.nvim_set_hl(0, 'OrgEndedLine', { fg = '#768390', })
+    vim.api.nvim_set_hl(0, 'OrgEndedWord', { fg = '#4d9391', bold = true, })
+    vim.fn.matchadd('OrgEndedLine', [[\v^\*+\s+\zsENDED.*$]])
+    vim.fn.matchadd('OrgEndedLine', [[\v(^|\n)\*+\s+ENDED\_s*.*(\n\zs[^*].*)*]])
+    vim.fn.matchadd('OrgEndedWord', [[\v^\*+\s+\zsENDED\ze\s+]])
 
     local priority_groups = {
       '@org.priority.highest',

@@ -20,6 +20,19 @@ do
         buffer = true, desc = 'Org open at point',
       })
 
+      vim.keymap.set('n', '<C-k>', function() orgmode.action('org_mappings.priority_up') end, {
+        buffer = true, desc = 'Org priority up',
+      })
+      vim.keymap.set('n', '<C-j>', function() orgmode.action('org_mappings.priority_down') end, {
+        buffer = true, desc = 'Org priority down',
+      })
+      vim.keymap.set('n', '<C-h>', function() orgmode.action('org_mappings.todo_prev_state') end, {
+        buffer = true, desc = 'Org todo prev state',
+      })
+      vim.keymap.set('n', '<C-l>', function() orgmode.action('org_mappings.todo_next_state') end, {
+        buffer = true, desc = 'Org todo next state',
+      })
+
       vim.keymap.set('n', '<A-k>', function()
         orgmode.action('org_mappings.move_subtree_up')
       end, {
@@ -43,18 +56,6 @@ do
 
       vim.keymap.set('n', '<C-c>e', function() orgmode.action('org_mappings.insert_link') end, {
         buffer = true, desc = 'Org insert external link',
-      })
-      vim.keymap.set('n', '<C-c>k', function() orgmode.action('org_mappings.priority_up') end, {
-        buffer = true, desc = 'Org priority up',
-      })
-      vim.keymap.set('n', '<C-c>j', function() orgmode.action('org_mappings.priority_down') end, {
-        buffer = true, desc = 'Org priority down',
-      })
-      vim.keymap.set('n', '<C-c>h', function() orgmode.action('org_mappings.todo_prev_state') end, {
-        buffer = true, desc = 'Org todo prev state',
-      })
-      vim.keymap.set('n', '<C-c>l', function() orgmode.action('org_mappings.todo_next_state') end, {
-        buffer = true, desc = 'Org todo next state',
       })
       vim.keymap.set('n', '<C-c>a', function()
         insert.new_space()
@@ -99,8 +100,17 @@ do
       local orgmode = require('orgmode')
       local folders = require('configs.folders')
 
-      vim.keymap.set('n', '<leader>aa', function() orgmode.action('agenda.open_by_key', 'a') end, {
-        buffer = true, desc = 'Org Live',
+      vim.keymap.set('n', '<leader>am', function() orgmode.action('agenda.open_by_key', 'm') end, {
+        buffer = true, desc = 'Org Today',
+      })
+      vim.keymap.set('n', '<leader>an', function() orgmode.action('agenda.open_by_key', 'n') end, {
+        buffer = true, desc = 'Org After',
+      })
+      vim.keymap.set('n', '<leader>ab', function() orgmode.action('agenda.open_by_key', 'b') end, {
+        buffer = true, desc = 'Org Later',
+      })
+      vim.keymap.set('n', '<leader>av', function() orgmode.action('agenda.open_by_key', 'v') end, {
+        buffer = true, desc = 'Org Never',
       })
 
       vim.keymap.set('n', '<leader>a1', function()

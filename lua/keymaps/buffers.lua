@@ -4,7 +4,7 @@ do
   vim.keymap.set('n', '<C-b>a', function()
     vim.cmd('split')
     windows.deequalize()
-    vim.cmd('e prompt.md')
+    vim.cmd('e prompt')
   end, { desc = 'File save' })
   vim.keymap.set('n', '<C-b>s', function() vim.cmd('w') end, { desc = 'File save' })
   vim.keymap.set('n', '<C-b>S', function() vim.cmd('wa') end, { desc = 'File save all' })
