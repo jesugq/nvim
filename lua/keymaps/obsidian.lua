@@ -5,39 +5,24 @@ do
       local api = require('obsidian.api')
       local folders = require('configs.folders')
       local insert = require('configs.insert')
+      local linksert = require('configs.linksert')
 
       vim.keymap.set('n', '<C-b>n', function() vim.cmd('e .md') end, {  desc = 'Markdown new file' })
 
-
-      vim.keymap.set('n', '<C-c>e', function()
-        local url = vim.fn.getreg('+'):gsub('^%s+', ''):gsub('%s+$', '')
-
-        local row = vim.api.nvim_win_get_cursor(0)[1]
-        local line = vim.api.nvim_get_current_line()
-        local end_col = #line
-
-        local text = '[](' .. url .. ')'
-        vim.api.nvim_buf_set_text(0, row - 1, end_col, row - 1, end_col, { text })
-
-        vim.api.nvim_win_set_cursor(0, { row, end_col + 1 })
-        vim.cmd('startinsert')
-      end, { buffer = true, desc = 'Markdown insert external link' })
+      vim.keymap.set('n', '<C-c>e', function() linksert.markdown_link(false) end, {
+        buffer = true, desc = 'Markdown insert external link',
+      })
+      vim.keymap.set('n', '<C-c>t', function() linksert.markdown_link(true) end, {
+        buffer = true, desc = 'Markdown insert internal link',
+      })
       vim.keymap.set('n', '<C-c>r', function() vim.cmd('Obsidian quick_switch') end, {
         buffer = true, desc = 'Markdown refile text',
       })
-      vim.keymap.set('n', '<C-c>t', function()
-        insert.new_space()
-        vim.cmd('stopinsert')
-        vim.cmd('normal! A[[]]')
-        vim.cmd('stopinsert')
-        vim.cmd('normal! h')
-        vim.cmd('startinsert')
-      end, { buffer = true, desc = 'Markdown insert link to' })
 
-      vim.keymap.set('n', '<C-c><', function() vim.cmd('Obsidian backlinks') end, {
+      vim.keymap.set('n', '<C-h>', function() vim.cmd('Obsidian backlinks') end, {
         buffer = true, desc = 'Markdown incoming links',
       })
-      vim.keymap.set('n', '<C-c>>', function() vim.cmd('Obsidian links') end, {
+      vim.keymap.set('n', '<C-l>', function() vim.cmd('Obsidian links') end, {
         buffer = true, desc = 'Markdown outgoing links',
       })
 

@@ -5,6 +5,7 @@ do
     callback = function()
       local orgmode = require('orgmode')
       local insert = require('configs.insert')
+      local linksert = require('configs.linksert')
 
       vim.keymap.set('n', '<C-b>n', function() vim.cmd('e .org') end, {  desc = 'Orgmode new file' })
 
@@ -54,8 +55,11 @@ do
         buffer = true, desc = 'Org move subtree right',
       })
 
-      vim.keymap.set('n', '<C-c>e', function() orgmode.action('org_mappings.insert_link') end, {
+      vim.keymap.set('n', '<C-c>e', function() linksert.orgmode_link(false) end, {
         buffer = true, desc = 'Org insert external link',
+      })
+      vim.keymap.set('n', '<C-c>t', function() linksert.orgmode_link(true) end, {
+        buffer = true, desc = 'Org insert internal link',
       })
       vim.keymap.set('n', '<C-c>a', function()
         insert.new_space()

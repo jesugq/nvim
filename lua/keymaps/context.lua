@@ -8,12 +8,22 @@ do
     vim.notify('Yanked directory path: ' .. info, vim.log.levels.INFO)
   end
 
-  local function yank_relative_file() local info = vim.fn.expand('%:.')
+  local function yank_relative_file()
+    local info = vim.fn.expand('%:.')
 
     vim.fn.setreg('+', info)
     vim.fn.setreg('"', info)
 
     vim.notify('Yanked relative file: ' .. info, vim.log.levels.INFO)
+  end
+
+  local function yank_encoded_file()
+    local info = vim.uri_encode(vim.fn.expand('%:.'))
+
+    vim.fn.setreg('+', info)
+    vim.fn.setreg('"', info)
+
+    vim.notify('Yanked encoded file: ' .. info, vim.log.levels.INFO)
   end
 
   local function yank_relative_file_line_n()
@@ -99,6 +109,7 @@ do
 
   vim.keymap.set('n', '<leader>yd', yank_directory_path, { desc = 'Yank directory path' })
   vim.keymap.set('n', '<leader>yf', yank_relative_file, { desc = 'Yank relative file' })
+  vim.keymap.set('n', '<leader>ye', yank_encoded_file, { desc = 'Yank encoded file' })
   vim.keymap.set('n', '<leader>yl', yank_relative_file_line_n, { desc = 'Yank relative file line' })
   vim.keymap.set('x', '<leader>yl', yank_relative_file_line_x, { desc = 'Yank relative file line' })
   vim.keymap.set('n', '<leader>yb', yank_relative_buffer_paths, { desc = 'Yank relative buffer paths' })
