@@ -1,8 +1,7 @@
 do
-  vim.keymap.set('n', '<leader>e', function() Snacks.explorer() end, { desc = 'Snacks explorer' })
-  vim.keymap.set('n', '<leader>w', function() Snacks.picker.buffers({ focus = 'list', }) end, { desc = 'Snacks window' })
-  vim.keymap.set('n', '<leader>r', function() Snacks.picker.recent({ focus = 'list', limit = 500, filter = { cwd = true, }, }) end, { desc = 'Snacks recent' })
-
+  vim.keymap.set('n', '<C-b>e', function() Snacks.explorer() end, { desc = 'Snacks explorer' })
+  vim.keymap.set('n', '<C-b>w', function() Snacks.picker.buffers({ focus = 'list', }) end, { desc = 'Snacks window' })
+  vim.keymap.set('n', '<C-b>r', function() Snacks.picker.recent({ focus = 'list', limit = 500, filter = { cwd = true, }, }) end, { desc = 'Snacks recent' })
   vim.keymap.set('n', '<C-b>x', function() Snacks.bufdelete() end, { desc = 'Snacks bufdelete' })
   vim.keymap.set('n', '<C-b>X', function() Snacks.bufdelete.all() end, { desc = 'Snacks bufdelete all' })
 

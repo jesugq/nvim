@@ -11,8 +11,8 @@ do
 
   vim.keymap.set('n', '<C-b><C-b>', '<C-^>', { desc = 'Buffer switch' })
 
-  vim.keymap.set('n', '<C-b>r', function() vim.cmd('checktime') end, { desc = 'Buffer refresh' })
-  vim.keymap.set('n', '<C-b>w', function()
+  vim.keymap.set('n', '<C-b>p', function() vim.cmd('checktime') end, { desc = 'Buffer refresh' })
+  vim.keymap.set('n', '<C-b>k', function()
       local current_state = vim.wo.wrap
       vim.wo.wrap = not current_state
       vim.wo.linebreak = not current_state
