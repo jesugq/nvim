@@ -6,6 +6,7 @@ do
       require('configs.obsidian').prompts()
       require('configs.obsidian').insight()
 
+      vim.opt.conceallevel = 0
       vim.wo.foldmethod = 'expr'
       vim.wo.foldexpr = 'v:lua.vim.lsp.foldexpr()'
       vim.wo.foldtext = 'v:lua.vim.lsp.foldtext()'

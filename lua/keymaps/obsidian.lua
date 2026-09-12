@@ -36,6 +36,16 @@ do
         insert.new_child()
       end, { buffer = true, desc = 'Mark insert child' })
       vim.keymap.set('n', '<A-CR>', api.smart_action, { expr = true, desc = 'Markdown open at point' })
+
+      vim.keymap.set('n', '<C-c>1', function() folders.open_daily('.md') end, {
+        buffer = true, desc = 'Markdown Daily',
+      })
+      vim.keymap.set('n', '<C-c>2', function() folders.open_focus('.md') end, {
+        buffer = true, desc = 'Markdown Focus',
+      })
+      vim.keymap.set('n', '<C-c>3', function() folders.open_inbox('.md') end, {
+        buffer = true, desc = 'Markdown Inbox',
+      })
     end,
   })
 

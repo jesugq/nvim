@@ -33,5 +33,17 @@ do
     end
   end
 
+  FUNCTION.open_daily = function(extension)
+    vim.cmd('e @daily' .. extension)
+  end
+
+  FUNCTION.open_focus = function(extension)
+    vim.cmd('e @focus' .. extension)
+  end
+
+  FUNCTION.open_inbox = function(extension)
+    vim.cmd('e @inbox' .. extension)
+  end
+
   return FUNCTION
 end

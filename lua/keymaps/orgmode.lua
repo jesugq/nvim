@@ -116,6 +116,16 @@ do
       vim.keymap.set('n', '<C-c>v', function() orgmode.action('agenda.open_by_key', 'v') end, {
         buffer = true, desc = 'Org Never',
       })
+
+      vim.keymap.set('n', '<C-c>1', function() folders.open_daily('.org') end, {
+        buffer = true, desc = 'Org Daily',
+      })
+      vim.keymap.set('n', '<C-c>2', function() folders.open_focus('.org') end, {
+        buffer = true, desc = 'Org Focus',
+      })
+      vim.keymap.set('n', '<C-c>3', function() folders.open_inbox('.org') end, {
+        buffer = true, desc = 'Org Inbox',
+      })
     end,
   })
 end
