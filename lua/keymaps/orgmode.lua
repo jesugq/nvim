@@ -19,16 +19,16 @@ do
         buffer = true, desc = 'Org open at point',
       })
 
-      vim.keymap.set('n', '<C-k>', function() orgmode.action('org_mappings.priority_up') end, {
+      vim.keymap.set({'n', 'i'}, '<C-k>', function() orgmode.action('org_mappings.priority_up') end, {
         buffer = true, desc = 'Org priority up',
       })
-      vim.keymap.set('n', '<C-j>', function() orgmode.action('org_mappings.priority_down') end, {
+      vim.keymap.set({'n', 'i'}, '<C-j>', function() orgmode.action('org_mappings.priority_down') end, {
         buffer = true, desc = 'Org priority down',
       })
-      vim.keymap.set('n', '<C-h>', function() orgmode.action('org_mappings.todo_prev_state') end, {
+      vim.keymap.set({'n', 'i'}, '<C-h>', function() orgmode.action('org_mappings.todo_prev_state') end, {
         buffer = true, desc = 'Org todo prev state',
       })
-      vim.keymap.set('n', '<C-l>', function() orgmode.action('org_mappings.todo_next_state') end, {
+      vim.keymap.set({'n', 'i'}, '<C-l>', function() orgmode.action('org_mappings.todo_next_state') end, {
         buffer = true, desc = 'Org todo next state',
       })
 

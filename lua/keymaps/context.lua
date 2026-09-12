@@ -1,11 +1,11 @@
 do
-  local function yank_directory_path()
+  local function yank_working_path()
     local info = vim.fn.getcwd()
 
     vim.fn.setreg('+', info)
     vim.fn.setreg('"', info)
 
-    vim.notify('Yanked directory path: ' .. info, vim.log.levels.INFO)
+    vim.notify('Yanked working path: ' .. info, vim.log.levels.INFO)
   end
 
   local function yank_relative_file()
@@ -55,7 +55,7 @@ do
     vim.fn.setreg('+', info)
     vim.fn.setreg('"', info)
 
-    vim.cmd('stopinsert')
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), 'n', true)
 
     vim.notify('Yanked relative file line: ' .. path, vim.log.levels.INFO)
   end
@@ -107,9 +107,9 @@ do
     vim.notify('Yanked relative window paths:\n' .. info, vim.log.levels.INFO)
   end
 
-  vim.keymap.set('n', '<leader>yd', yank_directory_path, { desc = 'Yank directory path' })
-  vim.keymap.set('n', '<leader>yf', yank_relative_file, { desc = 'Yank relative file' })
+  vim.keymap.set('n', '<leader>yw', yank_working_path, { desc = 'Yank working path' })
   vim.keymap.set('n', '<leader>ye', yank_encoded_file, { desc = 'Yank encoded file' })
+  vim.keymap.set('n', '<leader>yr', yank_relative_file, { desc = 'Yank relative file' })
   vim.keymap.set('n', '<leader>yl', yank_relative_file_line_n, { desc = 'Yank relative file line' })
   vim.keymap.set('x', '<leader>yl', yank_relative_file_line_x, { desc = 'Yank relative file line' })
   vim.keymap.set('n', '<leader>yb', yank_relative_buffer_paths, { desc = 'Yank relative buffer paths' })
