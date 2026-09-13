@@ -30,7 +30,18 @@ do
       disable_all = true,
     },
     org_agenda_custom_commands = {
+      c = {
+        description = 'Ended',
+        types = {
+          {
+            type = 'tags',
+            match = 'CLOSED>="<-1d>"',
+            org_agenda_sorting_strategy = { 'priority_down', },
+          },
+        },
+      },
       m = {
+
         description = 'Today',
         types = {
           {

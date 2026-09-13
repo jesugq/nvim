@@ -110,6 +110,9 @@ do
       local orgmode = require('orgmode')
       local folders = require('configs.folders')
 
+      vim.keymap.set('n', '<C-c>c', function() orgmode.action('agenda.open_by_key', 'c') end, {
+        buffer = true, desc = 'Org Ended',
+      })
       vim.keymap.set('n', '<C-c>m', function() orgmode.action('agenda.open_by_key', 'm') end, {
         buffer = true, desc = 'Org Today',
       })
