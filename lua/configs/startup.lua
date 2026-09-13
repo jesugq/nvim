@@ -34,7 +34,7 @@ do
   vim.o.inccommand = 'split'
 
   -- cursor
-  vim.opt.guicursor = ''
+  vim.opt.guicursor = 'a:block'
   vim.o.number = true
   vim.o.cursorline = true
   vim.o.scrolloff = 8

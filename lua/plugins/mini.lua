@@ -3,4 +3,5 @@ do
   require('mini.move').setup { }
   require('mini.trailspace').setup { }
   require('mini.cursorword').setup { delay = 500, }
+  require('mini.indentscope').setup { delay = 250, }
 end
