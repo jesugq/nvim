@@ -88,6 +88,9 @@ do
       vim.keymap.set('n', 'q', function() vim.cmd('bnext') end, {
         buffer = true, desc = 'Orgagenda exit', remap = false,
       })
+      vim.keymap.set('n', '<C-[>', function() vim.cmd('bnext') end, {
+        buffer = true, desc = 'Orgagenda exit', remap = false,
+      })
       vim.keymap.set('n', '<CR>', function() orgmode.action('agenda.switch_to_item') end, {
         buffer = true, desc = 'Orgagenda switch to item',
       })
