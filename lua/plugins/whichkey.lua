@@ -3,7 +3,7 @@ do
   local which_key = require('which-key')
 
   which_key.setup {
-    delay = 500,
+    delay = 1000,
     icons = { mappings = true, },
     spec = { },
   }

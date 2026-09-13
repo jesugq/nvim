@@ -14,10 +14,6 @@ do
   -- mouse
   vim.o.mouse = 'a'
 
-  -- loadtimes
-  vim.o.updatetime = 250
-  vim.o.timeoutlen = 250
-
   -- file
   vim.o.undofile = true
   vim.o.confirm = true
@@ -32,6 +28,7 @@ do
   vim.o.ignorecase = true
   vim.o.smartcase = true
   vim.o.inccommand = 'split'
+  vim.g.loaded_matchparen = 1
 
   -- cursor
   vim.opt.guicursor = 'a:block'

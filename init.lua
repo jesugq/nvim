@@ -61,7 +61,6 @@ do
   -- animation
   require('plugins.dashboard')
   require('autocfg.dashboard')
-  require('plugins.smear-cursor')
   require('plugins.tiny-glimmer')
 
   -- integration
