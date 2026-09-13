@@ -2,10 +2,11 @@ do
   vim.api.nvim_create_autocmd('FileType', {
     pattern = 'markdown',
     callback = function()
-      local api = require('obsidian.api')
       local folders = require('configs.folders')
+      local api = require('obsidian.api')
       local insert = require('configs.insert')
       local linksert = require('configs.linksert')
+      local snacks = require('configs.snacks')
 
       vim.keymap.set('n', '<C-b>n', function() vim.cmd('e .md') end, {  desc = 'Markdown new file' })
 
@@ -16,7 +17,7 @@ do
         buffer = true, desc = 'Markdown insert external link',
       })
 
-      vim.keymap.set('n', '<C-h>', function() vim.cmd('Obsidian backlinks') end, {
+      vim.keymap.set('n', '<C-h>', function() snacks.incoming_links() end, {
         buffer = true, desc = 'Markdown incoming links',
       })
       vim.keymap.set('n', '<C-j>', function()
@@ -25,7 +26,7 @@ do
       vim.keymap.set('n', '<C-k>', function()
         folders.random_file(vim.fn.expand('%:.:h'), false)
       end, { buffer = true, desc = 'Markdown random file new' })
-      vim.keymap.set('n', '<C-l>', function() vim.cmd('Obsidian links') end, {
+      vim.keymap.set('n', '<C-l>', function() snacks.outgoing_links() end, {
         buffer = true, desc = 'Markdown outgoing links',
       })
 

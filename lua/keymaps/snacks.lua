@@ -6,8 +6,10 @@ do
   vim.keymap.set('n', '<C-b>X', function() Snacks.bufdelete.all() end, { desc = 'Snacks bufdelete all' })
 
   vim.keymap.set('n', '<leader>sf', function() Snacks.picker.files({ hidden = true, ignored = true, }) end, { desc = 'Snacks picker files' })
-  vim.keymap.set('n', '<leader>sg', function() Snacks.picker.grep() end, { desc = 'Snacks picker grep' })
-  vim.keymap.set('n', '<leader>sb', function() Snacks.picker.grep_buffers() end, { desc = 'Snacks picker grep buffers' })
+  vim.keymap.set('n', '<leader>sg', function() Snacks.picker.grep({ regex = false, }) end, { desc = 'Snacks picker grep' })
+  vim.keymap.set('n', '<leader>sG', function() Snacks.picker.grep({ regex = true, }) end, { desc = 'Snacks picker grep regex' })
+  vim.keymap.set('n', '<leader>sb', function() Snacks.picker.grep_buffers({ regex = false, }) end, { desc = 'Snacks picker grep buffers' })
+  vim.keymap.set('n', '<leader>sB', function() Snacks.picker.grep_buffers({ regex = true, }) end, { desc = 'Snacks picker grep buffers regex' })
   vim.keymap.set('n', '<leader>ss', function() Snacks.picker.resume() end, { desc = 'Snacks picker resume' })
   vim.keymap.set('n', '<leader>s:', function() Snacks.picker.command_history() end, { desc = 'Snacks picker command history' })
   vim.keymap.set('n', '<leader>s/', function() Snacks.picker.search_history() end, { desc = 'Snacks picker search history' })
