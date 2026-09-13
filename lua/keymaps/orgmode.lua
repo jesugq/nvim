@@ -7,6 +7,9 @@ do
       local insert = require('configs.insert')
       local linksert = require('configs.linksert')
 
+      vim.keymap.set('n', 'o', 'A<CR>', { buffer = true, desc = 'Org open line below via A' })
+      vim.keymap.set('n', 'O', 'kA<CR>', { buffer = true, desc = 'Org open line above via kA' })
+
       vim.keymap.set('n', '<CR>', function() orgmode.action('org_mappings.insert_heading_respect_content') end, {
         buffer = true, desc = 'Org insert parent respect content',
       })
