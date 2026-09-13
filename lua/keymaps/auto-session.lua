@@ -1,7 +1,7 @@
 do
   vim.keymap.set('n', '<leader>qq', function() vim.cmd('qa') end, { desc = 'Quit all' })
-  vim.keymap.set('n', '<leader>qr', function() vim.cmd('restart') end, { desc = 'Quit restart'})
-  vim.keymap.set('n', '<leader>qR', function() vim.cmd('restart!') end, { desc = 'Quit restart!'})
+  vim.keymap.set('n', '<leader>qr', function() vim.cmd('restart!') end, { desc = 'Quit restart!'})
+  vim.keymap.set('n', '<leader>qR', function() vim.cmd('restart') end, { desc = 'Quit restart'})
 
   vim.keymap.set('n', '<leader>qw', function() vim.cmd('AutoSession toggle') end, { desc = 'Session save toggle' })
   vim.keymap.set('n', '<leader>qs', function() vim.cmd('AutoSession save') end, { desc = 'Session save' })
