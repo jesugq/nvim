@@ -1,6 +1,8 @@
 do
   local windows = require('configs.windows')
 
+  vim.keymap.set('i', '<C-b>', '<Esc><C-b>')
+
   vim.keymap.set('n', '<C-b>a', function()
     vim.cmd('split')
     windows.deequalize()
