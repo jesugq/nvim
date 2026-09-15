@@ -109,7 +109,7 @@ do
 
   vim.keymap.set('n', '<leader>yw', yank_working_path, { desc = 'Yank working path' })
   vim.keymap.set('n', '<leader>ye', yank_encoded_file, { desc = 'Yank encoded file' })
-  vim.keymap.set('n', '<leader>yr', yank_relative_file, { desc = 'Yank relative file' })
+  vim.keymap.set('n', '<leader>yf', yank_relative_file, { desc = 'Yank relative file' })
   vim.keymap.set('n', '<leader>yl', yank_relative_file_line_n, { desc = 'Yank relative file line' })
   vim.keymap.set('x', '<leader>yl', yank_relative_file_line_x, { desc = 'Yank relative file line' })
   vim.keymap.set('n', '<leader>yb', yank_relative_buffer_paths, { desc = 'Yank relative buffer paths' })
