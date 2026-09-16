@@ -7,6 +7,7 @@ do
       local insert = require('configs.insert')
       local linksert = require('configs.linksert')
 
+      -- <???>
       vim.keymap.set('n', '<CR>', function() orgmode.action('org_mappings.insert_heading_respect_content') end, {
         buffer = true, desc = 'Org insert parent respect content',
       })
@@ -19,6 +20,7 @@ do
         buffer = true, desc = 'Org open at point',
       })
 
+      -- <C-?>
       vim.keymap.set({'n', 'i'}, '<C-k>', function() orgmode.action('org_mappings.priority_up') end, {
         buffer = true, desc = 'Org priority up',
       })
@@ -32,6 +34,7 @@ do
         buffer = true, desc = 'Org todo next state',
       })
 
+      -- <A-?>
       vim.keymap.set('n', '<A-k>', function()
         orgmode.action('org_mappings.move_subtree_up')
       end, {
@@ -53,27 +56,6 @@ do
         buffer = true, desc = 'Org move subtree right',
       })
 
-      vim.keymap.set('n', '<C-b>n', function() vim.cmd('e .org') end, {  desc = 'Orgmode new file' })
-
-      vim.keymap.set('n', '<C-c>a', function()
-        insert.new_space()
-        vim.cmd('stopinsert')
-        orgmode.action('org_mappings.org_time_stamp')
-      end, {
-        buffer = true, desc = 'Org time stamp',
-      })
-      vim.keymap.set('n', '<C-c>s', function() orgmode.action('org_mappings.org_schedule') end, {
-        buffer = true, desc = 'Org schedule',
-      })
-      vim.keymap.set('n', '<C-c>d', function() orgmode.action('org_mappings.org_deadline') end, {
-        buffer = true, desc = 'Org deadline',
-      })
-      vim.keymap.set('n', '<C-c>i', function() linksert.orgmode_link(true) end, {
-        buffer = true, desc = 'Org insert internal link',
-      })
-      vim.keymap.set('n', '<C-c>o', function() linksert.orgmode_link(false) end, {
-        buffer = true, desc = 'Org insert external link',
-      })
     end,
   })
 
@@ -82,6 +64,7 @@ do
     callback = function()
       local orgmode = require('orgmode')
 
+      -- <???>
       vim.keymap.set('n', 'q', function() vim.cmd('bnext') end, {
         buffer = true, desc = 'Orgagenda exit', remap = false,
       })
@@ -91,7 +74,6 @@ do
       vim.keymap.set('n', '<CR>', function() orgmode.action('agenda.switch_to_item') end, {
         buffer = true, desc = 'Orgagenda switch to item',
       })
-
       vim.keymap.set('n', '<', function() orgmode.action('agenda.advance_span', -1) end, {
         buffer = true, desc = 'Orgagenda rewind span',
       })
@@ -105,8 +87,8 @@ do
     pattern = { 'org', 'orgagenda', },
     callback = function()
       local orgmode = require('orgmode')
-      local folders = require('configs.folders')
 
+      -- <C-c>?
       vim.keymap.set('n', '<C-c>c', function() orgmode.action('agenda.open_by_key', 'c') end, {
         buffer = true, desc = 'Org Ended',
       })
@@ -121,16 +103,6 @@ do
       })
       vim.keymap.set('n', '<C-c>v', function() orgmode.action('agenda.open_by_key', 'v') end, {
         buffer = true, desc = 'Org Never',
-      })
-
-      vim.keymap.set('n', '<C-c>1', function() folders.open_daily('.org') end, {
-        buffer = true, desc = 'Org Daily',
-      })
-      vim.keymap.set('n', '<C-c>2', function() folders.open_focus('.org') end, {
-        buffer = true, desc = 'Org Focus',
-      })
-      vim.keymap.set('n', '<C-c>3', function() folders.open_inbox('.org') end, {
-        buffer = true, desc = 'Org Inbox',
       })
     end,
   })

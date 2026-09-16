@@ -33,16 +33,17 @@ do
     end
   end
 
-  FUNCTION.open_daily = function(extension)
-    vim.cmd('e @daily' .. extension)
-  end
+  FUNCTION.open_named = function(stem)
+    local found = vim.fs.find(function(name)
+      return name == stem or vim.startswith(name, stem .. '.')
+    end, { path = vim.uv.cwd(), limit = 1, type = 'file' })
 
-  FUNCTION.open_focus = function(extension)
-    vim.cmd('e @focus' .. extension)
-  end
+    if found[1] then
+      vim.cmd.edit(vim.fn.fnameescape(found[1]))
+      return
+    end
 
-  FUNCTION.open_inbox = function(extension)
-    vim.cmd('e @inbox' .. extension)
+    vim.notify('No ' .. stem .. ' file found', vim.log.levels.WARN)
   end
 
   return FUNCTION

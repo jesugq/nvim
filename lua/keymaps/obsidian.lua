@@ -8,15 +8,23 @@ do
       local linksert = require('configs.linksert')
       local snacks = require('configs.snacks')
 
-      vim.keymap.set('n', '<C-b>n', function() vim.cmd('e .md') end, {  desc = 'Markdown new file' })
+      -- <???>
+      vim.keymap.set('n', '<CR>', function()
+        insert.new_parent()
+      end, { buffer = true, desc = 'Mark insert parent' })
+      vim.keymap.set('n', '<C-CR>', function()
+        insert.new_child()
+      end, { buffer = true, desc = 'Mark insert child' })
+      vim.keymap.set('n', '<A-CR>', api.smart_action, { expr = true, desc = 'Markdown open at point' })
 
+      -- <C-c>?
+      vim.keymap.set('i', '<C-c>', '<Esc><C-c>')
       vim.keymap.set('n', '<C-c>i', function() linksert.markdown_link(true) end, {
         buffer = true, desc = 'Markdown insert internal link',
       })
       vim.keymap.set('n', '<C-c>o', function() linksert.markdown_link(false) end, {
         buffer = true, desc = 'Markdown insert external link',
       })
-
       vim.keymap.set('n', '<C-h>', function() snacks.incoming_links() end, {
         buffer = true, desc = 'Markdown incoming links',
       })
@@ -29,24 +37,6 @@ do
       vim.keymap.set('n', '<C-l>', function() snacks.outgoing_links() end, {
         buffer = true, desc = 'Markdown outgoing links',
       })
-
-      vim.keymap.set('n', '<CR>', function()
-        insert.new_parent()
-      end, { buffer = true, desc = 'Mark insert parent' })
-      vim.keymap.set('n', '<C-CR>', function()
-        insert.new_child()
-      end, { buffer = true, desc = 'Mark insert child' })
-      vim.keymap.set('n', '<A-CR>', api.smart_action, { expr = true, desc = 'Markdown open at point' })
-
-      vim.keymap.set('n', '<C-c>1', function() folders.open_daily('.md') end, {
-        buffer = true, desc = 'Markdown Daily',
-      })
-      vim.keymap.set('n', '<C-c>2', function() folders.open_focus('.md') end, {
-        buffer = true, desc = 'Markdown Focus',
-      })
-      vim.keymap.set('n', '<C-c>3', function() folders.open_inbox('.md') end, {
-        buffer = true, desc = 'Markdown Inbox',
-      })
     end,
   })
 
@@ -56,10 +46,10 @@ do
       local api = require('obsidian.api')
       local insert = require('configs.insert')
 
+      -- <???>
       vim.keymap.del('n', '<CR>', { buffer = true })
       vim.keymap.del('n', ']o', { buffer = true })
       vim.keymap.del('n', '[o', { buffer = true })
-
       vim.keymap.set('n', '<CR>', function()
         insert.new_parent()
       end, { buffer = true, desc = 'Mark insert parent' })

@@ -1,5 +1,6 @@
 do
   local windows = require('configs.windows')
+  local folders = require('configs.folders')
 
   vim.keymap.set('i', '<C-b>', '<Esc><C-b>')
 
@@ -22,4 +23,8 @@ do
   vim.keymap.set('n', '<C-b>l', function()
     vim.opt.relativenumber = not vim.opt.relativenumber:get()
   end, { desc = 'Toggle relative numbers' })
+
+  vim.keymap.set('n', '<C-b>1', function() folders.open_named('@daily') end, { desc = 'Open daily' })
+  vim.keymap.set('n', '<C-b>2', function() folders.open_named('@focus') end, { desc = 'Open focus' })
+  vim.keymap.set('n', '<C-b>3', function() folders.open_named('@inbox') end, { desc = 'Open inbox' })
 end
