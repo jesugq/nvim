@@ -20,5 +20,6 @@ do
     notifier = { enabled = true, },
     image = { enabled = true, },
     bufdelete = { enabled = true, },
+    input = { enabled = true, },
   }
 end
