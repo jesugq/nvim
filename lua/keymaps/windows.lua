@@ -28,7 +28,6 @@ do
     end
   end
 
-  vim.keymap.set('i', '<C-w>', '<Esc><C-w>')
   vim.keymap.set('n', '<C-w>c', '<Nop>', { desc = 'Close current window' })
   vim.keymap.set('n', '<C-w>x', '<C-w>c', { remap = false, desc = 'Close current window' })
   vim.keymap.set('n', '<C-w>-', windows.deequalize, { desc = 'Deequalize window' })

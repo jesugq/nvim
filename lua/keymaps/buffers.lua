@@ -2,8 +2,6 @@ do
   local windows = require('configs.windows')
   local folders = require('configs.folders')
 
-  vim.keymap.set('i', '<C-b>', '<Esc><C-b>')
-
   vim.keymap.set('n', '<C-b>a', function()
     vim.cmd('split')
     windows.deequalize()

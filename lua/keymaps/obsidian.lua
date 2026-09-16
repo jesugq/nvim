@@ -18,7 +18,6 @@ do
       vim.keymap.set('n', '<A-CR>', api.smart_action, { expr = true, desc = 'Markdown open at point' })
 
       -- <C-c>?
-      vim.keymap.set('i', '<C-c>', '<Esc><C-c>')
       vim.keymap.set('n', '<C-c>i', function() linksert.markdown_link(true) end, {
         buffer = true, desc = 'Markdown insert internal link',
       })
