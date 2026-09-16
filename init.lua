@@ -2,8 +2,8 @@
 do
   -- settings
   require('configs.startup')
-  require('keymaps.folding')
   require('autocfg.editors')
+  require('keymaps.folding')
   require('keymaps.buffers')
   require('keymaps.windows')
   require('keymaps.context')

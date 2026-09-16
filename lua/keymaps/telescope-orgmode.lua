@@ -5,6 +5,7 @@ do
     callback = function()
       local tom = require('telescope-orgmode')
 
+      -- <C-c>
       vim.keymap.set('n', '<C-c>r', tom.refile_heading, { desc = 'Org refile text' })
     end,
   })

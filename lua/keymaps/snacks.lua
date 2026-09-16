@@ -1,4 +1,5 @@
 do
+  -- <C-b>
   vim.keymap.set('n', '<C-b>e', function() Snacks.explorer() end, { desc = 'Snacks explorer' })
   vim.keymap.set('n', '<C-b>w', function() Snacks.picker.buffers({ focus = 'list', }) end, { desc = 'Snacks window' })
   vim.keymap.set('n', '<C-b>r', function() Snacks.picker.recent({ focus = 'list', limit = 500, filter = { cwd = true, }, }) end, { desc = 'Snacks recent' })
@@ -10,6 +11,7 @@ do
   vim.keymap.set('n', '<C-b>b', function() Snacks.picker.grep_buffers({ regex = false, }) end, { desc = 'Snacks picker grep buffers' })
   vim.keymap.set('n', '<C-b>B', function() Snacks.picker.grep_buffers({ regex = true, }) end, { desc = 'Snacks picker grep buffers regex' })
 
+  -- <leader>s
   vim.keymap.set('n', '<leader>ss', function() Snacks.picker.resume() end, { desc = 'Snacks picker resume' })
   vim.keymap.set('n', '<leader>s:', function() Snacks.picker.command_history() end, { desc = 'Snacks picker command history' })
   vim.keymap.set('n', '<leader>s/', function() Snacks.picker.search_history() end, { desc = 'Snacks picker search history' })
@@ -19,6 +21,7 @@ do
   vim.keymap.set('n', '<leader>sh', function() Snacks.picker.help() end, { desc = 'Snacks picker help' })
   vim.keymap.set('n', '<leader>sk', function() Snacks.picker.keymaps() end, { desc = 'Snacks picker keymaps' })
 
+  -- gs
   vim.keymap.set('n', 'gsi', function() Snacks.picker.lsp_implementations() end, { desc = 'Snacks picker LSP implementations' })
   vim.keymap.set('n', 'gsr', function() Snacks.picker.lsp_references() end, { desc = 'Snacks picker LSP references' })
   vim.keymap.set('n', 'gst', function() Snacks.picker.lsp_type_definitions() end, { desc = 'Snacks picker LSP type definitions' })
