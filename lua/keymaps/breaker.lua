@@ -4,9 +4,9 @@ do
   vim.keymap.set('n', '<Esc>', function() vim.cmd('nohlsearch') end, { desc = 'Undo highlight search'} )
 
   -- <C-?>
-  vim.keymap.set('i', '<C-b>', vim.cmd('stopinsert'), { expr = true })
-  vim.keymap.set('i', '<C-c>', vim.cmd('stopinsert'), { expr = true })
-  vim.keymap.set('i', '<C-w>', vim.cmd('stopinsert'), { expr = true })
+  vim.keymap.set('i', '<C-b>', '<Esc>', { remap = true })
+  vim.keymap.set('i', '<C-c>', '<Esc>', { remap = true })
+  vim.keymap.set('i', '<C-w>', '<Esc>', { remap = true })
 
   -- ?
   vim.keymap.set('n', 'o', 'o<Esc>', { remap = false, desc = 'New line below normal mode' })
