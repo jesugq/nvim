@@ -48,10 +48,16 @@ do
     for index, stem in ipairs(stems) do
       names[index] = (index == current_index and '* ' or '  ') .. stem
     end
-    vim.notify(table.concat(names, '\n'), vim.log.levels.INFO, {
-      id = 'named-files',
-      title = 'Named files',
-    })
+    vim.notify(table.concat(names, '\n'), vim.log.levels.INFO, { id = 'open-named', title = 'Open Named', })
+  end
+
+  local function kill_named(files, active_buffer)
+    for _, file in ipairs(files) do
+      local buffer = vim.fn.bufnr(file)
+      if buffer > 0 and buffer ~= active_buffer and vim.api.nvim_buf_is_valid(buffer) then
+        pcall(Snacks.bufdelete.delete, { buf = buffer })
+      end
+    end
   end
 
   FUNCTION.open_named = function(stems, reverse)
@@ -79,7 +85,7 @@ do
       local next_index = (current_index - 1 + direction) % #files + 1
       local next_file = files[next_index]
       vim.cmd.edit(vim.fn.fnameescape(next_file))
-      pcall(Snacks.bufdelete.delete, { buf = current })
+      kill_named(files, vim.api.nvim_get_current_buf())
       warn_named(stems, next_index)
       return
     end
@@ -88,12 +94,14 @@ do
       local buffer = vim.fn.bufnr(file)
       if buffer > 0 and vim.api.nvim_buf_is_valid(buffer) then
         vim.cmd.edit(vim.fn.fnameescape(file))
+        kill_named(files, vim.api.nvim_get_current_buf())
         warn_named(stems, index)
         return
       end
     end
 
     vim.cmd.edit(vim.fn.fnameescape(files[1]))
+    kill_named(files, vim.api.nvim_get_current_buf())
     warn_named(stems, 1)
   end
 

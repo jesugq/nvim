@@ -10,6 +10,7 @@ do
         local session_name = require('auto-session.lib').current_session_name()
 
         vim.notify(tostring(session_name), vim.log.levels.INFO, {
+          id = 'auto-session',
           title = 'Auto Session',
         })
       end,
@@ -17,6 +18,7 @@ do
     no_restore_cmds = {
       function()
         vim.notify('None', vim.log.levels.INFO, {
+          id = 'auto-session',
           title = 'Auto Session',
         })
       end,

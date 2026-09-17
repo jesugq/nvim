@@ -1,6 +1,6 @@
 do
   local function notify_yank(message)
-    vim.notify(message, vim.log.levels.INFO, { id = 'yanked-context' })
+    vim.notify(message, vim.log.levels.INFO, { id = 'yank_path', title = 'Yank Path', })
   end
 
   local function yank_working_path()
@@ -12,7 +12,7 @@ do
     notify_yank('Yanked working path: ' .. info)
   end
 
-  local function yank_relative_file()
+  local function yank_relative_path()
     local info = vim.fn.expand('%:.')
 
     vim.fn.setreg('+', info)
@@ -21,7 +21,7 @@ do
     notify_yank('Yanked relative file: ' .. info)
   end
 
-  local function yank_encoded_file()
+  local function yank_encoded_path()
     local info = vim.uri_encode(vim.fn.expand('%:.'))
 
     vim.fn.setreg('+', info)
@@ -30,7 +30,7 @@ do
     notify_yank('Yanked encoded file: ' .. info)
   end
 
-  local function yank_relative_file_line_n()
+  local function yank_relative_path_line_n()
     local path = vim.fn.expand('%:.')
     local line = vim.api.nvim_win_get_cursor(0)[1]
 
@@ -42,7 +42,7 @@ do
     notify_yank('Yanked relative file line: ' .. info)
   end
 
-  local function yank_relative_file_line_x()
+  local function yank_relative_path_line_x()
     local path = vim.fn.expand('%:.')
 
     local start_line = vim.fn.line('v')
@@ -65,9 +65,9 @@ do
   end
 
   -- <leader>y
-  vim.keymap.set('n', '<leader>ye', yank_encoded_file, { desc = 'Yank encoded file' })
-  vim.keymap.set('n', '<leader>yf', yank_relative_file, { desc = 'Yank relative file' })
-  vim.keymap.set('n', '<leader>yl', yank_relative_file_line_n, { desc = 'Yank relative file line' })
-  vim.keymap.set('x', '<leader>yl', yank_relative_file_line_x, { desc = 'Yank relative file line' })
+  vim.keymap.set('n', '<leader>ye', yank_encoded_path, { desc = 'Yank encoded path' })
+  vim.keymap.set('n', '<leader>yf', yank_relative_path, { desc = 'Yank relative path' })
+  vim.keymap.set('n', '<leader>yl', yank_relative_path_line_n, { desc = 'Yank relative path line' })
+  vim.keymap.set('x', '<leader>yl', yank_relative_path_line_x, { desc = 'Yank relative path line' })
   vim.keymap.set('n', '<leader>yw', yank_working_path, { desc = 'Yank working path' })
 end
