@@ -36,7 +36,7 @@ do
         types = {
           {
             type = 'tags',
-            match = 'CLOSED>="<-1d>"',
+            match = 'CLOSED>="<today>"',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
