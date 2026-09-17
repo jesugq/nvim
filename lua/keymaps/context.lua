@@ -1,5 +1,5 @@
 do
-  local function notify_yank(message)
+  local function yank_notify_path(message)
     vim.notify(message, vim.log.levels.INFO, { id = 'yank_path', title = 'Yank Path', })
   end
 
@@ -9,7 +9,7 @@ do
     vim.fn.setreg('+', info)
     vim.fn.setreg('"', info)
 
-    notify_yank('Yanked working path: ' .. info)
+    yank_notify_path('Yanked working path: ' .. info)
   end
 
   local function yank_relative_path()
@@ -18,7 +18,7 @@ do
     vim.fn.setreg('+', info)
     vim.fn.setreg('"', info)
 
-    notify_yank('Yanked relative file: ' .. info)
+    yank_notify_path('Yanked relative file: ' .. info)
   end
 
   local function yank_encoded_path()
@@ -27,7 +27,7 @@ do
     vim.fn.setreg('+', info)
     vim.fn.setreg('"', info)
 
-    notify_yank('Yanked encoded file: ' .. info)
+    yank_notify_path('Yanked encoded file: ' .. info)
   end
 
   local function yank_relative_path_line_n()
@@ -39,7 +39,7 @@ do
     vim.fn.setreg('+', info)
     vim.fn.setreg('"', info)
 
-    notify_yank('Yanked relative file line: ' .. info)
+    yank_notify_path('Yanked relative file line: ' .. info)
   end
 
   local function yank_relative_path_line_x()
@@ -61,7 +61,7 @@ do
 
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), 'n', true)
 
-    notify_yank('Yanked relative file line: ' .. path)
+    yank_notify_path('Yanked relative file line: ' .. path)
   end
 
   -- <leader>y

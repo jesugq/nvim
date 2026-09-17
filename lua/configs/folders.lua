@@ -33,25 +33,38 @@ do
     end
   end
 
-  local function find_named(stem)
-    local found = vim.fs.find(function(name)
-      return name == stem or vim.startswith(name, stem .. '.')
-    end, { path = vim.uv.cwd(), limit = 1, type = 'file' })
-
-    if found[1] then
-      return vim.fs.normalize(found[1])
+  local function atsign_find()
+    local files = {}
+    local root = vim.uv.cwd()
+    for name, type in vim.fs.dir(root) do
+      if type == 'file' and vim.startswith(name, '@') then
+        table.insert(files, vim.fs.normalize(vim.fs.joinpath(root, name)))
+      end
     end
+
+    table.sort(files)
+    return files
   end
 
-  local function warn_named(stems, current_index)
+  local function atsign_warn(files, current_index, marker)
     local names = {}
-    for index, stem in ipairs(stems) do
-      names[index] = (index == current_index and '* ' or '  ') .. stem
+    for index, file in ipairs(files) do
+      names[index] = (index == current_index and (marker or '*') .. ' ' or '  ')
+        .. vim.fs.basename(file):gsub('%.[^.]+$', '')
     end
-    vim.notify(table.concat(names, '\n'), vim.log.levels.INFO, { id = 'open-named', title = 'Open Named', })
+    vim.notify(table.concat(names, '\n'), vim.log.levels.INFO, { id = 'atsign-file', title = 'Atsign File', })
   end
 
-  local function kill_named(files, active_buffer)
+  local function atsign_unsaved(files, active_buffer)
+    for index, file in ipairs(files) do
+      local buffer = vim.fn.bufnr(file)
+      if buffer > 0 and buffer ~= active_buffer and vim.api.nvim_buf_is_valid(buffer) and vim.bo[buffer].modified then
+        return index
+      end
+    end
+  end
+
+  local function atsign_kill(files, active_buffer)
     for _, file in ipairs(files) do
       local buffer = vim.fn.bufnr(file)
       if buffer > 0 and buffer ~= active_buffer and vim.api.nvim_buf_is_valid(buffer) then
@@ -60,14 +73,10 @@ do
     end
   end
 
-  FUNCTION.open_named = function(stems, reverse)
-    local files = {}
-    for _, stem in ipairs(stems) do
-      local file = find_named(stem)
-      if not file then
-        return
-      end
-      table.insert(files, file)
+  FUNCTION.atsign_file = function(reverse)
+    local files = atsign_find()
+    if #files == 0 then
+      return
     end
 
     local current = vim.api.nvim_get_current_buf()
@@ -80,29 +89,32 @@ do
       end
     end
 
+    local next_index
     if current_index then
       local direction = reverse and -1 or 1
-      local next_index = (current_index - 1 + direction) % #files + 1
-      local next_file = files[next_index]
-      vim.cmd.edit(vim.fn.fnameescape(next_file))
-      kill_named(files, vim.api.nvim_get_current_buf())
-      warn_named(stems, next_index)
+      next_index = (current_index - 1 + direction) % #files + 1
+    else
+      for index, file in ipairs(files) do
+        local buffer = vim.fn.bufnr(file)
+        if buffer > 0 and vim.api.nvim_buf_is_valid(buffer) then
+          next_index = index
+          break
+        end
+      end
+      next_index = next_index or 1
+    end
+
+    local next_file = files[next_index]
+    local next_buffer = vim.fn.bufnr(next_file)
+    local unsaved_index = atsign_unsaved(files, next_buffer)
+    if unsaved_index then
+      atsign_warn(files, unsaved_index, '×')
       return
     end
 
-    for index, file in ipairs(files) do
-      local buffer = vim.fn.bufnr(file)
-      if buffer > 0 and vim.api.nvim_buf_is_valid(buffer) then
-        vim.cmd.edit(vim.fn.fnameescape(file))
-        kill_named(files, vim.api.nvim_get_current_buf())
-        warn_named(stems, index)
-        return
-      end
-    end
-
-    vim.cmd.edit(vim.fn.fnameescape(files[1]))
-    kill_named(files, vim.api.nvim_get_current_buf())
-    warn_named(stems, 1)
+    vim.cmd.edit(vim.fn.fnameescape(next_file))
+    atsign_kill(files, vim.api.nvim_get_current_buf())
+    atsign_warn(files, next_index)
   end
 
   return FUNCTION

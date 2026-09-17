@@ -7,11 +7,11 @@ do
 
   -- <C-?>
   vim.keymap.set('n', '<C-b><C-j>', function()
-    folders.open_named({ '@daily', '@focus', '@inbox' })
-  end, { desc = 'Open named forward' })
+    folders.atsign_file(false)
+  end, { desc = 'Open atsign forward' })
   vim.keymap.set('n', '<C-b><C-k>', function()
-    folders.open_named({ '@daily', '@focus', '@inbox' }, true)
-  end, { desc = 'Open named reverse' })
+    folders.atsign_file(true)
+  end, { desc = 'Open atsign reverse' })
   vim.keymap.set('i', '<C-b>', '<Esc>', { remap = true })
   vim.keymap.set('i', '<C-c>', '<Esc>', { remap = true })
   vim.keymap.set('i', '<C-w>', '<Esc>', { remap = true })
