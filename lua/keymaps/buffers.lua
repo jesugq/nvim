@@ -1,6 +1,5 @@
 do
   local windows = require('configs.windows')
-  local folders = require('configs.folders')
 
   local function create_buffer(default)
     Snacks.input({ prompt = 'New file', default = default },
@@ -14,9 +13,6 @@ do
 
   -- <C-b>
   vim.keymap.set('n', '<C-b><C-b>', '<C-^>', { desc = 'Buffer switch' })
-  vim.keymap.set('n', '<C-b>1', function() folders.open_named('@daily') end, { desc = 'Open daily' })
-  vim.keymap.set('n', '<C-b>2', function() folders.open_named('@focus') end, { desc = 'Open focus' })
-  vim.keymap.set('n', '<C-b>3', function() folders.open_named('@inbox') end, { desc = 'Open inbox' })
   vim.keymap.set('n', '<C-b>a', function()
   vim.keymap.set('n', '<C-b>c', function()
     create_buffer('')
@@ -39,5 +35,6 @@ do
   end, { desc = 'Toggle word wrap' })
   vim.keymap.set('n', '<C-b>s', function() vim.cmd('w') end, { desc = 'Buffer save' })
   vim.keymap.set('n', '<C-b>S', function() vim.cmd('wa') end, { desc = 'Buffer save all' })
-  vim.keymap.set('n', '<C-b>t', function() vim.cmd('checktime') end, { desc = 'Buffer refresh' })
+  vim.keymap.set('n', '<C-b>t', function() vim.cmd('checktime') end, { desc = 'Buffer checktime' })
+  vim.keymap.set('n', '<C-b>u', function() vim.cmd('recover') end, { desc = 'Buffer recover' })
 end

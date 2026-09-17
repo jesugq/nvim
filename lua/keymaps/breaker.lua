@@ -1,9 +1,17 @@
 do
+  local folders = require('configs.folders')
+
   -- <Esc>
   vim.keymap.set('n', '<C-[>', function() vim.cmd('nohlsearch') end, { desc = 'Undo highlight search'} )
   vim.keymap.set('n', '<Esc>', function() vim.cmd('nohlsearch') end, { desc = 'Undo highlight search'} )
 
   -- <C-?>
+  vim.keymap.set('n', '<C-b><C-j>', function()
+    folders.open_named({ '@daily', '@focus', '@inbox' })
+  end, { desc = 'Open named forward' })
+  vim.keymap.set('n', '<C-b><C-k>', function()
+    folders.open_named({ '@daily', '@focus', '@inbox' }, true)
+  end, { desc = 'Open named reverse' })
   vim.keymap.set('i', '<C-b>', '<Esc>', { remap = true })
   vim.keymap.set('i', '<C-c>', '<Esc>', { remap = true })
   vim.keymap.set('i', '<C-w>', '<Esc>', { remap = true })
