@@ -46,10 +46,11 @@ do
     return files
   end
 
-  local function atsign_warn(files, current_index, marker)
+  local function atsign_warn(files, current_index, blocked_index)
     local names = {}
     for index, file in ipairs(files) do
-      names[index] = (index == current_index and (marker or '*') .. ' ' or '  ')
+      local marker = index == blocked_index and '×' or index == current_index and '*' or ' '
+      names[index] = marker .. ' '
         .. vim.fs.basename(file):gsub('%.[^.]+$', '')
     end
     vim.notify(table.concat(names, '\n'), vim.log.levels.INFO, { id = 'atsign-file', title = 'Atsign File', })
@@ -108,7 +109,7 @@ do
     local next_buffer = vim.fn.bufnr(next_file)
     local unsaved_index = atsign_unsaved(files, next_buffer)
     if unsaved_index then
-      atsign_warn(files, unsaved_index, '×')
+      atsign_warn(files, current_index, unsaved_index)
       return
     end
 
