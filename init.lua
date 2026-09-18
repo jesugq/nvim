@@ -3,6 +3,7 @@ do
   -- settings
   require('configs.startup')
   require('autocfg.editors')
+  require('autocfg.records')
   require('keymaps.folding')
   require('keymaps.buffers')
   require('keymaps.windows')
@@ -69,4 +70,3 @@ do
   require('plugins.faster')
   require('plugins.paperplanes')
 end
-

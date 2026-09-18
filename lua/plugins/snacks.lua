@@ -8,6 +8,7 @@ do
     },
     picker = {
       enabled = true,
+      focus = 'list',
       root = false,
       hidden = true,
       ignored = true,

@@ -5,7 +5,6 @@ do
     Snacks.picker.grep({
       search = vim.uri_encode(vim.fn.expand('%:.')),
       regex = false,
-      focus = 'list',
     })
   end
 
@@ -13,7 +12,6 @@ do
     Snacks.picker.lines({
       pattern = '](',
       layout = { preset = 'default', preview = true },
-      focus = 'list',
     })
   end
 

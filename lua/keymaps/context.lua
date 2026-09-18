@@ -70,4 +70,6 @@ do
   vim.keymap.set('n', '<leader>yl', yank_relative_path_line_n, { desc = 'Yank relative path line' })
   vim.keymap.set('x', '<leader>yl', yank_relative_path_line_x, { desc = 'Yank relative path line' })
   vim.keymap.set('n', '<leader>yw', yank_working_path, { desc = 'Yank working path' })
+  vim.keymap.set('n', '<leader>yd', 'ggVGD', { desc = 'Yank kill' })
+  vim.keymap.set('n', '<leader>yy', 'ggVGY', { desc = 'Yank copy' })
 end
