@@ -8,13 +8,38 @@ do
     },
     picker = {
       enabled = true,
-      focus = 'list',
       root = false,
+      focus = 'list',
       hidden = true,
       ignored = true,
+      layout = {
+        preset = 'default',
+      },
       sources = {
+        buffers = {
+          current = false,
+        },
         explorer = {
           auto_close = true,
+          layout = {
+            preset = 'default',
+            preview = true,
+          },
+        },
+        recent = {
+          limit = 500,
+          filter = { cwd = true, },
+        },
+        files = {
+          focus = 'input',
+          hidden = true,
+          ignored = true,
+        },
+        grep = {
+          focus = 'input',
+        },
+        grep_buffers = {
+          focus = 'input',
         },
       },
     },
