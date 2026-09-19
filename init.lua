@@ -66,6 +66,8 @@ do
   require('plugins.tiny-glimmer')
 
   -- integration
+  require('plugins.img-clip')
+  require('keymaps.img-clip')
   require('plugins.whichkey')
   require('plugins.faster')
   require('plugins.paperplanes')
