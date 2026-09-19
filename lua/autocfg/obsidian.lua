@@ -8,7 +8,7 @@ do
 
       vim.opt.conceallevel = 0
       vim.wo.foldmethod = 'expr'
-      vim.wo.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
       vim.wo.foldtext = 'v:lua.vim.lsp.foldtext()'
     end,
   })
