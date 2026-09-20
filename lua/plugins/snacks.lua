@@ -44,7 +44,7 @@ do
       },
     },
     notifier = { enabled = true, },
-    image = { enabled = true, },
+    image = { enabled = false, },
     bufdelete = { enabled = true, },
     input = { enabled = true, },
   }
