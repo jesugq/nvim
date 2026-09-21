@@ -15,12 +15,11 @@ do
     org_blank_before_new_entry = { heading = false, plain_list_item = false, },
     win_split_mode = 'edit',
     org_tags_column = 0,
-    org_todo_keywords = { 'TODAY', 'AFTER', 'LATER', 'NEVER', '|', 'ENDED', },
+    org_todo_keywords = { 'LOSSY', 'FUZZY', 'READY', '|', 'ENDED', },
     org_todo_keyword_faces = {
-      TODAY = ':foreground "#d24b83"',
-      AFTER = ':foreground "#cf44ac"',
-      LATER = ':foreground "#cd5ccd"',
-      NEVER = ':foreground "#a34bd2"',
+      READY = ':foreground "#cf44ac"',
+      FUZZY = ':foreground "#cd5ccd"',
+      LOSSY = ':foreground "#a34bd2"',
       ENDED = ':foreground "#4d9391"',
     },
     org_log_done = 'time',
@@ -42,42 +41,41 @@ do
         },
       },
       m = {
-
         description = 'Today',
         types = {
           {
             type = 'tags',
-            match = 'TODO="TODAY"',
+            match = 'SCHEDULED<="<today>"',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
       },
       n = {
-        description = 'After',
+        description = 'Ready',
         types = {
           {
             type = 'tags',
-            match = 'TODO="AFTER"',
+            match = 'TODO="READY"',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
       },
       b = {
-        description = 'Later',
+        description = 'Fuzzy',
         types = {
           {
             type = 'tags',
-            match = 'TODO="LATER"',
+            match = 'TODO="FUZZY"',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
       },
       v = {
-        description = 'Never',
+        description = 'Lossy',
         types = {
           {
             type = 'tags',
-            match = 'TODO="NEVER"',
+            match = 'TODO="LOSSY"',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },

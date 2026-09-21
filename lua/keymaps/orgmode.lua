@@ -123,13 +123,13 @@ do
         buffer = true, desc = 'Org Today',
       })
       vim.keymap.set('n', '<C-c>n', function() orgmode.action('agenda.open_by_key', 'n') end, {
-        buffer = true, desc = 'Org After',
+        buffer = true, desc = 'Org Ready',
       })
       vim.keymap.set('n', '<C-c>b', function() orgmode.action('agenda.open_by_key', 'b') end, {
-        buffer = true, desc = 'Org Later',
+        buffer = true, desc = 'Org Fuzzy',
       })
       vim.keymap.set('n', '<C-c>v', function() orgmode.action('agenda.open_by_key', 'v') end, {
-        buffer = true, desc = 'Org Never',
+        buffer = true, desc = 'Org Lossy',
       })
     end,
   })
