@@ -35,7 +35,7 @@ do
         types = {
           {
             type = 'tags',
-            match = 'CLOSED>="<today>"',
+            match = 'SCHEDULED<="<today>"&+TODO="ENDED"',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
@@ -45,7 +45,7 @@ do
         types = {
           {
             type = 'tags',
-            match = 'SCHEDULED<="<today>"',
+            match = 'SCHEDULED<="<today>"&-TODO="ENDED"',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
