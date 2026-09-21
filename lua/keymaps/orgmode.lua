@@ -116,20 +116,14 @@ do
       local orgmode = require('orgmode')
 
       -- <C-c>
-      vim.keymap.set('n', '<C-c>c', function() orgmode.action('agenda.open_by_key', 'c') end, {
-        buffer = true, desc = 'Org Ended',
-      })
       vim.keymap.set('n', '<C-c>m', function() orgmode.action('agenda.open_by_key', 'm') end, {
-        buffer = true, desc = 'Org Today',
+        buffer = true, desc = 'Org Began',
       })
       vim.keymap.set('n', '<C-c>n', function() orgmode.action('agenda.open_by_key', 'n') end, {
-        buffer = true, desc = 'Org Ready',
+        buffer = true, desc = 'Org Ended',
       })
-      vim.keymap.set('n', '<C-c>b', function() orgmode.action('agenda.open_by_key', 'b') end, {
-        buffer = true, desc = 'Org Fuzzy',
-      })
-      vim.keymap.set('n', '<C-c>v', function() orgmode.action('agenda.open_by_key', 'v') end, {
-        buffer = true, desc = 'Org Lossy',
+      vim.keymap.set('n', '<C-c>c', function() orgmode.action('agenda.open_by_key', 'c') end, {
+        buffer = true, desc = 'Org Tasks',
       })
     end,
   })

@@ -30,52 +30,32 @@ do
       disable_all = true,
     },
     org_agenda_custom_commands = {
-      c = {
-        description = 'Ended',
-        types = {
-          {
-            type = 'tags',
-            match = 'SCHEDULED<="<today>"&+TODO="ENDED"',
-            org_agenda_sorting_strategy = { 'priority_down', },
-          },
-        },
-      },
       m = {
-        description = 'Today',
+        description = 'Began',
         types = {
           {
             type = 'tags',
-            match = 'SCHEDULED<="<today>"&-TODO="ENDED"',
+            match = '+SCHEDULED<="<today>"&-TODO="ENDED"',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
       },
       n = {
-        description = 'Ready',
+        description = 'Ended',
         types = {
           {
             type = 'tags',
-            match = 'TODO="READY"',
+            match = '+SCHEDULED<="<today>"&+TODO="ENDED"',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
       },
-      b = {
-        description = 'Fuzzy',
+      c = {
+        description = 'Tasks',
         types = {
           {
             type = 'tags',
-            match = 'TODO="FUZZY"',
-            org_agenda_sorting_strategy = { 'priority_down', },
-          },
-        },
-      },
-      v = {
-        description = 'Lossy',
-        types = {
-          {
-            type = 'tags',
-            match = 'TODO="LOSSY"',
+            match = '+TODO="READY"|+TODO="FUZZY"|+TODO="LOSSY"',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
