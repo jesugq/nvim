@@ -56,7 +56,7 @@ do
   require('keymaps.auto-session')
 
   -- interface
-  require('plugins.github-nvim-theme')
+  require('plugins.mellifluous')
   require('plugins.lualine')
   require('plugins.gitsigns')
 
