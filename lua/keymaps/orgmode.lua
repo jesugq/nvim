@@ -58,8 +58,8 @@ do
 
       -- <C-c>
       vim.keymap.set('n', '<C-c>a', function()
-        insert.new_space()
-        vim.cmd('stopinsert')
+        -- insert.new_space()
+        -- vim.cmd('stopinsert')
         orgmode.action('org_mappings.org_time_stamp')
       end, {
         buffer = true, desc = 'Org time stamp',
