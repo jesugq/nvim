@@ -13,11 +13,7 @@ do
 
   -- <C-b>
   vim.keymap.set('n', '<C-b><C-b>', '<C-^>', { desc = 'Buffer switch' })
-  vim.keymap.set('n', '<C-b>a', function()
-    vim.cmd('split')
-    windows.deequalize()
-    vim.cmd('e prompt')
-  end, { desc = 'Buffer ai' })
+  vim.keymap.set('n', '<C-b>a', windows.toggle_prompt, { desc = 'Toggle buffer ai' })
   vim.keymap.set('n', '<C-b>c', function()
     create_buffer('')
   end, { desc = 'Buffer create' })

@@ -95,14 +95,7 @@ do
       local direction = reverse and -1 or 1
       next_index = (current_index - 1 + direction) % #files + 1
     else
-      for index, file in ipairs(files) do
-        local buffer = vim.fn.bufnr(file)
-        if buffer > 0 and vim.api.nvim_buf_is_valid(buffer) then
-          next_index = index
-          break
-        end
-      end
-      next_index = next_index or 1
+      next_index = reverse and #files or 1
     end
 
     local next_file = files[next_index]
