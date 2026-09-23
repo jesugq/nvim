@@ -3,10 +3,10 @@ do
 
   FUNCTION.mappings = function(cmp)
     return {
-      ['<Esc>'] = cmp.mapping.abort(),
-      ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select, }),
-      ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, }),
-      ['<CR>'] = cmp.mapping.confirm({ select = false, }),
+      ['<C-h>'] = cmp.mapping.abort(),
+      ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select, }),
+      ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, }),
+      ['<C-l>'] = cmp.mapping.confirm({ select = false, }),
       ['<C-d>'] = cmp.mapping.scroll_docs(4),
       ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     }
