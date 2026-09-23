@@ -17,7 +17,7 @@ do
       },
       sources = {
         buffers = {
-          current = false,
+          current = true,
         },
         explorer = {
           auto_close = true,
