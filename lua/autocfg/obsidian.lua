@@ -5,6 +5,7 @@ do
       require('configs.obsidian').indents()
       require('configs.obsidian').prompts()
       require('configs.obsidian').insight()
+      require('configs.obsidian').outline()
 
       vim.opt.conceallevel = 0
       vim.wo.foldmethod = 'expr'

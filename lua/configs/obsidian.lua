@@ -10,7 +10,7 @@ do
   end
 
   FUNCTION.prompts = function()
-    if vim.fn.expand('%:t') == 'prompt.md' then
+    if vim.fn.expand('%:t') == 'prompt' then
       vim.wo.wrap = true
       vim.wo.linebreak = true
     end
@@ -18,6 +18,14 @@ do
 
   FUNCTION.insight = function()
     if vim.fn.expand('%:p'):match('/4%-insights/') then
+      vim.wo.wrap = true
+      vim.wo.linebreak = true
+    end
+  end
+
+  FUNCTION.outline = function()
+    local dir = vim.fn.expand('$HOME/.cursor/outline-mode/sessions/')
+    if vim.startswith(vim.fn.expand('%:p'), dir) then
       vim.wo.wrap = true
       vim.wo.linebreak = true
     end
