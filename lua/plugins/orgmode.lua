@@ -15,9 +15,9 @@ do
     org_blank_before_new_entry = { heading = false, plain_list_item = false, },
     win_split_mode = 'edit',
     org_tags_column = 0,
-    org_todo_keywords = { 'LOSSY', 'FUZZY', 'READY', '|', 'ENDED', },
+    org_todo_keywords = { 'LOSSY', 'FUZZY', 'SAVVY', '|', 'ENDED', },
     org_todo_keyword_faces = {
-      READY = ':foreground "#cf44ac"',
+      SAVVY = ':foreground "#cf44ac"',
       FUZZY = ':foreground "#cd5ccd"',
       LOSSY = ':foreground "#a34bd2"',
       ENDED = ':foreground "#4d9391"',
@@ -55,7 +55,7 @@ do
         types = {
           {
             type = 'tags',
-            match = '+TODO="READY"|+TODO="FUZZY"|+TODO="LOSSY"',
+            match = '+TODO="SAVVY"|+TODO="FUZZY"|+TODO="LOSSY"',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
