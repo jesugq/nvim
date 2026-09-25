@@ -3,48 +3,81 @@ do
     vim.notify(message, vim.log.levels.INFO, { id = 'copy_path', title = 'copy Path', })
   end
 
-  local function copy_absolute()
-    local info = vim.fn.expand('%:p')
-
+  local function copy(info, description)
     vim.fn.setreg('+', info)
     vim.fn.setreg('"', info)
 
-    copy_notify_path('Copied absolute: ' .. info)
+    if info ~= '' then
+      copy_notify_path(string.format('Copied %s: %s', description, info))
+    end
   end
 
-  local function copy_absolute_url()
-    local info = vim.uri_encode(vim.fn.expand('%:p'))
+  local path_contexts = {
+    a = {
+      description = 'absolute',
+      path = function()
+        return vim.fn.expand('%:p')
+      end,
+      directory = function()
+        return vim.fn.expand('%:p:h')
+      end,
+    },
+    r = {
+      description = 'relative',
+      path = function()
+        return vim.fn.expand('%:.')
+      end,
+      directory = function()
+        return vim.fn.fnamemodify(vim.fn.expand('%:.'), ':h')
+      end,
+    },
+    f = {
+      description = 'file',
+      path = function()
+        return vim.fn.expand('%:t')
+      end,
+      directory = function()
+        return ''
+      end,
+    },
+    w = {
+      description = 'working directory',
+      path = function()
+        return vim.fn.expand('%:p:h')
+      end,
+      directory = function()
+        return vim.fn.expand('%:p:h')
+      end,
+    },
+  }
 
-    vim.fn.setreg('+', info)
-    vim.fn.setreg('"', info)
-
-    copy_notify_path('Copied absolute url: ' .. info)
+  local function context_path(context, transform)
+    return transform(path_contexts[context].path())
   end
 
-  local function copy_file()
-    local info = vim.fn.expand('%:t')
-
-    vim.fn.setreg('+', info)
-    vim.fn.setreg('"', info)
-
-    copy_notify_path('Copied file: ' .. info)
+  local function copy_path(context)
+    copy(context_path(context, function(path)
+      return path
+    end), path_contexts[context].description)
   end
 
-  local function copy_line()
-    local path = vim.fn.expand('%:.')
+  local function copy_directory(context)
+    copy(path_contexts[context].directory(), path_contexts[context].description)
+  end
+
+  local function copy_url(context)
+    copy(context_path(context, vim.uri_encode), path_contexts[context].description .. ' url')
+  end
+
+  local function copy_line(context)
+    local path = path_contexts[context].path()
     local line = vim.api.nvim_win_get_cursor(0)[1]
 
-    local info = string.format('%s:%d', path, line)
-
-    vim.fn.setreg('+', info)
-    vim.fn.setreg('"', info)
-
-    copy_notify_path('Copied line: ' .. info)
+    copy(string.format('%s:%d', path, line), path_contexts[context].description .. ' line')
   end
 
-  local function copy_lixe()
-    local path = vim.fn.expand('%:.')
-
+  local function copy_visual_line(context)
+    local path = path_contexts[context].path()
     local start_line = vim.fn.line('v')
     local end_line = vim.fn.line('.')
 
@@ -56,50 +89,40 @@ do
       and string.format('%s:%d', path, start_line)
       or string.format('%s:%d-%d', path, start_line, end_line)
 
-    vim.fn.setreg('+', info)
-    vim.fn.setreg('"', info)
+    copy(info, path_contexts[context].description .. ' lines')
 
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), 'n', true)
-
-    copy_notify_path('Copied lixe: ' .. path)
   end
 
-  local function copy_relative()
-    local info = vim.fn.expand('%:.')
+  local function map_context(context)
+    local description = path_contexts[context].description
 
-    vim.fn.setreg('+', info)
-    vim.fn.setreg('"', info)
-
-    copy_notify_path('Copied relative: ' .. info)
-  end
-
-  local function copy_relative_url()
-    local info = vim.uri_encode(vim.fn.expand('%:.'))
-
-    vim.fn.setreg('+', info)
-    vim.fn.setreg('"', info)
-
-    copy_notify_path('Copied relative url: ' .. info)
-  end
-
-  local function copy_working()
-    local info = vim.fn.getcwd()
-
-    vim.fn.setreg('+', info)
-    vim.fn.setreg('"', info)
-
-    copy_notify_path('Copied working: ' .. info)
+    vim.keymap.set('n', '<leader>c' .. context .. 'w', function()
+      copy_directory(context)
+    end, { desc = 'Copy ' .. description .. ' directory' })
+    if context ~= 'w' then
+      vim.keymap.set('n', '<leader>c' .. context .. context, function()
+        copy_path(context)
+      end, { desc = 'Copy ' .. description })
+    end
+    vim.keymap.set('n', '<leader>c' .. context .. 'u', function()
+      copy_url(context)
+    end, { desc = 'Copy ' .. description .. ' url' })
+    if context ~= 'w' then
+      vim.keymap.set('n', '<leader>c' .. context .. 'l', function()
+        copy_line(context)
+      end, { desc = 'Copy ' .. description .. ' line' })
+      vim.keymap.set('x', '<leader>c' .. context .. 'l', function()
+        copy_visual_line(context)
+      end, { desc = 'Copy ' .. description .. ' lines' })
+    end
   end
 
   -- <leader>c
-  vim.keymap.set('n', '<leader>ca', copy_absolute, { desc = 'Copy absolute' })
-  vim.keymap.set('n', '<leader>cA', copy_absolute_url, { desc = 'Copy absolute url' })
   vim.keymap.set('n', '<leader>cd', 'ggVGD', { desc = 'Copy dd' })
-  vim.keymap.set('n', '<leader>cf', copy_file, { desc = 'Copy file' })
-  vim.keymap.set('n', '<leader>cl', copy_line, { desc = 'Copy line' })
-  vim.keymap.set('x', '<leader>cl', copy_lixe, { desc = 'Copy lixe' })
-  vim.keymap.set('n', '<leader>cr', copy_relative, { desc = 'Copy relative' })
-  vim.keymap.set('n', '<leader>cR', copy_relative_url, { desc = 'Copy relative url' })
-  vim.keymap.set('n', '<leader>cw', copy_working, { desc = 'Copy working' })
   vim.keymap.set('n', '<leader>cy', 'ggVGY', { desc = 'Copy yy' })
+
+  for context in pairs(path_contexts) do
+    map_context(context)
+  end
 end
