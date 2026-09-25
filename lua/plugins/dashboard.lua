@@ -20,25 +20,27 @@ do
       },
       shortcut = {
         {
-          icon = '󰩈 ',
-          desc = 'What on earth is :q! ',
+          icon = ' ',
+          desc = ' How do I exit vim? ',
           group = 'DiagnosticWarn',
           action = 'qa',
           key = 'q',
         },
         {
-          icon = '󰩈 ',
-          desc = 'Cool afk animation ',
+          icon = ' ',
+          desc = ' Cool afk animation ',
           group = 'Special',
           action = '! tmux new-window -n afk -- /home/jesugq/.script/afk',
           key = 'w',
         },
         {
-          icon = '󰩈 ',
-          desc = 'Give me back VSCode ',
+          icon = '󱚝 ',
+          desc = ' Give me back Cursor ',
           group = 'String',
-          action = '! code',
-          key = 'v',
+          action = function()
+            vim.cmd('!cursor ' .. vim.fn.shellescape(vim.fn.getcwd()))
+          end,
+          key = 'c',
         },
       },
       packages = { enable = true, },
