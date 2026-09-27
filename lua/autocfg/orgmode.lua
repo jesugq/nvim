@@ -5,5 +5,11 @@ do
       require('configs.orgmode').highlights()
     end,
   })
-end
 
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'orgagenda',
+    callback = function()
+      require('configs.orgmode').highlights()
+    end,
+  })
+end

@@ -24,6 +24,7 @@ do
     org_tags_column = 0,
     org_agenda_start_on_weekday = 0,
     calendar_week_start_day = 0,
+    org_deadline_warning_days = 0,
     org_priority_default = 'D',
     org_priority_highest = 'A',
     org_priority_lowest = 'D',
@@ -32,11 +33,11 @@ do
     },
     org_agenda_custom_commands = {
       m = {
-        description = 'Today',
+        description = 'After',
         types = {
           {
-            type = 'tags_todo',
-            match = '+SCHEDULED<="<today>"',
+            type = 'agenda',
+            org_agenda_span = 2,
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
@@ -45,8 +46,8 @@ do
         description = 'Later',
         types = {
           {
-            type = 'tags_todo',
-            match = '+SCHEDULED>"<today>"',
+            type = 'agenda',
+            org_agenda_span = 14,
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },

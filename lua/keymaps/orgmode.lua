@@ -93,7 +93,10 @@ do
       })
 
       -- <CR>
-      vim.keymap.set('n', '<CR>', function() orgmode.action('agenda.switch_to_item') end, {
+      vim.keymap.set('n', '<CR>', function() orgmode.action('agenda.preview_item') end, {
+        buffer = true, desc = 'Orgagenda preview item',
+      })
+      vim.keymap.set('n', '<C-CR>', function() orgmode.action('agenda.switch_to_item') end, {
         buffer = true, desc = 'Orgagenda switch to item',
       })
 
@@ -117,7 +120,7 @@ do
 
       -- <C-c>
       vim.keymap.set('n', '<C-c>m', function() orgmode.action('agenda.open_by_key', 'm') end, {
-        buffer = true, desc = 'Org Today',
+        buffer = true, desc = 'Org After',
       })
       vim.keymap.set('n', '<C-c>n', function() orgmode.action('agenda.open_by_key', 'n') end, {
         buffer = true, desc = 'Org Later',
