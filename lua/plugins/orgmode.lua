@@ -35,9 +35,9 @@ do
         description = 'Today',
         types = {
           {
-            type = 'tags',
-            match = '-TODO="ENDED"&+SCHEDULED<="<today>"',
-            org_agenda_sorting_strategy = { 'priority_down', },
+            type = 'tags_todo',
+            match = '+SCHEDULED<="<today>"',
+            org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
       },
@@ -45,9 +45,9 @@ do
         description = 'Later',
         types = {
           {
-            type = 'tags',
-            match = '-TODO="ENDED"&+SCHEDULED>"<today>"',
-            org_agenda_sorting_strategy = { 'priority_down', },
+            type = 'tags_todo',
+            match = '+SCHEDULED>"<today>"',
+            org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
       },
@@ -55,14 +55,13 @@ do
         description = 'Never',
         types = {
           {
-            type = 'tags',
-            match = '+TODO="SAVVY"|+TODO="FUZZY"|+TODO="LOSSY"',
+            type = 'tags_todo',
             org_agenda_todo_ignore_scheduled = 'all',
-            org_agenda_sorting_strategy = { 'priority_down', },
+            org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
       },
-    },
+    }
   }
   vim.lsp.enable('org')
 end
