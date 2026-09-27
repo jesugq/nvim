@@ -117,13 +117,13 @@ do
 
       -- <C-c>
       vim.keymap.set('n', '<C-c>m', function() orgmode.action('agenda.open_by_key', 'm') end, {
-        buffer = true, desc = 'Org Began',
+        buffer = true, desc = 'Org Today',
       })
       vim.keymap.set('n', '<C-c>n', function() orgmode.action('agenda.open_by_key', 'n') end, {
-        buffer = true, desc = 'Org Ended',
+        buffer = true, desc = 'Org Later',
       })
       vim.keymap.set('n', '<C-c>c', function() orgmode.action('agenda.open_by_key', 'c') end, {
-        buffer = true, desc = 'Org Tasks',
+        buffer = true, desc = 'Org Never',
       })
     end,
   })

@@ -5,16 +5,15 @@ do
   vim.pack.add { 'https://github.com/nvim-orgmode/orgmode' }
   local orgmode = require('orgmode')
   orgmode.setup {
+    win_split_mode = 'edit',
     org_agenda_files = path.og_dir .. '/**/*',
     org_default_notes_file = path.og_dir .. '/@inbox.org',
     org_startup_folded = 'overview',
+    org_log_done = 'time',
     org_hide_leading_stars = true,
     org_hide_emphasis_markers = true,
     org_adapt_indentation = false,
-    org_use_tag_inheritance = false,
     org_blank_before_new_entry = { heading = false, plain_list_item = false, },
-    win_split_mode = 'edit',
-    org_tags_column = 0,
     org_todo_keywords = { 'LOSSY', 'FUZZY', 'SAVVY', '|', 'ENDED', },
     org_todo_keyword_faces = {
       SAVVY = ':foreground "#cf44ac"',
@@ -22,7 +21,9 @@ do
       LOSSY = ':foreground "#a34bd2"',
       ENDED = ':foreground "#4d9391"',
     },
-    org_log_done = 'time',
+    org_tags_column = 0,
+    org_agenda_start_on_weekday = 0,
+    calendar_week_start_day = 0,
     org_priority_default = 'D',
     org_priority_highest = 'A',
     org_priority_lowest = 'D',
@@ -31,31 +32,32 @@ do
     },
     org_agenda_custom_commands = {
       m = {
-        description = 'Began',
+        description = 'Today',
         types = {
           {
             type = 'tags',
-            match = '+SCHEDULED<="<today>"&-TODO="ENDED"',
+            match = '-TODO="ENDED"&+SCHEDULED<="<today>"',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
       },
       n = {
-        description = 'Ended',
+        description = 'Later',
         types = {
           {
             type = 'tags',
-            match = '+SCHEDULED<="<today>"&+TODO="ENDED"',
+            match = '-TODO="ENDED"&+SCHEDULED>"<today>"',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
       },
       c = {
-        description = 'Tasks',
+        description = 'Never',
         types = {
           {
             type = 'tags',
             match = '+TODO="SAVVY"|+TODO="FUZZY"|+TODO="LOSSY"',
+            org_agenda_todo_ignore_scheduled = 'all',
             org_agenda_sorting_strategy = { 'priority_down', },
           },
         },
