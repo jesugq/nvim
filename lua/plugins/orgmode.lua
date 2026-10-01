@@ -37,7 +37,7 @@ do
         types = {
           {
             type = 'agenda',
-            org_agenda_span = 2,
+            org_agenda_span = 1,
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
