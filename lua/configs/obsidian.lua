@@ -10,7 +10,7 @@ do
   end
 
   FUNCTION.prompts = function()
-    if vim.fn.expand('%:t') == 'prompt' then
+    if vim.fn.expand('%:t') == '@agent' then
       vim.wo.wrap = true
       vim.wo.linebreak = true
     end

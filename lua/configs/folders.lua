@@ -1,5 +1,6 @@
 do
   local FUNCTION = {}
+  local windows = require('configs.windows')
 
   FUNCTION.random_file = function(path, prev_replace)
 
@@ -33,16 +34,25 @@ do
     end
   end
 
+  local function atsign_agent()
+    return vim.fs.normalize(vim.fs.joinpath(vim.uv.cwd(), '@agent'))
+  end
+
   local function atsign_find()
     local files = {}
+    local agent = atsign_agent()
     local root = vim.uv.cwd()
     for name, type in vim.fs.dir(root) do
       if type == 'file' and vim.startswith(name, '@') then
-        table.insert(files, vim.fs.normalize(vim.fs.joinpath(root, name)))
+        local file = vim.fs.normalize(vim.fs.joinpath(root, name))
+        if file ~= agent then
+          table.insert(files, file)
+        end
       end
     end
 
     table.sort(files)
+    table.insert(files, 1, agent)
     return files
   end
 
@@ -76,9 +86,6 @@ do
 
   FUNCTION.atsign_file = function(reverse)
     local files = atsign_find()
-    if #files == 0 then
-      return
-    end
 
     local current = vim.api.nvim_get_current_buf()
     local current_name = vim.fs.normalize(vim.api.nvim_buf_get_name(current))
@@ -90,12 +97,10 @@ do
       end
     end
 
-    local next_index
+    local next_index = 1
     if current_index then
       local direction = reverse and -1 or 1
       next_index = (current_index - 1 + direction) % #files + 1
-    else
-      next_index = reverse and #files or 1
     end
 
     local next_file = files[next_index]
@@ -106,7 +111,9 @@ do
       return
     end
 
-    vim.cmd.edit(vim.fn.fnameescape(next_file))
+    windows.open(next_file, function(name)
+      return vim.startswith(name, '@')
+    end)
     atsign_kill(files, vim.api.nvim_get_current_buf())
     atsign_warn(files, next_index)
   end
