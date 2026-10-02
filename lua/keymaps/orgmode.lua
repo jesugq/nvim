@@ -83,10 +83,10 @@ do
       local orgmode = require('orgmode')
 
       -- <Esc>
-      vim.keymap.set('n', '<Esc>', function() vim.cmd('bnext') end, {
+      vim.keymap.set('n', '<Esc>', function() vim.cmd('bwipeout') end, {
         buffer = true, desc = 'Orgagenda exit', remap = false,
       })
-      vim.keymap.set('n', '<C-[>', function() vim.cmd('bnext') end, {
+      vim.keymap.set('n', '<C-[>', function() vim.cmd('bwipeout') end, {
         buffer = true, desc = 'Orgagenda exit', remap = false,
       })
 
@@ -99,7 +99,7 @@ do
       })
 
       -- ?
-      vim.keymap.set('n', 'q', function() vim.cmd('bnext') end, {
+      vim.keymap.set('n', 'q', function() vim.cmd('bwipeout') end, {
         buffer = true, desc = 'Orgagenda exit', remap = false,
       })
       vim.keymap.set('n', '<', function() orgmode.action('agenda.advance_span', -1) end, {
