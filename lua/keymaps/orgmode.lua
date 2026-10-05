@@ -94,7 +94,7 @@ do
       vim.keymap.set('n', '<CR>', function() orgmode.action('agenda.preview_item') end, {
         buffer = true, desc = 'Orgagenda preview item',
       })
-      vim.keymap.set('n', '<C-CR>', function() orgmode.action('agenda.switch_to_item') end, {
+      vim.keymap.set('n', '<A-CR>', function() orgmode.action('agenda.switch_to_item') end, {
         buffer = true, desc = 'Orgagenda switch to item',
       })
 
