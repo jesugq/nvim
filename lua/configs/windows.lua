@@ -2,7 +2,7 @@ do
   local FUNCTION = {}
 
   FUNCTION.deequalize = function()
-    vim.api.nvim_win_set_height(0, math.floor(vim.o.lines * 0.20))
+    vim.api.nvim_win_set_height(0, math.floor(vim.o.lines * 0.25))
   end
 
   local function find_win(match)
