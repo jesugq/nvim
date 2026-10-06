@@ -36,8 +36,8 @@ do
         description = 'After',
         types = {
           {
-            type = 'agenda',
-            org_agenda_span = 1,
+            type = 'tags',
+            match = 'SCHEDULED<"<tomorrow>"|TODO="SAVVY"',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
@@ -52,7 +52,7 @@ do
           },
         },
       },
-      c = {
+      b = {
         description = 'Never',
         types = {
           {

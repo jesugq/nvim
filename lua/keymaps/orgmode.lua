@@ -123,7 +123,7 @@ do
       vim.keymap.set('n', '<C-c>n', function() orgmode.action('agenda.open_by_key', 'n') end, {
         buffer = true, desc = 'Org Later',
       })
-      vim.keymap.set('n', '<C-c>c', function() orgmode.action('agenda.open_by_key', 'c') end, {
+      vim.keymap.set('n', '<C-c>b', function() orgmode.action('agenda.open_by_key', 'b') end, {
         buffer = true, desc = 'Org Never',
       })
     end,
