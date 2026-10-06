@@ -48,6 +48,8 @@ do
   require('autocfg.obsidian')
   require('keymaps.obsidian')
   require('plugins.markdown-table-mode')
+  require('plugins.mermaid')
+  require('keymaps.mermaid')
 
   -- editing
   require('plugins.marks')

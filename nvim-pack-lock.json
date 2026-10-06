@@ -60,6 +60,10 @@
       "rev": "ec0575bdb63594c5e7fba6eb9607b009aa1fb74e",
       "src": "https://github.com/ramojus/mellifluous.nvim"
     },
+    "mermaid.nvim": {
+      "rev": "4da12693b3b4d63b67d07bafe8340b4abc265c70",
+      "src": "https://github.com/kevalin/mermaid.nvim"
+    },
     "mini.nvim": {
       "rev": "d5e6f5b843f1d813d9c4bfb242b751dc5ab6f8ae",
       "src": "https://github.com/nvim-mini/mini.nvim"
