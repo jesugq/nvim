@@ -36,6 +36,10 @@
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
+    "markdown-table-mode.nvim": {
+      "rev": "0b768b58ec45afb7cb091175e837b7f5461663af",
+      "src": "https://github.com/Kicamon/markdown-table-mode.nvim"
+    },
     "marks.nvim": {
       "rev": "f353e8c08c50f39e99a9ed474172df7eddd89b72",
       "src": "https://github.com/chentoast/marks.nvim"

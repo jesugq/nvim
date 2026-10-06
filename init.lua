@@ -47,6 +47,7 @@ do
   require('plugins.obsidian')
   require('autocfg.obsidian')
   require('keymaps.obsidian')
+  require('plugins.markdown-table-mode')
 
   -- editing
   require('plugins.marks')
