@@ -14,10 +14,10 @@ do
     org_hide_emphasis_markers = true,
     org_adapt_indentation = false,
     org_blank_before_new_entry = { heading = false, plain_list_item = false, },
-    org_todo_keywords = { 'NO_NEED', 'NO_RUSH', 'NO_PLAN', 'NO_STEP', 'VERBOSE', 'CONCISE', '|', 'SETTLED', },
+    org_todo_keywords = { 'NO_NEED', 'NO_URGE', 'NO_PLAN', 'NO_STEP', 'VERBOSE', 'CONCISE', '|', 'SETTLED', },
     org_todo_keyword_faces = {
       NO_NEED = ':foreground "#a34bd2"',
-      NO_RUSH = ':foreground "#a34bd2"',
+      NO_URGE = ':foreground "#a34bd2"',
       NO_PLAN = ':foreground "#a34bd2"',
       NO_STEP = ':foreground "#a34bd2"',
       VERBOSE = ':foreground "#cd5ccd"',
@@ -36,27 +36,17 @@ do
     },
     org_agenda_custom_commands = {
       m = {
-        description = 'Today',
+        description = 'This',
         types = {
           {
             type = 'agenda',
-            org_agenda_span = 1,
+            org_agenda_span = 2,
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
       },
       n = {
-        description = 'After',
-        types = {
-          {
-            type = 'tags_todo',
-            match = 'TODO="VERBOSE"|TODO="CONCISE"',
-            org_agenda_sorting_strategy = { 'priority_down' },
-          },
-        },
-      },
-      b = {
-        description = 'Later',
+        description = 'Then',
         types = {
           {
             type = 'agenda',
@@ -65,7 +55,18 @@ do
           },
         },
       },
-      v = {
+      k = {
+        description = 'After',
+        types = {
+          {
+            type = 'tags_todo',
+            match = 'TODO="VERBOSE"|TODO="CONCISE"',
+            org_agenda_todo_ignore_scheduled = 'all',
+            org_agenda_sorting_strategy = { 'priority_down' },
+          },
+        },
+      },
+      j = {
         description = 'Never',
         types = {
           {

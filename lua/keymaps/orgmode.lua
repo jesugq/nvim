@@ -118,15 +118,15 @@ do
 
       -- <C-c>
       vim.keymap.set('n', '<C-c>m', function() orgmode.action('agenda.open_by_key', 'm') end, {
-        buffer = true, desc = 'Org Today',
+        buffer = true, desc = 'Org This',
       })
       vim.keymap.set('n', '<C-c>n', function() orgmode.action('agenda.open_by_key', 'n') end, {
+        buffer = true, desc = 'Org Then',
+      })
+      vim.keymap.set('n', '<C-c>k', function() orgmode.action('agenda.open_by_key', 'k') end, {
         buffer = true, desc = 'Org After',
       })
-      vim.keymap.set('n', '<C-c>b', function() orgmode.action('agenda.open_by_key', 'b') end, {
-        buffer = true, desc = 'Org Later',
-      })
-      vim.keymap.set('n', '<C-c>v', function() orgmode.action('agenda.open_by_key', 'v') end, {
+      vim.keymap.set('n', '<C-c>j', function() orgmode.action('agenda.open_by_key', 'j') end, {
         buffer = true, desc = 'Org Never',
       })
     end,
