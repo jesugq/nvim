@@ -60,14 +60,14 @@ do
         types = {
           {
             type = 'tags_todo',
-            match = 'TODO="VERBOSE"|TODO="CONCISE"',
+            match = 'PRIORITY="A"',
             org_agenda_todo_ignore_scheduled = 'all',
             org_agenda_sorting_strategy = { 'priority_down' },
           },
         },
       },
       j = {
-        description = 'Never',
+        description = 'Later',
         types = {
           {
             type = 'tags_todo',

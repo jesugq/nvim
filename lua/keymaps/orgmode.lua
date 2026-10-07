@@ -127,7 +127,7 @@ do
         buffer = true, desc = 'Org After',
       })
       vim.keymap.set('n', '<C-c>j', function() orgmode.action('agenda.open_by_key', 'j') end, {
-        buffer = true, desc = 'Org Never',
+        buffer = true, desc = 'Org Later',
       })
     end,
   })
