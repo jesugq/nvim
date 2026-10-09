@@ -16,12 +16,9 @@ do
   vim.keymap.set('n', '<Esc>', function() vim.cmd('nohlsearch') end, { desc = 'Undo highlight search'} )
 
   -- <C-?>
-  vim.keymap.set('n', '<C-b><C-j>', function()
-    folders.atsign_file(false)
-  end, { desc = 'Open atsign forward' })
-  vim.keymap.set('n', '<C-b><C-k>', function()
-    folders.atsign_file(true)
-  end, { desc = 'Open atsign reverse' })
+  vim.keymap.set('n', '<C-;>', function()
+    folders.atsign_file()
+  end, { desc = 'Open atsign' })
   vim.keymap.set('n', '<C-b>c', function()
     create_buffer('')
   end, { desc = 'Buffer create' })

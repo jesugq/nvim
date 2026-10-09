@@ -1,9 +1,7 @@
 do
   local FUNCTION = {}
-  local windows = require('configs.windows')
 
   FUNCTION.random_file = function(path, prev_replace)
-
     local full_path = vim.fn.expand(path)
     local files = {}
     for name, type in vim.fs.dir(full_path) do
@@ -84,7 +82,7 @@ do
     end
   end
 
-  FUNCTION.atsign_file = function(reverse)
+  FUNCTION.atsign_file = function()
     local files = atsign_find()
 
     local current = vim.api.nvim_get_current_buf()
@@ -97,11 +95,7 @@ do
       end
     end
 
-    local next_index = 1
-    if current_index then
-      local direction = reverse and -1 or 1
-      next_index = (current_index - 1 + direction) % #files + 1
-    end
+    local next_index = current_index and (current_index % #files + 1) or 1
 
     local next_file = files[next_index]
     local next_buffer = vim.fn.bufnr(next_file)
@@ -111,9 +105,7 @@ do
       return
     end
 
-    windows.open(next_file, function(name)
-      return vim.startswith(name, '@')
-    end)
+    vim.cmd.edit(vim.fn.fnameescape(next_file))
     atsign_kill(files, vim.api.nvim_get_current_buf())
     atsign_warn(files, next_index)
   end
