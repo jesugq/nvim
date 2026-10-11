@@ -1,0 +1,67 @@
+do
+  -- system
+  vim.loader.enable()
+  vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+
+  -- provider
+  vim.g.loaded_perl_provider = 0
+  vim.g.python3_host_prog = vim.fs.joinpath(vim.fn.stdpath('data'), 'venv', 'bin', 'python')
+
+  -- leader
+  vim.g.mapleader = ' '
+  vim.g.maplocalleader = ' '
+
+  -- mouse
+  vim.o.mouse = 'a'
+
+  -- file
+  vim.o.undofile = true
+  vim.o.confirm = true
+  vim.o.autoread = true
+
+  -- mode
+  vim.o.showmode = false
+  vim.o.cmdheight = 0
+  vim.o.showtabline = 0
+
+  -- search
+  vim.o.ignorecase = true
+  vim.o.smartcase = true
+  vim.o.inccommand = 'split'
+  vim.g.loaded_matchparen = 1
+
+  -- cursor
+  vim.opt.guicursor = 'a:block'
+  vim.o.number = true
+  vim.o.cursorline = true
+  vim.o.scrolloff = 8
+
+  -- column
+  vim.o.relativenumber = true
+  vim.o.signcolumn = 'yes'
+
+  -- lines
+  vim.o.wrap = false
+  vim.o.list = true
+
+  -- folds
+  vim.opt.foldcolumn = '1'
+  vim.o.foldlevel = 99
+  require('configs.fillchars').highlights()
+
+  -- indents
+  vim.opt.tabstop = 2
+  vim.opt.shiftwidth = 2
+  vim.opt.expandtab = true
+
+  -- checktime
+  vim.o.autoread = true
+
+  -- splits
+  vim.opt.splitbelow = true
+  vim.opt.splitright = true
+
+  -- netrw
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+end
