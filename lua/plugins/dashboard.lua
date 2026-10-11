@@ -31,7 +31,7 @@ do
           desc = ' Cool afk animation ',
           group = 'Special',
           action = '! tmux new-window -n afk -- /home/jesugq/.script/afk',
-          key = 'w',
+          key = 'a',
         },
         {
           icon = '󱚝 ',
