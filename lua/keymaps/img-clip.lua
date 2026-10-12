@@ -1,6 +1,6 @@
 do
-  -- <C-c>p
-  vim.keymap.set('n', '<C-c>p', function()
+  -- <leader>np
+  vim.keymap.set('n', '<leader>np', function()
     local date_prefix = os.date("%Y-%m-%d ")
 
     Snacks.input({ prompt = 'New image', },

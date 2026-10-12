@@ -17,12 +17,12 @@ do
     vim.keymap.set('n', '<leader>hd', gitsigns.reset_hunk, {
       buffer = bufnr, desc = 'Hunk reset hunk',
     })
-    vim.keymap.set('x', '<leader>ha', function()
+    vim.keymap.set('x', '<leader>hc', function()
       gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('x'), })
     end, {
       buffer = bufnr, desc = 'Hunk stage hunk',
     })
-    vim.keymap.set('x', '<leader>hd', function()
+    vim.keymap.set('x', '<leader>hx', function()
       gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('x'), })
     end, {
       buffer = bufnr, desc = 'Hunk reset hunk',
@@ -34,10 +34,10 @@ do
       buffer = bufnr, desc = 'Hunk blame verify',
     })
 
-    vim.keymap.set('n', '<C-b>h', gitsigns.setqflist, {
+    vim.keymap.set('n', '<leader>hl', gitsigns.setqflist, {
       buffer = bufnr, desc = 'Buffer hunk list',
     })
-    vim.keymap.set('n', '<C-b>H', function()
+    vim.keymap.set('n', '<leader>hL', function()
       gitsigns.setqflist('all')
     end, {
       buffer = bufnr, desc = 'Buffer hunk list',

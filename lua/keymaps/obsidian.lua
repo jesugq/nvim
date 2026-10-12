@@ -31,11 +31,11 @@ do
         buffer = true, desc = 'Markdown outgoing links',
       })
 
-      -- <C-c>
-      vim.keymap.set('n', '<C-c>i', function() linksert.markdown_link(true) end, {
+      -- <leader>n
+      vim.keymap.set('n', '<leader>ni', function() linksert.markdown_link(true) end, {
         buffer = true, desc = 'Markdown insert internal link',
       })
-      vim.keymap.set('n', '<C-c>o', function() linksert.markdown_link(false) end, {
+      vim.keymap.set('n', '<leader>no', function() linksert.markdown_link(false) end, {
         buffer = true, desc = 'Markdown insert external link',
       })
     end,

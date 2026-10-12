@@ -1,6 +1,4 @@
 do
-  local windows = require('configs.windows')
-
   local opposites = { h = 'l', l = 'h', k = 'j', j = 'k', }
 
   local function swap_window(direction)
@@ -28,17 +26,16 @@ do
     end
   end
 
-  -- <C-w>
-  vim.keymap.set('n', '<C-w>-', windows.deequalize, { desc = 'Deequalize window' })
-  vim.keymap.set('n', '<C-w>=', '<C-w>=', { remap = false, desc = 'Equalize windows' })
-  vim.keymap.set('n', '<C-w>c', '<Nop>', { desc = 'Close current window' })
-  vim.keymap.set('n', '<C-w>h', function() swap_window('h') end, { desc = 'Swap window left' })
-  vim.keymap.set('n', '<C-w>H', '<Nop>', { desc = 'Move window left' })
-  vim.keymap.set('n', '<C-w>j', function() swap_window('j') end, { desc = 'Swap window down' })
-  vim.keymap.set('n', '<C-w>J', '<Nop>', { desc = 'Move window down' })
-  vim.keymap.set('n', '<C-w>k', function() swap_window('k') end, { desc = 'Swap window up' })
-  vim.keymap.set('n', '<C-w>K', '<Nop>', { desc = 'Move window up' })
-  vim.keymap.set('n', '<C-w>l', function() swap_window('l') end, { desc = 'Swap window right' })
-  vim.keymap.set('n', '<C-w>L', '<Nop>', { desc = 'Move window right' })
-  vim.keymap.set('n', '<C-w>x', '<C-w>c', { remap = false, desc = 'Close current window' })
+  -- <leader>w
+  vim.keymap.set('n', '<leader>wh', '<Cmd>wincmd h<CR>', { desc = 'Go to window left' })
+  vim.keymap.set('n', '<leader>wj', '<Cmd>wincmd j<CR>', { desc = 'Go to window below' })
+  vim.keymap.set('n', '<leader>wk', '<Cmd>wincmd k<CR>', { desc = 'Go to window above' })
+  vim.keymap.set('n', '<leader>wl', '<Cmd>wincmd l<CR>', { desc = 'Go to window right' })
+  vim.keymap.set('n', '<leader>wH', function() swap_window('h') end, { desc = 'Swap window left' })
+  vim.keymap.set('n', '<leader>wJ', function() swap_window('j') end, { desc = 'Swap window down' })
+  vim.keymap.set('n', '<leader>wK', function() swap_window('k') end, { desc = 'Swap window up' })
+  vim.keymap.set('n', '<leader>wL', function() swap_window('l') end, { desc = 'Swap window right' })
+  vim.keymap.set('n', '<leader>wx', '<Cmd>close<CR>', { desc = 'Close current window' })
+  vim.keymap.set('n', '<leader>wc', '<Cmd>new<CR>', { desc = 'Split horizontally with new buffer' })
+  vim.keymap.set('n', '<leader>wv', '<Cmd>vnew<CR>', { desc = 'Split vertically with new buffer' })
 end

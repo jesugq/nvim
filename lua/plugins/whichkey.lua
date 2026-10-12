@@ -3,23 +3,17 @@ do
   local which_key = require('which-key')
 
   which_key.setup {
-    delay = 1000,
     icons = { mappings = true, },
-    spec = { },
+    plugins = {
+      presets = {
+        windows = false,
+      },
+    },
+    spec = {
+      { '<leader>w', group = 'windows' },
+      { '<leader>o', group = 'sessions' },
+      { '<leader>b', group = 'buffers' },
+      { '<leader>n', group = 'other' },
+    },
   }
-  which_key.add({
-    { '<leader>e', group = 'Explorer', },
-    { '<leader>w', group = 'Windows', },
-    { '<leader>r', group = 'Recents', },
-    { '<leader>h', group = 'Hunk', },
-    { '<leader>q', group = 'Quit', },
-    { '<leader>s', group = 'Search', },
-    { '<leader>y', group = 'Yank', },
-    { '<C-w>c', hidden = true, },
-    { '<C-w>h', hidden = true, },
-    { '<C-w>j', hidden = true, },
-    { '<C-w>k', hidden = true, },
-    { '<C-w>l', hidden = true, },
-    { 'gO', hidden = true, },
-  })
 end
