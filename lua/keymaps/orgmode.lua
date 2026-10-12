@@ -117,16 +117,16 @@ do
       local orgmode = require('orgmode')
 
       -- <leader>n
-      vim.keymap.set('n', '<leader>nm', function() orgmode.action('agenda.open_by_key', 'm') end, {
+      vim.keymap.set('n', '<leader>ma', function() orgmode.action('agenda.open_by_key', 'a') end, {
         buffer = true, desc = 'Org This',
       })
-      vim.keymap.set('n', '<leader>nn', function() orgmode.action('agenda.open_by_key', 'n') end, {
+      vim.keymap.set('n', '<leader>ms', function() orgmode.action('agenda.open_by_key', 's') end, {
         buffer = true, desc = 'Org Then',
       })
-      vim.keymap.set('n', '<leader>nk', function() orgmode.action('agenda.open_by_key', 'k') end, {
+      vim.keymap.set('n', '<leader>md', function() orgmode.action('agenda.open_by_key', 'd') end, {
         buffer = true, desc = 'Org After',
       })
-      vim.keymap.set('n', '<leader>nj', function() orgmode.action('agenda.open_by_key', 'j') end, {
+      vim.keymap.set('n', '<leader>mf', function() orgmode.action('agenda.open_by_key', 'f') end, {
         buffer = true, desc = 'Org Later',
       })
     end,

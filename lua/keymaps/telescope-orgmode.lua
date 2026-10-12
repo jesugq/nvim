@@ -6,7 +6,7 @@ do
       local tom = require('telescope-orgmode')
 
       -- <leader>n
-      vim.keymap.set('n', '<leader>nr', tom.refile_heading, { desc = 'Org refile text' })
+      vim.keymap.set('n', '<leader>nu', tom.refile_heading, { desc = 'Org refile text' })
     end,
   })
 end

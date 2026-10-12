@@ -35,7 +35,7 @@ do
       disable_all = true,
     },
     org_agenda_custom_commands = {
-      m = {
+      a = {
         description = 'This',
         types = {
           {
@@ -45,7 +45,7 @@ do
           },
         },
       },
-      n = {
+      s = {
         description = 'Then',
         types = {
           {
@@ -55,7 +55,7 @@ do
           },
         },
       },
-      k = {
+      d = {
         description = 'After',
         types = {
           {
@@ -66,7 +66,7 @@ do
           },
         },
       },
-      j = {
+      f = {
         description = 'Later',
         types = {
           {

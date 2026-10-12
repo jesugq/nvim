@@ -7,7 +7,7 @@ do
   -- <leader>o
   vim.keymap.set('n', '<leader>os', function() vim.cmd('AutoSession save') end, { desc = 'Session save' })
   vim.keymap.set('n', '<leader>of', function() vim.cmd('AutoSession search') end, { desc = 'Session find from' })
-  vim.keymap.set('n', '<leader>oc', function()
+  vim.keymap.set('n', '<leader>oa', function()
     Snacks.input({ prompt = 'AutoSession name' },
       function(input)
         if input and input ~= "" then
@@ -16,5 +16,5 @@ do
       end
     )
   end, { desc = 'Session create' })
-  vim.keymap.set('n', '<leader>ox', function() vim.cmd('AutoSession deletePicker') end, { desc = 'Session delete from' })
+  vim.keymap.set('n', '<leader>od', function() vim.cmd('AutoSession deletePicker') end, { desc = 'Session delete from' })
 end
