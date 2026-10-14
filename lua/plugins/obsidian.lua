@@ -12,6 +12,10 @@ do
         name = 'Markdown',
         path = path.md_dir,
       },
+      {
+        name = 'Dynamic',
+        path = path.dy_dir,
+      },
     },
     picker = {
       name = 'snacks.picker',
