@@ -14,4 +14,5 @@ do
       theme = 'dark',
     },
   }
+  require('mermaid.panel').open = function() end
 end
