@@ -11,6 +11,7 @@ do
       vim.wo.foldmethod = 'expr'
       vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
       vim.wo.foldtext = 'v:lua.vim.lsp.foldtext()'
+      vim.wo.foldlevel = 0
     end,
   })
 end
