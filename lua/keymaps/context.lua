@@ -1,6 +1,6 @@
 do
   local function copy_notify_path(message)
-    vim.notify(message, vim.log.levels.INFO, { id = 'copy_path', title = 'copy Path', })
+    vim.notify(message, vim.log.levels.INFO, { id = 'copy_path', title = 'Copy Path', })
   end
 
   local function copy(info, description)
