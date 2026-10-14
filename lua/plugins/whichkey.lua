@@ -6,14 +6,19 @@ do
     icons = { mappings = true, },
     plugins = {
       presets = {
-        windows = false,
+        windows = false
       },
     },
     spec = {
-      { '<leader>w', group = 'windows' },
-      { '<leader>o', group = 'sessions' },
+      { '<leader>a', group = 'actions' },
       { '<leader>b', group = 'buffers' },
-      { '<leader>n', group = 'other' },
+      { '<leader>c', group = 'callers' },
+      { '<leader>g', group = 'gadgets' },
+      { '<leader>h', group = 'hunkers' },
+      { '<leader>n', group = 'nickels' },
+      { '<leader>o', group = 'objects' },
+      { '<leader>q', group = 'quivers' },
+      { '<leader>w', group = 'windows' },
     },
   }
 end

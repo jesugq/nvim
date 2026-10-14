@@ -10,7 +10,6 @@ do
   require('keymaps.context')
   require('keymaps.breaker')
   require('keymaps.atsigns')
-  require('keymaps.bufmode')
   require('configs.warning')
 
   -- packs ordered
