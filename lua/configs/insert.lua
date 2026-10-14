@@ -28,12 +28,34 @@ do
         insert_at = i - 1
         break
       end
+
+      if not vim.fn.getline(i):match('%S') then
+        local next_content = i + 1
+        while next_content <= total_lines and not vim.fn.getline(next_content):match('%S') do
+          next_content = next_content + 1
+        end
+
+        if next_content <= total_lines then
+          insert_at = next_content - 1
+          break
+        end
+      end
     end
 
     local heading = string.rep('#', level) .. ' '
 
     if total_lines == 1 and not vim.fn.getline(1):match('%S') then
       vim.fn.setline(1, heading)
+      vim.fn.cursor(1, #heading)
+      vim.cmd('startinsert!')
+      return
+    end
+
+    if line == 1 and not vim.fn.getline(1):match('%S') then
+      vim.fn.setline(1, heading)
+      if total_lines > 1 and vim.fn.getline(2):match('%S') then
+        vim.fn.append(1, '')
+      end
       vim.fn.cursor(1, #heading)
       vim.cmd('startinsert!')
       return
