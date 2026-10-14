@@ -26,8 +26,22 @@ do
     end
   end
 
+  local function last_window()
+    local current = vim.api.nvim_get_current_win()
+    local previous = vim.fn.win_getid(vim.fn.winnr('#'))
+    local same_tab = previous ~= 0
+        and vim.api.nvim_win_is_valid(previous)
+        and vim.api.nvim_win_get_tabpage(previous) == vim.api.nvim_get_current_tabpage()
+
+    if same_tab and previous ~= current then
+      vim.api.nvim_set_current_win(previous)
+    else
+      vim.cmd('wincmd w')
+    end
+  end
+
   -- <leader>w
-  vim.keymap.set('n', '<leader>ww', '<C-w>p', { desc = 'Last window' })
+  vim.keymap.set('n', '<leader>ww', last_window, { desc = 'Last window' })
   vim.keymap.set('n', '<leader>wh', '<Cmd>wincmd h<CR>', { desc = 'Go to window left' })
   vim.keymap.set('n', '<leader>wj', '<Cmd>wincmd j<CR>', { desc = 'Go to window below' })
   vim.keymap.set('n', '<leader>wk', '<Cmd>wincmd k<CR>', { desc = 'Go to window above' })

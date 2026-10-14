@@ -5,6 +5,7 @@ do
   vim.keymap.set('n', '<leader>qR', function() vim.cmd('restart') end, { desc = 'Quit restart'})
 
   -- <leader>o
+  vim.keymap.set('n', '<leader>oo', function() vim.cmd('AutoSession restore') end, { desc = 'Session restore' })
   vim.keymap.set('n', '<leader>os', function() vim.cmd('AutoSession save') end, { desc = 'Session save' })
   vim.keymap.set('n', '<leader>of', function() vim.cmd('AutoSession search') end, { desc = 'Session find from' })
   vim.keymap.set('n', '<leader>oa', function()
