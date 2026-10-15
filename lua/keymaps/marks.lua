@@ -3,7 +3,7 @@ do
 
   OBJECT = {
     toggle = 'm',
-    delete_buf = '<leader>bdm',
+    delete_buf = 'dm',
   }
 
   return OBJECT
