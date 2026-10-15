@@ -117,7 +117,7 @@ do
   vim.keymap.set('n', '<leader>bG', function() Snacks.picker.grep({ regex = true, }) end, { desc = 'Snacks picker grep regex' })
   vim.keymap.set('n', '<leader>bq', function() Snacks.picker.grep_buffers({ regex = false, }) end, { desc = 'Snacks picker grep buffers' })
   vim.keymap.set('n', '<leader>bQ', function() Snacks.picker.grep_buffers({ regex = true, }) end, { desc = 'Snacks picker grep buffers regex' })
-  vim.keymap.set('n', '<leader>bm', function() Snacks.picker.marks({ finder = buffer_marks, transform = function(item) return person_marks(item) end }) end, { desc = 'Snacks picker marks in open buffers' })
+  vim.keymap.set('n', '<leader>bm', function() Snacks.picker.marks({ focus = 'input', finder = buffer_marks, transform = function(item) return person_marks(item) end }) end, { desc = 'Snacks picker marks in open buffers' })
 
   -- <leader>s
   vim.keymap.set('n', '<leader>ss', function() Snacks.picker.resume() end, { desc = 'Snacks picker resume' })
