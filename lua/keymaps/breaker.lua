@@ -6,7 +6,6 @@ do
   -- <C-?>
   vim.keymap.set('n', '<C-b>', '<Nop>')
   vim.keymap.set('n', '<C-c>', '<Nop>')
-  vim.keymap.set('n', '<C-o>', '<Nop>')
   vim.keymap.set('n', '<C-w>', '<Nop>')
 
   -- ?
