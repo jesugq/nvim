@@ -30,7 +30,7 @@ do
           icon = ' ',
           desc = ' Cool afk animation ',
           group = 'Special',
-          action = '! tmux new-window -n afk -- /home/jesugq/.script/afk',
+          action = '! tmux new-window -n afk -- "$HOME/.script/afk"',
           key = 'a',
         },
         {
