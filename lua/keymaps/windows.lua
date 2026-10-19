@@ -42,6 +42,7 @@ do
 
   -- <leader>w
   vim.keymap.set('n', '<leader>ww', last_window, { desc = 'Last window' })
+  vim.keymap.set('n', '<leader>w=', '<Cmd>wincmd =<CR>', { desc = 'Equalize windows' })
   vim.keymap.set('n', '<leader>wh', '<Cmd>wincmd h<CR>', { desc = 'Go to window left' })
   vim.keymap.set('n', '<leader>wj', '<Cmd>wincmd j<CR>', { desc = 'Go to window below' })
   vim.keymap.set('n', '<leader>wk', '<Cmd>wincmd k<CR>', { desc = 'Go to window above' })
