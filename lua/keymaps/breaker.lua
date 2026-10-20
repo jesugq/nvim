@@ -4,8 +4,6 @@ do
   vim.keymap.set('n', '<Esc>', function() vim.cmd('nohlsearch') end, { desc = 'Undo highlight search'} )
 
   -- <C-?>
-  vim.keymap.set('n', '<C-b>', '<Nop>')
-  vim.keymap.set('n', '<C-c>', '<Nop>')
   vim.keymap.set('n', '<C-w>', '<Nop>')
 
   -- ?
