@@ -18,6 +18,8 @@ do
   vim.keymap.set('n', '<leader>bv', function()
     create_buffer('')
   end, { desc = 'Buffer create' })
+  vim.keymap.set('n', '<leader>bz', function() Snacks.bufdelete() end, { desc = 'Buffer close' })
+  vim.keymap.set('n', '<leader>bZ', function() Snacks.bufdelete.all() end, { desc = 'Buffer close' })
   vim.keymap.set('n', '<leader>bs', function() vim.cmd('w') end, { desc = 'Buffer save' })
   vim.keymap.set('n', '<leader>bS', function() vim.cmd('wa') end, { desc = 'Buffer save all' })
   vim.keymap.set('n', '<leader>bt', function() vim.cmd('checktime') end, { desc = 'Buffer checktime' })
