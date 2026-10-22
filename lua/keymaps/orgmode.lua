@@ -4,8 +4,8 @@ do
     pattern = 'org',
     callback = function()
       local orgmode = require('orgmode')
-      local insert = require('configs.insert')
-      local linksert = require('configs.linksert')
+      local insert = require('configs.insert.new_space')
+      local linksert = require('configs.linksert.orgmode_link')
 
       -- <CR>
       vim.keymap.set('n', '<CR>', function() orgmode.action('org_mappings.insert_heading_respect_content') end, {

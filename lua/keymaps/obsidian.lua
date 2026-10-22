@@ -5,7 +5,7 @@ do
       local folders = require('configs.folders')
       local api = require('obsidian.api')
       local insert = require('configs.insert')
-      local linksert = require('configs.linksert')
+      local linksert = require('configs.linksert.markdown_link')
       local snacks = require('configs.snacks')
 
       -- <CR>
