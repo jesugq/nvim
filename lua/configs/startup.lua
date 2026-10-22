@@ -63,4 +63,7 @@ do
   -- netrw
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
+
+  -- tab != <C-i>
+  vim.keymap.set('n', '<C-i>', '<C-i>', { noremap = true })
 end

@@ -2,13 +2,12 @@
 do
   -- settings
   require('configs.startup')
-  require('autocfg.editors')
-  require('keymaps.folding')
+  require('configs.warning')
   require('keymaps.buffers')
   require('keymaps.windows')
   require('keymaps.context')
   require('keymaps.breaker')
-  require('configs.warning')
+  require('autocfg.focused')
 
   -- packs ordered
   require('plugins.nvim-web-devicons')
