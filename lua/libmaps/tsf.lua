@@ -18,6 +18,8 @@ do
     'ts',
     'ruby',
     'glimmer',
+    'markdown',
+    'markdown_inline',
   }
 
   return OBJECT

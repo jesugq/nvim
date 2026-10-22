@@ -12,8 +12,7 @@ do
     'ts_ls',
     'ruby-lsp',
     'ember',
-    -- 'markdown-oxide',
-    -- 'marksman',
+    'marksman',
   }
 
   return OBJECT

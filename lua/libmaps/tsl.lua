@@ -24,6 +24,8 @@ do
     'vue',
     'tsx',
     'regex',
+    'markdown',
+    'markdown_inline',
   }
 
   return OBJECT

@@ -42,6 +42,9 @@ do
   require('plugins.auto-session')
   require('keymaps.auto-session')
 
+  -- languages
+  require('autocfg.markdown')
+
   -- interface
   require('plugins.mellifluous')
   require('plugins.lualine')
