@@ -8,7 +8,6 @@ do
   require('keymaps.windows')
   require('keymaps.context')
   require('keymaps.breaker')
-  require('keymaps.leaders')
   require('configs.warning')
 
   -- packs ordered

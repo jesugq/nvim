@@ -27,18 +27,9 @@ do
   end
 
 
-  -- <leader>w
-  vim.keymap.set('n', '<leader>wc', '<Cmd>new<CR>', { desc = 'Window create' })
-  vim.keymap.set('n', '<leader>wv', '<Cmd>vnew<CR>', { desc = 'Window create' })
-  vim.keymap.set('n', '<leader>wz', '<Cmd>close<CR>', { desc = 'Window close' })
-  vim.keymap.set('n', '<leader>wZ', '<Cmd>only<CR>', { desc = 'Window close' })
-  vim.keymap.set('n', '<leader>w=', '<Cmd>wincmd =<CR>', { desc = 'Window equalize' })
-  vim.keymap.set('n', '<leader>wh', '<Cmd>wincmd h<CR>', { desc = 'Go to window left' })
-  vim.keymap.set('n', '<leader>wj', '<Cmd>wincmd j<CR>', { desc = 'Go to window below' })
-  vim.keymap.set('n', '<leader>wk', '<Cmd>wincmd k<CR>', { desc = 'Go to window above' })
-  vim.keymap.set('n', '<leader>wl', '<Cmd>wincmd l<CR>', { desc = 'Go to window right' })
-  vim.keymap.set('n', '<leader>wH', function() swap_window('h') end, { desc = 'Swap window left' })
-  vim.keymap.set('n', '<leader>wJ', function() swap_window('j') end, { desc = 'Swap window down' })
-  vim.keymap.set('n', '<leader>wK', function() swap_window('k') end, { desc = 'Swap window up' })
-  vim.keymap.set('n', '<leader>wL', function() swap_window('l') end, { desc = 'Swap window right' })
+  -- <C-w>
+  vim.keymap.set('n', '<C-w>H', function() swap_window('h') end, { desc = 'Swap window left' })
+  vim.keymap.set('n', '<C-w>J', function() swap_window('j') end, { desc = 'Swap window down' })
+  vim.keymap.set('n', '<C-w>K', function() swap_window('k') end, { desc = 'Swap window up' })
+  vim.keymap.set('n', '<C-w>L', function() swap_window('l') end, { desc = 'Swap window right' })
 end
