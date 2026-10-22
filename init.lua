@@ -3,11 +3,11 @@ do
   -- settings
   require('configs.startup')
   require('configs.warning')
+  require('autocfg.focused')
   require('keymaps.buffers')
   require('keymaps.windows')
   require('keymaps.context')
   require('keymaps.breaker')
-  require('autocfg.focused')
 
   -- packs ordered
   require('plugins.nvim-web-devicons')
@@ -36,23 +36,9 @@ do
   require('plugins.nvim-cmp')
   require('plugins.cmp-nvim-lsp')
 
-  -- languages
-  require('plugins.orgmode')
-  require('keymaps.orgmode')
-  require('autocfg.orgmode')
-  require('plugins.telescope-orgmode')
-  require('keymaps.telescope-orgmode')
-  require('plugins.obsidian')
-  require('autocfg.obsidian')
-  require('keymaps.obsidian')
-  require('plugins.markdown-table-mode')
-  require('plugins.mermaid')
-  require('keymaps.mermaid')
-
   -- editing
   require('plugins.marks')
   require('plugins.nvim-recorder')
-  require('plugins.nvim-autopairs')
   require('plugins.auto-session')
   require('keymaps.auto-session')
 
@@ -67,8 +53,6 @@ do
   require('plugins.tiny-glimmer')
 
   -- integration
-  require('plugins.img-clip')
-  require('keymaps.img-clip')
   require('plugins.whichkey')
   require('plugins.faster')
   require('plugins.paperplanes')
