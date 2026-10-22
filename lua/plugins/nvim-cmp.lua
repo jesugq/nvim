@@ -10,7 +10,7 @@ do
     },
     preselect = cmp.PreselectMode.None,
     mapping = cmp.mapping.preset.insert(
-      require('keymaps.nvim-cmp').mappings(cmp)
+      require('libkeys.nvim-cmp').mappings(cmp)
     ),
     sources = cmp.config.sources({
       { name = 'nvim_lsp', },

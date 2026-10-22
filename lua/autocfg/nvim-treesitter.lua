@@ -1,6 +1,6 @@
 do
   vim.api.nvim_create_autocmd('FileType', {
-    pattern = require('tsf'),
+    pattern = require('libmaps.tsf'),
     callback = function()
       vim.treesitter.start()
       vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'

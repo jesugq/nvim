@@ -19,7 +19,7 @@ do
   -- lsp ordered
   require('plugins.mason')
   require('plugins.nvim-lspconfig')
-  require('keymaps.nvim-lspconfig')
+  require('autocfg.nvim-lspconfig')
   require('plugins.mason-lspconfig')
   require('plugins.mason-tool-installer')
   require('lspconf.lua-ls')
@@ -53,7 +53,7 @@ do
   require('plugins.tiny-glimmer')
 
   -- integration
-  require('plugins.whichkey')
+  require('plugins.which-key')
   require('plugins.faster')
   require('plugins.paperplanes')
 end

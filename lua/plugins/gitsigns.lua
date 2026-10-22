@@ -14,7 +14,7 @@ do
     },
     current_line_blame = true,
     on_attach = function(bufnr)
-      require('keymaps.gitsigns').mappings(bufnr)
+      require('libkeys.gitsigns').mappings(bufnr)
     end,
   }
 end

@@ -3,7 +3,7 @@ do
   require('recorder').setup {
     slots = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', },
     dynamicSlots = 'rotate',
-    mapping = require('keymaps.nvim-recorder'),
+    mapping = require('libkeys.nvim-recorder'),
     clear = false,
     logLevel = vim.log.levels.INFO,
     lessNotifications = false,

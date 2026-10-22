@@ -1,6 +1,8 @@
 do
+  local OBJECT = {}
+
   -- https://github.com/neovim-treesitter/treesitter-parser-registry/blob/main/registry.json
-  return {
+  OBJECT = {
     'html',
     'html_tags',
     'css',
@@ -11,16 +13,12 @@ do
     'bash',
     'lua',
     'javascript',
+    'js',
     'typescript',
+    'ts',
     'ruby',
     'glimmer',
-    'glimmer_javascript',
-    'glimmer_typescript',
-    -- 'norg',
-    'svelte',
-    'typst',
-    'vue',
-    'tsx',
-    'regex',
   }
+
+  return OBJECT
 end

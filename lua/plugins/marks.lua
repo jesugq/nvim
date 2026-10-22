@@ -4,6 +4,6 @@ do
 
   require('marks').setup {
     default_mappings = false,
-    mappings = require('keymaps.marks'),
+    mappings = require('libkeys.marks'),
   }
 end

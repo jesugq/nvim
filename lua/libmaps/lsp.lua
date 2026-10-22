@@ -1,6 +1,8 @@
 do
+  local OBJECT = {}
+
   -- https://mason-registry.dev/registry/list
-  return {
+  OBJECT = {
     'html',
     'cssls',
     'jsonls',
@@ -13,4 +15,6 @@ do
     -- 'markdown-oxide',
     -- 'marksman',
   }
+
+  return OBJECT
 end
