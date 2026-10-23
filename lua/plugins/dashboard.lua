@@ -31,16 +31,16 @@ do
           desc = ' Cool afk animation ',
           group = 'Special',
           action = '! tmux new-window -n afk -- "$HOME/.script/afk"',
-          key = 'a',
+          key = 'A',
         },
         {
-          icon = '󱚝 ',
-          desc = ' Give me back Cursor ',
+          icon = '󰭙 ',
+          desc = ' WTF is this Jesus ',
           group = 'String',
           action = function()
-            vim.cmd('!cursor ' .. vim.fn.shellescape(vim.fn.getcwd()))
+           vim.ui.open("https://www.youtube.com/watch?v=c4OyfL5o7DU")
           end,
-          key = 'c',
+          key = 'w',
         },
       },
       packages = { enable = true, },

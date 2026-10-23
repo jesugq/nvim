@@ -53,6 +53,7 @@ do
   -- animation
   require('plugins.dashboard')
   require('autocfg.dashboard')
+  require('keymaps.dashboard')
   require('plugins.tiny-glimmer')
 
   -- integration
