@@ -1,15 +1,17 @@
 do
   local snacks = require('libfuns.snacks')
 
+  -- <leader><leader>
+  vim.keymap.set('n', '<leader><leader>', function() Snacks.explorer() end, { desc = 'Snacks explorer' })
+
   -- <leader>b
-  vim.keymap.set('n', '<leader>be', function() Snacks.explorer() end, { desc = 'Snacks explorer' })
+  vim.keymap.set('n', '<leader>be', function() Snacks.picker.grep_buffers({ regex = false, }) end, { desc = 'Snacks picker grep buffers' })
+  vim.keymap.set('n', '<leader>bE', function() Snacks.picker.grep_buffers({ regex = true, }) end, { desc = 'Snacks picker grep buffers regex' })
   vim.keymap.set('n', '<leader>bf', function() Snacks.picker.files({ regex = false, }) end, { desc = 'Snacks picker files' })
   vim.keymap.set('n', '<leader>bF', function() Snacks.picker.files({ regex = true, }) end, { desc = 'Snacks picker files' })
   vim.keymap.set('n', '<leader>bg', function() Snacks.picker.grep({ regex = false, }) end, { desc = 'Snacks picker grep' })
   vim.keymap.set('n', '<leader>bG', function() Snacks.picker.grep({ regex = true, }) end, { desc = 'Snacks picker grep regex' })
   vim.keymap.set('n', '<leader>bm', function() Snacks.picker.marks({ focus = 'input', finder = snacks.buffer_marks, transform = function(item) return snacks.person_marks(item) end }) end, { desc = 'Snacks picker marks in open buffers' })
-  vim.keymap.set('n', '<leader>bq', function() Snacks.picker.grep_buffers({ regex = false, }) end, { desc = 'Snacks picker grep buffers' })
-  vim.keymap.set('n', '<leader>bQ', function() Snacks.picker.grep_buffers({ regex = true, }) end, { desc = 'Snacks picker grep buffers regex' })
   vim.keymap.set('n', '<leader>br', function() Snacks.picker.recent() end, { desc = 'Snacks recent' })
   vim.keymap.set('n', '<leader>bw', function() Snacks.picker.buffers() end, { desc = 'Snacks window' })
 

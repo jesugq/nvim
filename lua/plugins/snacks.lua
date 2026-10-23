@@ -17,6 +17,7 @@ do
       },
       sources = {
         buffers = {
+          focus = 'input',
           current = true,
         },
         explorer = {
