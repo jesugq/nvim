@@ -1,10 +1,8 @@
 do
   local snacks = require('libfuns.snacks')
 
-  -- <leader><leader>
-  vim.keymap.set('n', '<leader><leader>', function() Snacks.explorer() end, { desc = 'Snacks explorer' })
-
   -- <leader>b
+  vim.keymap.set('n', '<leader>bq', function() Snacks.explorer() end, { desc = 'Snacks explorer' })
   vim.keymap.set('n', '<leader>be', function() Snacks.picker.grep_buffers({ regex = false, }) end, { desc = 'Snacks picker grep buffers' })
   vim.keymap.set('n', '<leader>bE', function() Snacks.picker.grep_buffers({ regex = true, }) end, { desc = 'Snacks picker grep buffers regex' })
   vim.keymap.set('n', '<leader>bf', function() Snacks.picker.files({ regex = false, }) end, { desc = 'Snacks picker files' })

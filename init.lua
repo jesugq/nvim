@@ -58,6 +58,7 @@ do
 
   -- integration
   require('plugins.which-key')
+  require('keymaps.which-key')
   require('plugins.faster')
   require('plugins.paperplanes')
 end
