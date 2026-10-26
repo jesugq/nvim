@@ -8,6 +8,19 @@ do
     })
   end
 
+  FUNCTION.recent = function(opts, ctx)
+    local buf = vim.api.nvim_get_current_buf()
+    local file = vim.api.nvim_buf_get_name(buf)
+    local include = file ~= '' and vim.bo[buf].buftype == '' and ctx.filter:match({ file = file, text = '' })
+    local inner = require('snacks.picker.source.recent').files(opts, ctx)
+    return function(cb)
+      if include then
+        cb({ file = file, text = file, recent = true })
+      end
+      inner(cb)
+    end
+  end
+
   FUNCTION.outgoing_links = function()
     Snacks.picker.lines({
       pattern = '](',
