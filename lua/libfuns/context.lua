@@ -4,38 +4,35 @@ do
   local path_contexts = {
     a = {
       description = 'absolute',
-      path = function()
-        return vim.fn.expand('%:p')
-      end,
       directory = function()
         return vim.fn.expand('%:p:h')
+      end,
+      filename = function()
+        return vim.fn.expand('%:p')
+      end,
+      filename_without_extension = function()
+        return vim.fn.expand('%:p:r')
       end,
     },
     r = {
       description = 'relative',
-      path = function()
-        return vim.fn.expand('%:.')
-      end,
       directory = function()
         return vim.fn.fnamemodify(vim.fn.expand('%:.'), ':h')
+      end,
+      filename = function()
+        return vim.fn.expand('%:.')
+      end,
+      filename_without_extension = function()
+        return vim.fn.fnamemodify(vim.fn.expand('%:.'), ':r')
       end,
     },
     f = {
       description = 'file',
-      path = function()
+      filename = function()
         return vim.fn.expand('%:t')
       end,
-      directory = function()
-        return ''
-      end,
-    },
-    w = {
-      description = 'working directory',
-      path = function()
-        return vim.fn.expand('%:p:h')
-      end,
-      directory = function()
-        return vim.fn.expand('%:p:h')
+      filename_without_extension = function()
+        return vim.fn.expand('%:t:r')
       end,
     },
   }
@@ -53,33 +50,42 @@ do
     end
   end
 
-  FUNCTION.context_path = function(context, transform)
-    return transform(path_contexts[context].path())
+  local function copy_field(context, field, label, url)
+    local info = path_contexts[context][field]()
+
+    if url then
+      info = vim.uri_encode(info)
+    end
+
+    local description = path_contexts[context].description .. ' ' .. label
+    if url then
+      description = description .. ' url'
+    end
+
+    FUNCTION.copy(info, description)
   end
 
-  FUNCTION.copy_path = function(context)
-    FUNCTION.copy(FUNCTION.context_path(context, function(path)
-      return path
-    end), path_contexts[context].description)
+  FUNCTION.copy_directory = function(context, url)
+    copy_field(context, 'directory', 'directory', url)
   end
 
-  FUNCTION.copy_directory = function(context)
-    FUNCTION.copy(path_contexts[context].directory(), path_contexts[context].description)
+  FUNCTION.copy_filename = function(context, url)
+    copy_field(context, 'filename', 'filename', url)
   end
 
-  FUNCTION.copy_url = function(context)
-    FUNCTION.copy(FUNCTION.context_path(context, vim.uri_encode), path_contexts[context].description .. ' url')
+  FUNCTION.copy_filename_without_extension = function(context, url)
+    copy_field(context, 'filename_without_extension', 'filename without extension', url)
   end
 
   FUNCTION.copy_line = function(context)
-    local path = path_contexts[context].path()
+    local path = path_contexts[context].filename()
     local line = vim.api.nvim_win_get_cursor(0)[1]
 
     FUNCTION.copy(string.format('%s:%d', path, line), path_contexts[context].description .. ' line')
   end
 
   FUNCTION.copy_visual_line = function(context)
-    local path = path_contexts[context].path()
+    local path = path_contexts[context].filename()
     local start_line = vim.fn.line('v')
     local end_line = vim.fn.line('.')
 
@@ -94,36 +100,6 @@ do
     FUNCTION.copy(info, path_contexts[context].description .. ' lines')
 
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), 'n', true)
-  end
-
-  FUNCTION.map_context = function(context)
-    local description = path_contexts[context].description
-
-    vim.keymap.set('n', '<leader>c' .. context .. 'w', function()
-      FUNCTION.copy_directory(context)
-    end, { desc = 'Copy ' .. description .. ' directory' })
-    if context ~= 'w' then
-      vim.keymap.set('n', '<leader>c' .. context .. context, function()
-        FUNCTION.copy_path(context)
-      end, { desc = 'Copy ' .. description })
-    end
-    vim.keymap.set('n', '<leader>c' .. context .. 'u', function()
-      FUNCTION.copy_url(context)
-    end, { desc = 'Copy ' .. description .. ' url' })
-    if context ~= 'w' then
-      vim.keymap.set('n', '<leader>c' .. context .. 'l', function()
-        FUNCTION.copy_line(context)
-      end, { desc = 'Copy ' .. description .. ' line' })
-      vim.keymap.set('x', '<leader>c' .. context .. 'l', function()
-        FUNCTION.copy_visual_line(context)
-      end, { desc = 'Copy ' .. description .. ' lines' })
-    end
-  end
-
-  FUNCTION.map_contexts = function()
-    for context in pairs(path_contexts) do
-      FUNCTION.map_context(context)
-    end
   end
 
   return FUNCTION
