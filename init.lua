@@ -61,4 +61,5 @@ do
   require('keymaps.which-key')
   require('plugins.faster')
   require('plugins.paperplanes')
+  require('keymaps.paperplanes')
 end

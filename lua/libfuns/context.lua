@@ -28,6 +28,9 @@ do
     },
     f = {
       description = 'file',
+      directory = function()
+        return ''
+      end,
       filename = function()
         return vim.fn.expand('%:t')
       end,

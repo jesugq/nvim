@@ -23,6 +23,8 @@ do
   vim.keymap.set('n', '<leader>crl', function() context.copy_line('r') end, { desc = 'Copy relative line' })
   vim.keymap.set('x', '<leader>crl', function() context.copy_visual_line('r') end, { desc = 'Copy relative lines' })
 
+  vim.keymap.set('n', '<leader>cfd', function() context.copy_directory('f') end, { desc = 'Copy file directory' })
+  vim.keymap.set('n', '<leader>cfD', function() context.copy_directory('f', true) end, { desc = 'Copy file directory url' })
   vim.keymap.set('n', '<leader>cff', function() context.copy_filename('f') end, { desc = 'Copy file filename' })
   vim.keymap.set('n', '<leader>cfF', function() context.copy_filename('f', true) end, { desc = 'Copy file filename url' })
   vim.keymap.set('n', '<leader>cfn', function() context.copy_filename_without_extension('f') end, { desc = 'Copy file filename without extension' })

@@ -32,17 +32,9 @@
       "rev": "11d779b26a9ab2b3db8c22c6ac9fb6e8ed4fea79",
       "src": "https://github.com/sainnhe/gruvbox-material"
     },
-    "img-clip.nvim": {
-      "rev": "99848daf801789dbebe2192b475eb887d375002c",
-      "src": "https://github.com/hakonharnes/img-clip.nvim"
-    },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
-    },
-    "markdown-table-mode.nvim": {
-      "rev": "0b768b58ec45afb7cb091175e837b7f5461663af",
-      "src": "https://github.com/Kicamon/markdown-table-mode.nvim"
     },
     "marks.nvim": {
       "rev": "f353e8c08c50f39e99a9ed474172df7eddd89b72",
@@ -60,21 +52,9 @@
       "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "https://github.com/mason-org/mason.nvim"
     },
-    "mellifluous.nvim": {
-      "rev": "ec0575bdb63594c5e7fba6eb9607b009aa1fb74e",
-      "src": "https://github.com/ramojus/mellifluous.nvim"
-    },
-    "mermaid.nvim": {
-      "rev": "4da12693b3b4d63b67d07bafe8340b4abc265c70",
-      "src": "https://github.com/kevalin/mermaid.nvim"
-    },
     "mini.nvim": {
       "rev": "d5e6f5b843f1d813d9c4bfb242b751dc5ab6f8ae",
       "src": "https://github.com/nvim-mini/mini.nvim"
-    },
-    "nvim-autopairs": {
-      "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
-      "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-cmp": {
       "rev": "2ffe79f1f021def8dd1fcd81deb16f1bb0d989f3",
@@ -96,14 +76,6 @@
       "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
-    "obsidian.nvim": {
-      "rev": "1052c0c8359c550d5379296f896a778284dc5a78",
-      "src": "https://github.com/obsidian-nvim/obsidian.nvim"
-    },
-    "orgmode": {
-      "rev": "005368b30cea12ececfbe27240b4269939aac6e6",
-      "src": "https://github.com/nvim-orgmode/orgmode"
-    },
     "paperplanes.nvim": {
       "rev": "dfe43f895ec6f43f4a0a2af006ee74c79e5e1028",
       "src": "https://github.com/rktjmp/paperplanes.nvim"
@@ -115,10 +87,6 @@
     "snacks.nvim": {
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
-    },
-    "telescope-orgmode.nvim": {
-      "rev": "214fe56e105bb3d0638f33320ed959911a1bfcb1",
-      "src": "https://github.com/nvim-orgmode/telescope-orgmode.nvim"
     },
     "tiny-glimmer.nvim": {
       "rev": "9a48d8a7436231cb16d47c88f924702e5602870a",
