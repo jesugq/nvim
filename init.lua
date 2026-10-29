@@ -8,6 +8,7 @@ do
   require('keymaps.windows')
   require('keymaps.context')
   require('keymaps.breaker')
+  require('keymaps.reading')
 
   -- packs ordered
   require('plugins.nvim-web-devicons')
