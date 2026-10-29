@@ -28,6 +28,10 @@
       "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "gruvbox-material": {
+      "rev": "11d779b26a9ab2b3db8c22c6ac9fb6e8ed4fea79",
+      "src": "https://github.com/sainnhe/gruvbox-material"
+    },
     "img-clip.nvim": {
       "rev": "99848daf801789dbebe2192b475eb887d375002c",
       "src": "https://github.com/hakonharnes/img-clip.nvim"

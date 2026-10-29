@@ -46,7 +46,7 @@ do
   require('autocfg.markdown')
 
   -- interface
-  require('plugins.mellifluous')
+  require('plugins.gruvbox-material')
   require('plugins.lualine')
   require('plugins.gitsigns')
 

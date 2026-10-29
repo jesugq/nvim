@@ -49,14 +49,14 @@ do
         {
           icon = ' ',
           desc = ' How do I exit vim? ',
-          group = 'DiagnosticWarn',
+          group = 'Label',
           action = 'qa',
           key = 'q',
         },
         {
           icon = ' ',
           desc = ' Cool afk animation ',
-          group = 'Special',
+          group = 'Function',
           action = function()
             vim.fn.system('tmux new-window -n afk -- "$HOME/.script/afk"')
           end,
@@ -65,7 +65,7 @@ do
         {
           icon = '󰭙 ',
           desc = ' WTF is this Jesus ',
-          group = 'String',
+          group = 'Number',
           action = function()
             local url = 'https://www.youtube.com/watch?v=c4OyfL5o7DU'
             if math.random(2) == 1 then
@@ -82,4 +82,5 @@ do
       footer = {},
     },
   })
+  vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#ffffff', bold = false })
 end

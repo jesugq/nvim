@@ -4,14 +4,13 @@ do
   end
 
   vim.pack.add { 'https://github.com/nvim-lualine/lualine.nvim' }
-  local theme = require('libfuns.lualine').section_theme()
 
   require('lualine').setup {
     options = {
       icons_enabled = true,
       always_divide_middle = true,
       globalstatus = true,
-      theme = theme,
+      theme = 'gruvbox-material',
     },
     winbar = {
       lualine_a = { 'filename', },
