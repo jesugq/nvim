@@ -5,7 +5,8 @@ do
 
   vim.pack.add { 'https://github.com/nvim-lualine/lualine.nvim' }
 
-  require('lualine').setup {
+  local lualine = require('lualine')
+  lualine.setup {
     options = {
       icons_enabled = true,
       always_divide_middle = true,

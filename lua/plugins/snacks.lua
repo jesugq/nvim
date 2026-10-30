@@ -1,7 +1,8 @@
 ---@diagnostic disable: different-requires
 do
   vim.pack.add { 'https://github.com/folke/snacks.nvim' }
-  require('snacks').setup {
+  local snacks = require('snacks')
+  snacks.setup {
     explorer = {
       enabled = true,
       replace_netrw = false,

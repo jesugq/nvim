@@ -1,7 +1,8 @@
 do
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function()
-      require('libkeys.nvim-lspconfig').mappings()
+      local nvim_lspconfig = require('libkeys.nvim-lspconfig')
+      nvim_lspconfig.mappings()
     end,
   })
 end

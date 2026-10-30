@@ -1,6 +1,7 @@
 do
   vim.pack.add { 'https://github.com/hrsh7th/nvim-cmp' }
   local cmp = require('cmp')
+  local cmp_keys = require('libkeys.nvim-cmp')
 
   cmp.setup {
     snippet = {
@@ -10,7 +11,7 @@ do
     },
     preselect = cmp.PreselectMode.None,
     mapping = cmp.mapping.preset.insert(
-      require('libkeys.nvim-cmp').mappings(cmp)
+      cmp_keys.mappings(cmp)
     ),
     sources = cmp.config.sources({
       { name = 'nvim_lsp', },

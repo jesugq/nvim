@@ -1,7 +1,9 @@
 ---@diagnostic disable: different-requires
 do
   vim.pack.add { 'https://github.com/lewis6991/gitsigns.nvim' }
-  require('gitsigns').setup {
+  local gitsigns = require('gitsigns')
+  local gitsigns_keys = require('libkeys.gitsigns')
+  gitsigns.setup {
     signcolumn = true,
     numhl = true,
     signs = {
@@ -14,7 +16,7 @@ do
     },
     current_line_blame = true,
     on_attach = function(bufnr)
-      require('libkeys.gitsigns').mappings(bufnr)
+      gitsigns_keys.mappings(bufnr)
     end,
   }
 end

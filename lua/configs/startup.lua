@@ -46,7 +46,8 @@ do
   -- folds
   vim.opt.foldcolumn = '1'
   vim.o.foldlevel = 99
-  vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldclose:▶,foldsep: ,foldinner: ]]
+  local fillchars = require('libfuns.fillchars')
+  fillchars.highlights()
 
   -- indents
   vim.opt.tabstop = 2

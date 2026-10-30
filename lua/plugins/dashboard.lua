@@ -1,7 +1,8 @@
 ---@diagnostic disable: different-requires
 do
   vim.pack.add { 'https://github.com/nvimdev/dashboard-nvim' }
-  require('dashboard').setup({
+  local dashboard = require('dashboard')
+  dashboard.setup({
     theme = 'hyper',
     disable_move = true,
     shortcut_type = 'number',

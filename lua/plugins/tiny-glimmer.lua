@@ -1,6 +1,7 @@
 do
   vim.pack.add { 'https://github.com/rachartier/tiny-glimmer.nvim' }
-  require('tiny-glimmer').setup {
+  local tiny_glimmer = require('tiny-glimmer')
+  tiny_glimmer.setup {
     enabled = true,
     overwrite = {
       auto_map = true,

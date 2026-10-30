@@ -2,7 +2,8 @@
 do
   vim.pack.add { 'https://github.com/rmagatti/auto-session' }
   local auto_session = require('libfuns.auto-session')
-  require('auto-session').setup {
+  local session = require('auto-session')
+  session.setup {
     auto_create = false,
     auto_save_enabled = true,
     close_unsupported_windows = true,
