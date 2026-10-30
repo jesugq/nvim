@@ -50,6 +50,9 @@ do
   require('plugins.gruvbox-material')
   require('plugins.lualine')
   require('plugins.gitsigns')
+  require('plugins.zen-mode')
+  require('autocfg.zen-mode')
+  require('keymaps.zen-mode')
 
   -- animation
   require('plugins.dashboard')
