@@ -17,10 +17,13 @@ do
     if file_name == "" then file_name = "[No Name]" end
     local choice = vim.fn.confirm("Buffer delete: " .. file_name .. "?", "&Yes\n&No", 2)
     if choice == 1 then
+      if file_path ~= "" and vim.bo.modified then
+        vim.cmd('w')
+      end
       if file_path ~= "" and vim.fn.filereadable(file_path) == 1 then
         vim.fn.delete(file_path)
       end
-      Snacks.bufdelete()
+      Snacks.bufdelete({ force = true })
     end
   end
 
