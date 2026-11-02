@@ -13,5 +13,6 @@ do
   vim.keymap.set('n', '<leader>bs', function() vim.cmd('w') end, { desc = '[b]uffer [s]ave' })
   vim.keymap.set('n', '<leader>bS', function() vim.cmd('wa') end, { desc = '[b]uffer [s]ave all' })
   vim.keymap.set('n', '<leader>bt', function() vim.cmd('checktime') end, { desc = '[b]uffer [t]ime' })
+  vim.keymap.set('n', '<leader>bv', function() buffers.random_file(vim.fn.expand('%:.:h')) end, { desc = '[b]uffer [v]iew' })
   vim.keymap.set('n', '<leader>by', function() vim.cmd('recover') end, { desc = '[b]uffer [y]ield' })
 end
