@@ -12,6 +12,7 @@ do
       { '<leader>h', group = '[h]unk' },
       { '<leader>q', group = '[q]uest' },
       { '<leader>s', group = '[s]earch' },
+      { '<leader>v', group = '[v]iew' },
       { 'gr', group = '[g]et [r]outine' },
     },
   }

@@ -7,6 +7,7 @@ do
   require('keymaps.buffers')
   require('keymaps.windows')
   require('keymaps.context')
+  require('keymaps.venture')
   require('keymaps.breaker')
   require('keymaps.reading')
 

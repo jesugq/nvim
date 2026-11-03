@@ -10,9 +10,6 @@ do
       filename = function()
         return vim.fn.expand('%:p')
       end,
-      filename_without_extension = function()
-        return vim.fn.expand('%:p:r')
-      end,
     },
     r = {
       description = 'relative',
@@ -22,20 +19,14 @@ do
       filename = function()
         return vim.fn.expand('%:.')
       end,
-      filename_without_extension = function()
-        return vim.fn.fnamemodify(vim.fn.expand('%:.'), ':r')
-      end,
     },
-    f = {
-      description = 'file',
+    p = {
+      description = 'present',
       directory = function()
         return ''
       end,
       filename = function()
         return vim.fn.expand('%:t')
-      end,
-      filename_without_extension = function()
-        return vim.fn.expand('%:t:r')
       end,
     },
   }
@@ -53,31 +44,19 @@ do
     end
   end
 
-  local function copy_field(context, field, label, url)
+  local function copy_field(context, field, label)
     local info = path_contexts[context][field]()
-
-    if url then
-      info = vim.uri_encode(info)
-    end
-
     local description = path_contexts[context].description .. ' ' .. label
-    if url then
-      description = description .. ' url'
-    end
 
     FUNCTION.copy(info, description)
   end
 
-  FUNCTION.copy_directory = function(context, url)
-    copy_field(context, 'directory', 'directory', url)
+  FUNCTION.copy_directory = function(context)
+    copy_field(context, 'directory', 'directory')
   end
 
-  FUNCTION.copy_filename = function(context, url)
-    copy_field(context, 'filename', 'filename', url)
-  end
-
-  FUNCTION.copy_filename_without_extension = function(context, url)
-    copy_field(context, 'filename_without_extension', 'filename without extension', url)
+  FUNCTION.copy_filename = function(context)
+    copy_field(context, 'filename', 'filename')
   end
 
   FUNCTION.copy_line = function(context)
