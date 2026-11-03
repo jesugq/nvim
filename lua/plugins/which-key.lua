@@ -3,6 +3,7 @@ do
   local which_key = require('which-key')
 
   which_key.setup {
+    delay = 0,
     icons = { mappings = true, },
     spec = {
       { '<leader>b', group = '[b]uffer' },
