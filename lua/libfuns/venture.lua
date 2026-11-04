@@ -131,7 +131,7 @@ do
   end
 
   FUNCTION.view_dd = function()
-    vim.api.nvim_buf_set_lines(0, 0, -1, false, clipboard_lines())
+    vim.cmd('enew')
   end
 
   FUNCTION.view_yy = function()
