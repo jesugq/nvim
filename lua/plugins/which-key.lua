@@ -8,11 +8,13 @@ do
     spec = {
       { '<leader>b', group = '[b]uffer' },
       { '<leader>c', group = '[c]opy' },
+      { '<leader>C', group = '[c]opy' },
       { '<leader>g', group = '[g]et' },
       { '<leader>h', group = '[h]unk' },
       { '<leader>q', group = '[q]uest' },
       { '<leader>s', group = '[s]earch' },
       { '<leader>v', group = '[v]iew' },
+      { '<leader>V', group = '[v]iew' },
       { 'gr', group = '[g]et [r]outine' },
     },
   }
