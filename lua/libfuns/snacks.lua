@@ -1,13 +1,6 @@
 do
   local FUNCTION = {}
 
-  FUNCTION.incoming_links = function()
-    Snacks.picker.grep({
-      search = vim.uri_encode(vim.fn.expand('%:.')),
-      regex = false,
-    })
-  end
-
   FUNCTION.recent = function(opts, ctx)
     local buf = vim.api.nvim_get_current_buf()
     local file = vim.api.nvim_buf_get_name(buf)
@@ -22,13 +15,6 @@ do
     end
   end
 
-  FUNCTION.outgoing_links = function()
-    Snacks.picker.lines({
-      pattern = '](',
-      layout = { preset = 'default', preview = true },
-    })
-  end
-
   FUNCTION.person_marks = function(item)
     if item.label and item.label:match("^[a-zA-Z]$") then
       return item
@@ -41,6 +27,58 @@ do
       return false
     end
     return item
+  end
+
+  local function recorder_upvalue(name)
+    for _, fn in ipairs { require('recorder').displaySlots, require('recorder').recordingStatus } do
+      local i = 1
+      while true do
+        local uname, value = debug.getupvalue(fn, i)
+        if not uname then
+          break
+        end
+        if uname == name then
+          return value
+        end
+        i = i + 1
+      end
+    end
+  end
+
+  FUNCTION.recorder_slot = function()
+    local slot_index = recorder_upvalue('slotIndex')
+    local macro_regs = recorder_upvalue('macroRegs')
+    if type(macro_regs) == 'table' and type(slot_index) == 'number' then
+      return macro_regs[slot_index]
+    end
+  end
+
+  FUNCTION.copy_register_to_macro = function(picker, item)
+    picker:close()
+    if not item then
+      return
+    end
+
+    if vim.fn.reg_recording() ~= '' then
+      vim.notify('Cannot copy to a macro while recording.', vim.log.levels.WARN, { title = 'nvim-recorder' })
+      return
+    end
+
+    local slot = FUNCTION.recorder_slot()
+    if not slot then
+      vim.notify('No recorder slot is selected.', vim.log.levels.WARN, { title = 'nvim-recorder' })
+      return
+    end
+
+    local value = item.data or item.value or ''
+    value = vim.api.nvim_replace_termcodes(value, true, true, true)
+    vim.fn.setreg(slot, value, 'c')
+
+    local shown = vim.fn.keytrans(value)
+    if shown == '' then
+      shown = '(empty)'
+    end
+    vim.notify('Copied to macro [' .. slot .. ']:\n' .. shown, vim.log.levels.INFO, { title = 'nvim-recorder' })
   end
 
   FUNCTION.buffer_marks = function(opts)

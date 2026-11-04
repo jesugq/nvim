@@ -8,7 +8,6 @@ do
   vim.keymap.set('n', '<leader>bF', function() Snacks.picker.files({ regex = true, }) end, { desc = '[b]uffer [f]iles fzf regex' })
   vim.keymap.set('n', '<leader>bg', function() Snacks.picker.grep({ regex = false, }) end, { desc = '[b]uffer [g]auge grep files name' })
   vim.keymap.set('n', '<leader>bG', function() Snacks.picker.grep({ regex = true, }) end, { desc = '[b]uffer [g]auge grep files regex' })
-  vim.keymap.set('n', '<leader>bm', function() Snacks.picker.marks({ focus = 'input', finder = snacks.buffer_marks, transform = function(item) return snacks.person_marks(item) end }) end, { desc = '[b]uffer [m]arks' })
   vim.keymap.set('n', '<leader>bq', function() Snacks.explorer() end, { desc = '[b]uffer [q]uery' })
   vim.keymap.set('n', '<leader>br', function() Snacks.picker.recent({ finder = snacks.recent }) end, { desc = '[b]uffer [r]ecents' })
   vim.keymap.set('n', '<leader>bw', function() Snacks.picker.buffers() end, { desc = '[b]uffer [w]indows' })
@@ -19,9 +18,8 @@ do
   vim.keymap.set('n', '<leader>s:', function() Snacks.picker.command_history() end, { desc = '[s]earch [:] commands' })
   vim.keymap.set('n', '<leader>sh', function() Snacks.picker.help({ focus = 'input' }) end, { desc = '[s]earch [h]elp' })
   vim.keymap.set('n', '<leader>sk', function() Snacks.picker.keymaps({ focus = 'input' }) end, { desc = '[s]earch [k]eymaps' })
-  vim.keymap.set('n', '<leader>sm', function() Snacks.picker.marks({ transform = function(item) return snacks.person_marks(item) end }) end, { desc = '[s]earch [m]arks local' })
-  vim.keymap.set('n', '<leader>sM', function() Snacks.picker.marks({ transform = function(item) return snacks.neovim_marks(item) end }) end, { desc = '[s]earch [m]arks global' })
-  vim.keymap.set('n', '<leader>sq', function() Snacks.picker.registers({ transform = function(item) return snacks.person_marks(item) end }) end, { desc = '[s]earch [q]ueue' })
+  vim.keymap.set('n', '<leader>sm', function() Snacks.picker.marks({ focus = 'input', finder = snacks.buffer_marks, transform = function(item) return snacks.person_marks(item) end }) end, { desc = '[s]earch [m]arks' })
+  vim.keymap.set('n', '<leader>sq', function() Snacks.picker.registers({ transform = function(item) return snacks.person_marks(item) end, confirm = snacks.copy_register_to_macro }) end, { desc = '[s]earch [q]ueue' })
   vim.keymap.set('n', '<leader>ss', function() Snacks.picker.resume() end, { desc = '[s]earch [s]earch' })
 
   -- <leader>g
