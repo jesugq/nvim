@@ -1,10 +1,14 @@
 do
-  local function hunk_diff(rev)
-    local lines = vim.fn.systemlist({ 'git', 'diff', rev .. '...HEAD', '--' })
+  local last_commit
+
+  local function hunk_diff(base, commit)
+    local lines = vim.fn.systemlist({ 'git', 'diff', base .. '...' .. commit, '--' })
     if vim.v.shell_error ~= 0 then
       vim.notify(table.concat(lines, '\n'), vim.log.levels.ERROR, { title = 'git diff' })
       return
     end
+
+    last_commit = commit
 
     vim.cmd('enew')
     vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
@@ -12,29 +16,58 @@ do
     vim.api.nvim_win_set_cursor(0, { 1, 0 })
   end
 
-  local function compare_diff(origin)
-    Snacks.input({ prompt = 'Branch' }, function(branch)
-      branch = vim.trim(branch or '')
-      if branch == '' then
+  local function ask_ref(prompt, cb)
+    Snacks.input({ prompt = prompt, default = 'origin/' }, function(value)
+      value = vim.trim(value or '')
+      if value == '' or value == 'origin/' then
         return
       end
 
-      local rev = origin and ('origin/' .. branch) or branch
-      hunk_diff(rev)
+      cb(value)
     end)
   end
 
+  local function clipboard_path()
+    local info = vim.fn.getreg('+')
+    if info == '' then
+      info = vim.fn.getreg('"')
+    end
+    return vim.trim(info)
+  end
+
+  local function hunk_view()
+    if not last_commit then
+      vim.notify('No commit from hunk compare', vim.log.levels.WARN, { title = 'git show' })
+      return
+    end
+
+    local path = clipboard_path()
+    if path == '' then
+      vim.notify('Clipboard is empty', vim.log.levels.WARN, { title = 'git show' })
+      return
+    end
+
+    local lines = vim.fn.systemlist({ 'git', 'show', last_commit .. ':' .. path })
+    if vim.v.shell_error ~= 0 then
+      vim.notify(table.concat(lines, '\n'), vim.log.levels.ERROR, { title = 'git show' })
+      return
+    end
+
+    vim.cmd('enew')
+    vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+    pcall(vim.api.nvim_buf_set_name, 0, last_commit .. ':' .. path)
+    vim.bo.filetype = vim.filetype.match({ filename = path }) or vim.bo.filetype
+    vim.bo.modified = false
+    vim.api.nvim_win_set_cursor(0, { 1, 0 })
+  end
+
   -- <leader>h
-  vim.keymap.set('n', '<leader>hs', function()
-    hunk_diff('origin/staging')
-  end, { desc = '[h]unk [s]taging diff origin' })
-  vim.keymap.set('n', '<leader>hS', function()
-    hunk_diff('staging')
-  end, { desc = '[h]unk [s]taging diff local' })
   vim.keymap.set('n', '<leader>hc', function()
-    compare_diff(true)
-  end, { desc = '[h]unk [c]ompare diff origin' })
-  vim.keymap.set('n', '<leader>hC', function()
-    compare_diff(false)
-  end, { desc = '[h]unk [c]ompare diff local' })
+    ask_ref('Base', function(base)
+      ask_ref('Commit', function(commit)
+        hunk_diff(base, commit)
+      end)
+    end)
+  end, { desc = '[h]unk [c]ompare' })
+  vim.keymap.set('n', '<leader>hv', hunk_view, { desc = '[h]unk [v]iew' })
 end
