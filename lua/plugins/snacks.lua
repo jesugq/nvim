@@ -18,7 +18,7 @@ do
       },
       sources = {
         buffers = {
-          focus = 'input',
+          focus = 'list',
           current = true,
         },
         explorer = {
@@ -41,6 +41,18 @@ do
           focus = 'input',
         },
         grep_buffers = {
+          focus = 'list',
+        },
+        registers = {
+          focus = 'input',
+        },
+        help = {
+          focus = 'input',
+        },
+        keymaps = {
+          focus = 'input',
+        },
+        marks = {
           focus = 'input',
         },
       },
