@@ -16,8 +16,8 @@ do
     vim.api.nvim_win_set_cursor(0, { 1, 0 })
   end
 
-  local function ask_ref(prompt, cb)
-    Snacks.input({ prompt = prompt, default = 'origin/' }, function(value)
+  local function ask_ref(prompt, default, cb)
+    Snacks.input({ prompt = prompt, default = default }, function(value)
       value = vim.trim(value or '')
       if value == '' or value == 'origin/' then
         return
@@ -63,8 +63,15 @@ do
 
   -- <leader>h
   vim.keymap.set('n', '<leader>hc', function()
-    ask_ref('Base', function(base)
-      ask_ref('Commit', function(commit)
+    ask_ref('Base', 'origin/', function(base)
+      ask_ref('Commit', 'origin/', function(commit)
+        hunk_diff(base, commit)
+      end)
+    end)
+  end, { desc = '[h]unk [c]ompare origin' })
+  vim.keymap.set('n', '<leader>hC', function()
+    ask_ref('Base', '', function(base)
+      ask_ref('Commit', '', function(commit)
         hunk_diff(base, commit)
       end)
     end)
