@@ -6,8 +6,8 @@ do
     dynamicSlots = 'rotate',
     mapping = require('libkeys.nvim-recorder'),
     clear = false,
-    logLevel = vim.log.levels.INFO,
-    lessNotifications = false,
+    logLevel = vim.log.levels.OFF,
+    lessNotifications = true,
     useNerdfontIcons = true,
   }
 end
