@@ -4,8 +4,8 @@ do
   -- <leader>b
   vim.keymap.set('n', '<leader>ba', function() buffers.add_buffer() end, { desc = '[b]uffer [a]dd' })
   vim.keymap.set('n', '<leader>bb', '<C-^>', { desc = '[b]uffer [b]uffer' })
-  vim.keymap.set('n', '<leader>bc', function() Snacks.bufdelete() end, { desc = '[b]uffer [c]lose' })
-  vim.keymap.set('n', '<leader>bC', function() Snacks.bufdelete.all() end, { desc = '[b]uffer [c]lose' })
+  vim.keymap.set('n', '<leader>bc', '<cmd>bdelete<cr>', { desc = '[b]uffer [c]lose' })
+  vim.keymap.set('n', '<leader>bC', '<cmd>%bdelete<cr>', { desc = '[b]uffer [c]lose all' })
   vim.keymap.set('n', '<leader>bd', function() buffers.delete_buffer() end, { desc = '[b]uffer [d]elete' })
   vim.keymap.set('n', '<leader>bk', function() buffers.wrap_buffer() end, { desc = '[b]uffer [k]nit' })
   vim.keymap.set('n', '<leader>bl', function() buffers.number_buffer() end, { desc = '[b]uffer [l]ine' })

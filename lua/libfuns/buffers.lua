@@ -23,7 +23,7 @@ do
       if file_path ~= "" and vim.fn.filereadable(file_path) == 1 then
         vim.fn.delete(file_path)
       end
-      Snacks.bufdelete({ force = true })
+      vim.api.nvim_buf_delete(0, { force = true })
     end
   end
 
@@ -94,7 +94,7 @@ do
     local prev_unique = prev_buffer ~= next_buffer
 
     if prev_valid and prev_unique then
-      pcall(Snacks.bufdelete.delete, { buf = prev_buffer, })
+      pcall(vim.api.nvim_buf_delete, prev_buffer, { force = true, })
     end
   end
 
