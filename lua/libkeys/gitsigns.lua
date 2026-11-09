@@ -17,7 +17,7 @@ do
       buffer = bufnr, desc = '[h]unk [b]lame line',
     })
     vim.keymap.set('n', '<leader>hB', gitsigns.blame, {
-      buffer = bufnr, desc = '[h]unk [b]lame verify',
+      buffer = bufnr, desc = '[h]unk [B]lame verify',
     })
     vim.keymap.set('n', '<leader>hd', gitsigns.reset_hunk, {
       buffer = bufnr, desc = '[h]unk [d]elete',
@@ -31,7 +31,7 @@ do
       buffer = bufnr, desc = '[h]unk [h]unk preview',
     })
     vim.keymap.set('n', '<leader>hH', gitsigns.diffthis, {
-      buffer = bufnr, desc = '[h]unk [h]unk diffthis',
+      buffer = bufnr, desc = '[h]unk [H]unk diffthis',
     })
     vim.keymap.set('n', '<leader>hl', gitsigns.setqflist, {
       buffer = bufnr, desc = '[h]unk [l]ist this',
@@ -39,7 +39,7 @@ do
     vim.keymap.set('n', '<leader>hL', function()
       gitsigns.setqflist('all')
     end, {
-      buffer = bufnr, desc = '[h]unk [l]ist all',
+      buffer = bufnr, desc = '[h]unk [L]ist all',
     })
 
     vim.keymap.set('n', '[h', function()

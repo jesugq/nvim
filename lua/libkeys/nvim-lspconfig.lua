@@ -16,7 +16,7 @@ do
       buffer = true, desc = '[g]et [r]outine [d]efinitions',
     })
     vim.keymap.set('n', 'grD', function() vim.lsp.buf.declaration() end, {
-      buffer = true, desc = '[g]et [r]outine [d]eclarations',
+      buffer = true, desc = '[g]et [r]outine [D]eclarations',
     })
     vim.keymap.set('n', 'grh', function() vim.lsp.buf.hover() end, {
       buffer = true, desc = '[g]et [r]outine [h]over',

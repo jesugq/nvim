@@ -8,15 +8,14 @@ do
     spec = {
       { '<leader>b', group = '[b]uffer' },
       { '<leader>c', group = '[c]opy' },
-      { '<leader>C', group = '[c]opy' },
+      { '<leader>C', group = '[C]opy' },
       { '<leader>g', group = '[g]et' },
       { '<leader>h', group = '[h]unk' },
       { '<leader>m', group = '[m]emory' },
       { '<leader>q', group = '[q]uest' },
       { '<leader>s', group = '[s]earch' },
       { '<leader>v', group = '[v]iew' },
-      { '<leader>V', group = '[v]iew' },
-      { 'gr', group = '[g]et [r]outine' },
+      { '<leader>V', group = '[V]iew' },
     },
   }
 end

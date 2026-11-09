@@ -75,6 +75,6 @@ do
         hunk_diff(base, commit)
       end)
     end)
-  end, { desc = '[h]unk [c]ompare local' })
+  end, { desc = '[h]unk [C]ompare local' })
   vim.keymap.set('n', '<leader>hv', hunk_view, { desc = '[h]unk [v]iew' })
 end

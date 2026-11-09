@@ -10,6 +10,6 @@ do
   end, { desc = '[q]uest [p]ackages' })
   vim.keymap.set('n', '<leader>qq', function() vim.cmd('qa') end, { desc = '[q]uest [q]uit' })
   vim.keymap.set('n', '<leader>qr', function() vim.cmd('restart!') end, { desc = '[q]uest [r]eload hard'})
-  vim.keymap.set('n', '<leader>qR', function() vim.cmd('restart') end, { desc = '[q]uest [r]eload soft'})
+  vim.keymap.set('n', '<leader>qR', function() vim.cmd('restart') end, { desc = '[q]uest [R]eload soft'})
   vim.keymap.set('n', '<leader>qs', function() vim.cmd('AutoSession save') end, { desc = '[q]uest [s]ave' })
 end
