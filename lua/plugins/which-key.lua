@@ -11,6 +11,7 @@ do
       { '<leader>C', group = '[c]opy' },
       { '<leader>g', group = '[g]et' },
       { '<leader>h', group = '[h]unk' },
+      { '<leader>m', group = '[m]emory' },
       { '<leader>q', group = '[q]uest' },
       { '<leader>s', group = '[s]earch' },
       { '<leader>v', group = '[v]iew' },

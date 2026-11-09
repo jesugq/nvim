@@ -10,6 +10,7 @@ do
   require('keymaps.venture')
   require('keymaps.breaker')
   require('keymaps.reading')
+  require('keymaps.memoram')
 
   -- packs ordered
   require('plugins.nvim-web-devicons')
