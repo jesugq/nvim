@@ -3,7 +3,7 @@ do
   local paperplanes = require('paperplanes')
   paperplanes.setup {
     register = '+',
-    provider = 'paste.rs',
+    provider = 'dpaste.org',
     notifier = vim.notify or print,
     save_history = true,
   }
