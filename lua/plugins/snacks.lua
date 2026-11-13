@@ -44,16 +44,10 @@ do
           focus = 'list',
         },
         registers = {
-          focus = 'input',
-        },
-        help = {
-          focus = 'input',
-        },
-        keymaps = {
-          focus = 'input',
+          focus = 'list',
         },
         marks = {
-          focus = 'input',
+          focus = 'list',
         },
       },
     },
