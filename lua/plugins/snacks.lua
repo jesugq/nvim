@@ -18,7 +18,7 @@ do
       },
       sources = {
         buffers = {
-          focus = 'list',
+          focus = 'focus',
           current = true,
         },
         explorer = {
@@ -41,7 +41,7 @@ do
           focus = 'input',
         },
         grep_buffers = {
-          focus = 'list',
+          focus = 'input',
         },
         registers = {
           focus = 'list',
