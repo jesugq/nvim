@@ -2,22 +2,32 @@ do
   local snacks = require('libfuns.snacks')
 
   -- <leader>b
-  vim.keymap.set('n', '<leader>b/', function() Snacks.picker.grep_buffers({ regex = false, filter = { buf = true, } }) end, { desc = '[b]uffer [/] grep current buffer' })
-  vim.keymap.set('n', '<leader>be', function() Snacks.picker.grep_buffers({ regex = false, }) end, { desc = '[b]uffer [e]xplore grep buffers name' })
-  vim.keymap.set('n', '<leader>bf', function() Snacks.picker.files({ regex = false, }) end, { desc = '[b]uffer [f]iles fzf name' })
-  vim.keymap.set('n', '<leader>bF', function() Snacks.picker.files({ regex = true, }) end, { desc = '[b]uffer [F]iles fzf regex' })
-  vim.keymap.set('n', '<leader>bg', function() Snacks.picker.grep({ regex = false, }) end, { desc = '[b]uffer [g]auge grep files name' })
-  vim.keymap.set('n', '<leader>bm', function() Snacks.picker.marks({ finder = snacks.buffer_marks, transform = function(item) return snacks.person_marks(item) end }) end, { desc = '[s]earch [m]arks' })
-  vim.keymap.set('n', '<leader>bq', function() Snacks.explorer() end, { desc = '[b]uffer [q]uery' })
-  vim.keymap.set('n', '<leader>br', function() Snacks.picker.recent({ finder = snacks.recent }) end, { desc = '[b]uffer [r]ecents' })
-  vim.keymap.set('n', '<leader>bw', function() Snacks.picker.buffers() end, { desc = '[b]uffer [w]indows' })
+  vim.keymap.set('n', '<leader>be', function() Snacks.picker.explorer({ finder = snacks.explorer_buffers('buffer') }) end, { desc = '[b]uffer [e]xplore' })
+  vim.keymap.set('n', '<leader>bf', function() Snacks.picker.buffers({ finder = snacks.buffer_files(vim.api.nvim_get_current_buf()) }) end, { desc = '[b]uffer [f]ind' })
+  vim.keymap.set('n', '<leader>bg', function() Snacks.picker.grep_buffers({ focus = 'input', finder = snacks.buffer_grep() }) end, { desc = '[b]uffer [g]rep' })
+  vim.keymap.set('n', '<leader>bm', function() Snacks.picker.marks({ finder = snacks.buffer_marks, transform = function(item) return snacks.person_marks(item) end }) end, { desc = '[b]uffer [m]arks' })
 
-  -- <leader>s
-  vim.keymap.set('n', '<leader>s"', function() Snacks.picker.registers({ transform = function(item) return snacks.neovim_marks(item) end }) end, { desc = '[s]earch ["] registers' })
-  vim.keymap.set('n', '<leader>s/', function() Snacks.picker.search_history() end, { desc = '[s]earch [/] searches' })
-  vim.keymap.set('n', '<leader>s:', function() Snacks.picker.command_history() end, { desc = '[s]earch [:] commands' })
-  vim.keymap.set('n', '<leader>sq', function() Snacks.picker.registers({ transform = function(item) return snacks.person_marks(item) end, confirm = snacks.copy_register_to_macro }) end, { desc = '[s]earch [q]ueue' })
-  vim.keymap.set('n', '<leader>ss', function() Snacks.picker.resume() end, { desc = '[s]earch [s]earch' })
+  -- <leader>w
+  vim.keymap.set('n', '<leader>we', function() Snacks.picker.explorer({ finder = snacks.explorer_buffers('window') }) end, { desc = '[w]indows [e]xplore' })
+  vim.keymap.set('n', '<leader>wf', function() Snacks.picker.buffers({ finder = snacks.window_files }) end, { desc = '[w]indows [f]ind' })
+  vim.keymap.set('n', '<leader>wg', function() Snacks.picker.grep_buffers({ focus = 'input', finder = snacks.window_grep }) end, { desc = '[w]indows [g]rep visible buffers' })
+  vim.keymap.set('n', '<leader>wm', function() Snacks.picker.marks({ finder = snacks.window_marks, transform = function(item) return snacks.person_marks(item) end }) end, { desc = '[w]indows [m]arks' })
+
+  -- <leader>n
+  vim.keymap.set('n', '<leader>ne', function() Snacks.picker.explorer({ finder = snacks.explorer_buffers('nest') }) end, { desc = '[n]est [e]xplore' })
+  vim.keymap.set('n', '<leader>nf', function() Snacks.picker.buffers() end, { desc = '[n]est [f]ind' })
+  vim.keymap.set('n', '<leader>ng', function() Snacks.picker.grep_buffers() end, { desc = '[n]est [g]rep' })
+  vim.keymap.set('n', '<leader>nm', function() Snacks.picker.marks({ finder = snacks.nest_marks, transform = function(item) return snacks.person_marks(item) end }) end, { desc = '[n]est [m]arks' })
+
+  -- <leader>o
+  vim.keymap.set('n', '<leader>oe', function() Snacks.explorer() end, { desc = '[o]pen [e]xplore' })
+  vim.keymap.set('n', '<leader>or', function() Snacks.picker.recent({ finder = snacks.open_recent }) end, { desc = '[o]pen [r]ecents' })
+  vim.keymap.set('n', '<leader>o"', function() Snacks.picker.registers({ transform = function(item) return snacks.neovim_marks(item) end }) end, { desc = '[o]pen ["] registers' })
+  vim.keymap.set('n', '<leader>o/', function() Snacks.picker.search_history() end, { desc = '[o]pen [/] searches' })
+  vim.keymap.set('n', '<leader>o:', function() Snacks.picker.command_history() end, { desc = '[o]pen [:] commands' })
+  vim.keymap.set('n', '<leader>of', function() Snacks.picker.files() end, { desc = '[o]pen [f]ind' })
+  vim.keymap.set('n', '<leader>og', function() Snacks.picker.grep() end, { desc = '[o]pen [g]rep' })
+  vim.keymap.set('n', '<leader>oq', function() Snacks.picker.registers({ transform = function(item) return snacks.person_marks(item) end, confirm = snacks.copy_register_to_macro }) end, { desc = '[o]pen [q]ueue' })
 
   -- <leader>g
   vim.keymap.set('n', '<leader>g,', function() Snacks.picker.lsp_incoming_calls() end, { desc = '[g]et [,] incoming calls' })

@@ -17,8 +17,16 @@ do
         preset = 'default',
       },
       sources = {
+        grep = {
+          focus = 'input',
+          regex = false,
+        },
+        grep_buffers = {
+          focus = 'input',
+          regex = false,
+        },
         buffers = {
-          focus = 'focus',
+          focus = 'input',
           current = true,
         },
         explorer = {
@@ -36,12 +44,6 @@ do
           focus = 'input',
           hidden = true,
           ignored = true,
-        },
-        grep = {
-          focus = 'input',
-        },
-        grep_buffers = {
-          focus = 'input',
         },
         registers = {
           focus = 'list',

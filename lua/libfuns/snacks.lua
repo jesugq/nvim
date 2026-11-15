@@ -1,12 +1,11 @@
 do
   local FUNCTION = {}
 
-  FUNCTION.recent = function(opts, ctx)
+  FUNCTION.open_recent = function(opts, ctx)
     local buf = vim.api.nvim_get_current_buf()
     local file = vim.api.nvim_buf_get_name(buf)
     local include = file ~= '' and vim.bo[buf].buftype == '' and ctx.filter:match({ file = file, text = '' })
-    local recent = require('snacks.picker.source.recent')
-    local inner = recent.files(opts, ctx)
+    local inner = require('snacks.picker.source.recent').files(opts, ctx)
     return function(cb)
       if include then
         cb({ file = file, text = file, recent = true })
@@ -14,6 +13,121 @@ do
       inner(cb)
     end
   end
+
+  FUNCTION.window_grep = function(opts, ctx)
+    local files = {}
+    local seen = {}
+    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+      local buf = vim.api.nvim_win_get_buf(win)
+      local file = vim.api.nvim_buf_get_name(buf)
+      if not seen[buf] and vim.bo[buf].buflisted and file ~= '' then
+        seen[buf] = true
+        files[#files + 1] = file
+      end
+    end
+    if #files == 0 then
+      return function() end
+    end
+    opts = vim.tbl_extend('force', opts, {
+      buffers = false,
+      dirs = files,
+      need_search = false,
+    })
+    return require('snacks.picker.source.grep').grep(opts, ctx)
+  end
+
+  local function visible_buffer_set()
+    local buffers = {}
+    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+      buffers[vim.api.nvim_win_get_buf(win)] = true
+    end
+    return buffers
+  end
+
+  local function buffer_items(allowed, opts, ctx)
+    return vim.tbl_filter(function(item) return allowed[item.buf] == true end,
+      require('snacks.picker.source.buffers').buffers(opts, ctx))
+  end
+
+  FUNCTION.buffer_files = function(buf)
+    return function(opts, ctx)
+      return buffer_items({ [buf] = true }, opts, ctx)
+    end
+  end
+
+  FUNCTION.window_files = function(opts, ctx)
+    return buffer_items(visible_buffer_set(), opts, ctx)
+  end
+
+  FUNCTION.explorer_buffers = function(scope, focused_buf, visible_buffers)
+    focused_buf = focused_buf or vim.api.nvim_get_current_buf()
+    visible_buffers = visible_buffers or visible_buffer_set()
+    return function(opts, ctx)
+      local allowed
+      if scope == 'buffer' then
+        allowed = { [focused_buf] = true }
+      elseif scope == 'window' then
+        allowed = visible_buffers
+      else
+        allowed = {}
+        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+          if vim.api.nvim_buf_is_valid(buf) and (vim.bo[buf].buflisted or vim.api.nvim_buf_is_loaded(buf)) then
+            allowed[buf] = true
+          end
+        end
+      end
+
+      local files = {}
+      for buf in pairs(allowed) do
+        local file = vim.api.nvim_buf_get_name(buf)
+        if file ~= '' and vim.bo[buf].buftype == '' and vim.uv.fs_stat(file) then
+          files[vim.fs.normalize(file)] = true
+        end
+      end
+
+      local tree = require('snacks.explorer.tree')
+      for file in pairs(files) do
+        tree:open(file)
+      end
+      local finder = require('snacks.picker.source.explorer').explorer(opts, ctx)
+      return function(cb)
+        finder(function(item)
+          local file = vim.fs.normalize(item.file)
+          if files[file] then
+            cb(item)
+            return
+          end
+          if item.dir then
+            local prefix = file:gsub('/+$', '') .. '/'
+            for target in pairs(files) do
+              if target:sub(1, #prefix) == prefix then
+                cb(item)
+                return
+              end
+            end
+          end
+        end)
+      end
+    end
+  end
+
+  FUNCTION.buffer_grep = function()
+    local buf = vim.api.nvim_get_current_buf()
+    local file = vim.api.nvim_buf_get_name(buf)
+    local is_file = file ~= '' and vim.bo[buf].buftype == ''
+    return function(opts, ctx)
+      if not is_file then
+        return function() end
+      end
+      opts = vim.tbl_extend('force', opts, {
+        buffers = false,
+        dirs = { file },
+        need_search = false,
+      })
+      return require('snacks.picker.source.grep').grep(opts, ctx)
+    end
+  end
+
 
   FUNCTION.person_marks = function(item)
     if item.label and item.label:match("^[a-zA-Z]$") then
@@ -81,7 +195,7 @@ do
     vim.notify('Copied to macro [' .. slot .. ']:\n' .. shown, vim.log.levels.INFO, { title = 'nvim-recorder' })
   end
 
-  FUNCTION.buffer_marks = function(opts)
+  FUNCTION.nest_marks = function(opts)
     local marks = {}
     if opts.global ~= false then
       vim.list_extend(marks, vim.fn.getmarklist())
@@ -171,6 +285,16 @@ do
       return a.label < b.label
     end)
     return items
+  end
+
+  FUNCTION.buffer_marks = function(opts)
+    local buf = vim.api.nvim_get_current_buf()
+    return vim.tbl_filter(function(item) return item.buf == buf end, FUNCTION.nest_marks(opts))
+  end
+
+  FUNCTION.window_marks = function(opts)
+    local visible = visible_buffer_set()
+    return vim.tbl_filter(function(item) return item.buf and visible[item.buf] end, FUNCTION.nest_marks(opts))
   end
 
   return FUNCTION

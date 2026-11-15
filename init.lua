@@ -6,6 +6,7 @@ do
   require('autocfg.focused')
   require('keymaps.buffers')
   require('keymaps.windows')
+  require('keymaps.nookers')
   require('keymaps.context')
   require('keymaps.venture')
   require('keymaps.breaker')
