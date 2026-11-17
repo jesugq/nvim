@@ -41,7 +41,7 @@ do
     local prev_unique = prev_buffer ~= next_buffer
 
     if prev_valid and prev_unique then
-      pcall(vim.api.nvim_buf_delete, prev_buffer, { force = true, })
+      pcall(Snacks.bufdelete.delete, { buf = prev_buffer, })
     end
   end
 

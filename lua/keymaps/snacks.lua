@@ -2,6 +2,7 @@ do
   local snacks = require('libfuns.snacks')
 
   -- <leader>b
+  vim.keymap.set('n', '<leader>bc', function() Snacks.bufdelete() end, { desc = '[b]uffer [c]lose' })
   vim.keymap.set('n', '<leader>be', function() Snacks.picker.explorer({ finder = snacks.explorer_buffers('buffer') }) end, { desc = '[b]uffer [e]xplore' })
   vim.keymap.set('n', '<leader>bf', function() Snacks.picker.buffers({ finder = snacks.buffer_files(vim.api.nvim_get_current_buf()) }) end, { desc = '[b]uffer [f]ind' })
   vim.keymap.set('n', '<leader>bg', function() Snacks.picker.grep_buffers({ focus = 'input', finder = snacks.buffer_grep() }) end, { desc = '[b]uffer [g]rep' })

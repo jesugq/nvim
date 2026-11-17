@@ -56,5 +56,6 @@ do
     notifier = { enabled = true, },
     image = { enabled = false, },
     input = { enabled = true, },
+    bufdelete = { enabled = true, },
   }
 end
