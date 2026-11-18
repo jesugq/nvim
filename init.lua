@@ -9,8 +9,8 @@ do
   require('keymaps.nookers')
   require('keymaps.context')
   require('keymaps.venture')
+  require('keymaps.harvest')
   require('keymaps.breaker')
-  require('keymaps.reading')
   require('keymaps.memoram')
 
   -- packs ordered
