@@ -42,6 +42,7 @@ do
 
   -- editing
   require('plugins.marks')
+  require('keymaps.marks')
   require('plugins.nvim-recorder')
   require('plugins.auto-session')
   require('keymaps.auto-session')
