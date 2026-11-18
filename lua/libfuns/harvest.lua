@@ -186,6 +186,13 @@ do
       start_line, end_line = end_line, start_line
     end
 
+    -- Reusing a checkout stays in the buffer, so a previous linewise selection
+    -- is still active. `V` would toggle it off instead of selecting the new line.
+    local mode = vim.fn.mode()
+    if mode == 'v' or mode == 'V' or mode == '\22' then
+      vim.cmd('normal! \27')
+    end
+
     vim.api.nvim_win_set_cursor(0, { start_line, 0 })
     vim.cmd('normal! V')
     if end_line ~= start_line then
@@ -246,14 +253,78 @@ do
     return lines[1]
   end
 
+  -- Checkout names are `commit:path`. Neovim stores them as `{cwd}/commit:path`.
+  -- bufnr() treats the name as a pattern and can return a longer path under
+  -- the same prefix, so match the expanded name exactly.
+  local function checkout_buffer(name)
+    local suffix = '/' .. name
+    for _, candidate in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.api.nvim_buf_is_valid(candidate) then
+        local bufname = vim.fs.normalize(vim.api.nvim_buf_get_name(candidate))
+        if bufname == name or bufname:sub(-#suffix) == suffix then
+          return candidate
+        end
+      end
+    end
+  end
+
+  local function fill_checkout(buf, lines)
+    vim.bo[buf].modifiable = true
+    vim.bo[buf].swapfile = false
+    vim.bo[buf].bufhidden = 'hide'
+    vim.bo[buf].buftype = 'nofile'
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+    vim.bo[buf].modified = false
+  end
+
+  local function focus_checkout(buf)
+    if vim.api.nvim_get_current_buf() ~= buf then
+      vim.cmd.buffer(buf)
+    end
+  end
+
+  -- Returns true when an already loaded checkout was refocused and its text
+  -- was left in place.
   local function open_buffer(lines, name)
-    vim.cmd('enew')
     if #lines == 0 then
       lines = { '' }
     end
-    vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
-    pcall(vim.api.nvim_buf_set_name, 0, name)
-    vim.bo.modified = false
+
+    local function reuse(buf)
+      local loaded = vim.api.nvim_buf_is_loaded(buf)
+      focus_checkout(buf)
+      if loaded then
+        vim.bo[buf].swapfile = false
+        vim.bo[buf].bufhidden = 'hide'
+        vim.bo[buf].buftype = 'nofile'
+        return true
+      end
+
+      fill_checkout(buf, lines)
+      return false
+    end
+
+    local existing = checkout_buffer(name)
+    if existing then
+      return reuse(existing)
+    end
+
+    vim.cmd('enew')
+    local buf = vim.api.nvim_get_current_buf()
+    fill_checkout(buf, lines)
+    if pcall(vim.api.nvim_buf_set_name, buf, name) then
+      vim.bo[buf].modified = false
+      return false
+    end
+
+    local dup = checkout_buffer(name)
+    if dup and dup ~= buf then
+      local kept = reuse(dup)
+      vim.api.nvim_buf_delete(buf, { force = true })
+      return kept
+    end
+
+    return false
   end
 
   local function show_blob(path, start_line, end_line)
@@ -263,7 +334,7 @@ do
       return
     end
 
-    open_buffer(lines, last_commit .. ':' .. path)
+    local reused = open_buffer(lines, last_commit .. ':' .. path)
     vim.bo.filetype = vim.filetype.match({ filename = path }) or vim.bo.filetype
 
     if start_line then
@@ -272,7 +343,7 @@ do
       vim.schedule(function()
         select_lines(from_line, to_line)
       end)
-    else
+    elseif not reused then
       vim.api.nvim_win_set_cursor(0, { 1, 0 })
     end
   end
