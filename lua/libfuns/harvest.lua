@@ -16,6 +16,14 @@ do
     vim.notify(table.concat(lines, '\n'), vim.log.levels.ERROR, { title = title or 'git diff' })
   end
 
+  local function notify_harvest(kind, path)
+    local shown = (path == nil or path == '') and last_commit or (last_commit .. ':' .. path)
+    vim.notify(string.format('Harvested %s: %s', kind, shown), vim.log.levels.INFO, {
+      id = 'harvest_path',
+      title = 'Harvest Path',
+    })
+  end
+
   local function show_diff(lines, base, commit)
     last_base = base
     last_commit = commit
@@ -219,14 +227,22 @@ do
     return true
   end
 
-  local function git_path(path)
-    path = path:gsub('/+$', '')
+  local function git_toplevel()
     local code, lines = git_lines({ 'rev-parse', '--show-toplevel' })
     if code ~= 0 or not lines[1] or lines[1] == '' then
+      return nil
+    end
+
+    return vim.fs.normalize(lines[1])
+  end
+
+  local function git_path(path)
+    path = path:gsub('/+$', '')
+    local root = git_toplevel()
+    if not root then
       return path
     end
 
-    local root = vim.fs.normalize(lines[1])
     local normalized = vim.fs.normalize(path)
     if normalized == root then
       return ''
@@ -253,77 +269,139 @@ do
     return lines[1]
   end
 
-  -- Checkout names are `commit:path`. Neovim stores them as `{cwd}/commit:path`.
-  -- bufnr() treats the name as a pattern and can return a longer path under
-  -- the same prefix, so match the expanded name exactly.
-  local function checkout_buffer(name)
-    local suffix = '/' .. name
+  -- Pickers keep a checkout only when it is a listed file buffer whose name
+  -- exists on disk. The commit is part of the filename so a harvest buffer
+  -- stays distinct from the working-tree file venture opens.
+  local harvest_excluded = false
+
+  local function ignore_harvest_dir()
+    if harvest_excluded then
+      return
+    end
+
+    local code, lines = git_lines({ 'rev-parse', '--git-path', 'info/exclude' })
+    if code ~= 0 or not lines[1] or lines[1] == '' then
+      return
+    end
+
+    local exclude = vim.fs.normalize(vim.fn.fnamemodify(lines[1], ':p'))
+    local pattern = '/.harvest/'
+    local body = {}
+    if vim.uv.fs_stat(exclude) then
+      body = vim.fn.readfile(exclude)
+      for _, line in ipairs(body) do
+        local trimmed = vim.trim(line)
+        if trimmed == pattern or trimmed == '.harvest/' then
+          harvest_excluded = true
+          return
+        end
+      end
+    else
+      vim.fn.mkdir(vim.fs.dirname(exclude), 'p')
+    end
+
+    body[#body + 1] = pattern
+    if vim.fn.writefile(body, exclude) == 0 then
+      harvest_excluded = true
+    end
+  end
+
+  local function safe_commit(commit)
+    local safe = commit:gsub('[/\\:]+', '--')
+    safe = safe:gsub('^%.+', '')
+    if safe == '' or safe == '.' or safe == '..' then
+      return 'commit'
+    end
+    return safe
+  end
+
+  local function checkout_file(commit, gitpath, listing)
+    local root = git_toplevel() or vim.fs.normalize(vim.fn.getcwd())
+    local base = vim.fs.normalize(vim.fs.joinpath(root, '.harvest'))
+    local prefix = safe_commit(commit)
+    local rel = (gitpath or ''):gsub('\\', '/'):gsub('^/+', ''):gsub('/+$', '')
+    local dir, name
+    if listing or rel == '' then
+      dir = rel
+      name = prefix .. ':.listing'
+    else
+      dir = vim.fs.dirname(rel)
+      if dir == '.' then
+        dir = ''
+      end
+      name = prefix .. ':' .. vim.fs.basename(rel)
+    end
+
+    local full = dir == '' and vim.fs.joinpath(base, name) or vim.fs.joinpath(base, dir, name)
+    full = vim.fs.normalize(full)
+    local parent = base .. '/'
+    if full ~= base and full:sub(1, #parent) ~= parent then
+      return vim.fs.normalize(vim.fs.joinpath(base, prefix .. ':.listing'))
+    end
+    return full
+  end
+
+  local function checkout_buffer(path)
+    local want = vim.fs.normalize(path)
     for _, candidate in ipairs(vim.api.nvim_list_bufs()) do
       if vim.api.nvim_buf_is_valid(candidate) then
         local bufname = vim.fs.normalize(vim.api.nvim_buf_get_name(candidate))
-        if bufname == name or bufname:sub(-#suffix) == suffix then
+        if bufname == want then
           return candidate
         end
       end
     end
   end
 
-  local function fill_checkout(buf, lines)
-    vim.bo[buf].modifiable = true
-    vim.bo[buf].swapfile = false
-    vim.bo[buf].bufhidden = 'hide'
-    vim.bo[buf].buftype = 'nofile'
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-    vim.bo[buf].modified = false
-  end
-
-  local function focus_checkout(buf)
-    if vim.api.nvim_get_current_buf() ~= buf then
-      vim.cmd.buffer(buf)
+  local function edit_checkout(path)
+    local previous = vim.o.swapfile
+    vim.o.swapfile = false
+    local ok, err = pcall(vim.cmd, { cmd = 'edit', args = { path } })
+    vim.o.swapfile = previous
+    if not ok then
+      vim.notify(tostring(err), vim.log.levels.ERROR, { title = 'Harvest' })
+      return false
     end
+
+    vim.bo.swapfile = false
+    vim.bo.buflisted = true
+    vim.bo.buftype = ''
+    return true
   end
 
   -- Returns true when an already loaded checkout was refocused and its text
-  -- was left in place.
-  local function open_buffer(lines, name)
+  -- was left in place. Returns nil when the checkout could not be opened.
+  local function open_checkout(lines, path)
     if #lines == 0 then
       lines = { '' }
     end
 
-    local function reuse(buf)
-      local loaded = vim.api.nvim_buf_is_loaded(buf)
-      focus_checkout(buf)
-      if loaded then
-        vim.bo[buf].swapfile = false
-        vim.bo[buf].bufhidden = 'hide'
-        vim.bo[buf].buftype = 'nofile'
-        return true
-      end
+    vim.fn.mkdir(vim.fs.dirname(path), 'p')
+    ignore_harvest_dir()
 
-      fill_checkout(buf, lines)
-      return false
+    local existing = checkout_buffer(path)
+    local loaded = existing
+      and vim.api.nvim_buf_is_loaded(existing)
+      and vim.uv.fs_stat(path) ~= nil
+    if not loaded and vim.fn.writefile(lines, path) ~= 0 then
+      vim.notify('Could not write ' .. path, vim.log.levels.ERROR, { title = 'Harvest' })
+      return nil
     end
 
-    local existing = checkout_buffer(name)
     if existing then
-      return reuse(existing)
+      if vim.api.nvim_get_current_buf() ~= existing then
+        vim.bo[existing].buflisted = true
+        vim.cmd.buffer(existing)
+      end
+      vim.bo.swapfile = false
+      vim.bo.buflisted = true
+      vim.bo.buftype = ''
+      return loaded
     end
 
-    vim.cmd('enew')
-    local buf = vim.api.nvim_get_current_buf()
-    fill_checkout(buf, lines)
-    if pcall(vim.api.nvim_buf_set_name, buf, name) then
-      vim.bo[buf].modified = false
-      return false
+    if not edit_checkout(path) then
+      return nil
     end
-
-    local dup = checkout_buffer(name)
-    if dup and dup ~= buf then
-      local kept = reuse(dup)
-      vim.api.nvim_buf_delete(buf, { force = true })
-      return kept
-    end
-
     return false
   end
 
@@ -334,8 +412,12 @@ do
       return
     end
 
-    local reused = open_buffer(lines, last_commit .. ':' .. path)
+    local reused = open_checkout(lines, checkout_file(last_commit, path, false))
+    if reused == nil then
+      return
+    end
     vim.bo.filetype = vim.filetype.match({ filename = path }) or vim.bo.filetype
+    notify_harvest(start_line and 'line' or 'filename', path)
 
     if start_line then
       local from_line = start_line
@@ -360,8 +442,10 @@ do
       return
     end
 
-    local label = path == '' and last_commit or (last_commit .. ':' .. path)
-    open_buffer(lines, label)
+    if open_checkout(lines, checkout_file(last_commit, path, true)) == nil then
+      return
+    end
+    notify_harvest('directory', path)
 
     local row = 1
     if cursor_name then
