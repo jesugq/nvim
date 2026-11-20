@@ -61,6 +61,21 @@ do
     end
   end
 
+  FUNCTION.window_wrap = function()
+    local new_state = not vim.wo.wrap
+    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+      vim.api.nvim_set_option_value('wrap', new_state, { win = win })
+      vim.api.nvim_set_option_value('linebreak', new_state, { win = win })
+    end
+  end
+
+  FUNCTION.window_number = function()
+    local new_state = not vim.wo.relativenumber
+    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+      vim.api.nvim_set_option_value('relativenumber', new_state, { win = win })
+    end
+  end
+
   FUNCTION.swap_window = function(direction)
     local source_win = vim.api.nvim_get_current_win()
     vim.cmd('wincmd ' .. direction)

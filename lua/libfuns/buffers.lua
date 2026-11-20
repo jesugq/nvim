@@ -45,5 +45,17 @@ do
     end
   end
 
+  FUNCTION.buffer_wrap = function()
+    local win = vim.api.nvim_get_current_win()
+    local new_state = not vim.wo[win].wrap
+    vim.api.nvim_set_option_value('wrap', new_state, { win = win })
+    vim.api.nvim_set_option_value('linebreak', new_state, { win = win })
+  end
+
+  FUNCTION.buffer_number = function()
+    local win = vim.api.nvim_get_current_win()
+    vim.api.nvim_set_option_value('relativenumber', not vim.wo[win].relativenumber, { win = win })
+  end
+
   return FUNCTION
 end
