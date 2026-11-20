@@ -12,8 +12,8 @@ do
   vim.keymap.set('n', '<leader>ww', function() windows.window_switch() end, { desc = '[w]indow [w]indow' })
   vim.keymap.set('n', '<leader>wd', function() windows.window_delete() end, { desc = '[w]indow [d]elete' })
   vim.keymap.set('n', '<leader>ws', function() windows.window_save() end, { desc = '[w]indow [s]ave' })
-  vim.keymap.set('n', '<leader>wt', function() windows.window_checktime() end, { desc = '[w]indow [t]ime' })
-  vim.keymap.set('n', '<leader>wy', function() windows.window_recover() end, { desc = '[w]indow [y]ield' })
+  vim.keymap.set('n', '<leader>wT', function() windows.window_checktime() end, { desc = '[w]indow [t]ime' })
+  vim.keymap.set('n', '<leader>wY', function() windows.window_recover() end, { desc = '[w]indow [y]ield' })
   vim.keymap.set('n', '<leader>wW', function() windows.window_wrap() end, { desc = '[w]indow [W]rap' })
   vim.keymap.set('n', '<leader>wN', function() windows.window_number() end, { desc = '[w]indow [N]umber' })
 end

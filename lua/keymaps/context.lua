@@ -4,6 +4,7 @@ do
   -- <leader>c
   vim.keymap.set('n', '<leader>cd', function() context.copy_directory('r') end, { desc = '[c]opy [d]irectory' })
   vim.keymap.set('n', '<leader>cf', function() context.copy_filename('r') end, { desc = '[c]opy [f]ilename' })
+  vim.keymap.set('n', '<leader>ct', function() context.copy_filename('p') end, { desc = '[c]opy [t]his' })
   vim.keymap.set('n', '<leader>cl', function() context.copy_line('r') end, { desc = '[c]opy [l]ine' })
   vim.keymap.set('x', '<leader>cl', function() context.copy_visual_line('r') end, { desc = '[c]opy [l]ines' })
   vim.keymap.set('n', '<leader>cD', 'ggVGD', { desc = '[c]opy [D]elete' })
@@ -12,6 +13,7 @@ do
   -- <leader>C
   vim.keymap.set('n', '<leader>Cd', function() context.copy_directory('a') end, { desc = '[C]opy [d]irectory' })
   vim.keymap.set('n', '<leader>Cf', function() context.copy_filename('a') end, { desc = '[C]opy [f]ilename' })
+  vim.keymap.set('n', '<leader>Ct', function() context.copy_filename('e') end, { desc = '[C]opy [T]his' })
   vim.keymap.set('n', '<leader>Cl', function() context.copy_line('a') end, { desc = '[C]opy [l]ine' })
   vim.keymap.set('x', '<leader>Cl', function() context.copy_visual_line('a') end, { desc = '[C]opy [l]ines' })
   vim.keymap.set('n', '<leader>CD', 'ggVGD', { desc = '[C]opy [D]elete' })

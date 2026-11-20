@@ -29,6 +29,19 @@ do
         return vim.fn.expand('%:t')
       end,
     },
+    e = {
+      description = 'explicit',
+      directory = function()
+        return ''
+      end,
+      filename = function()
+        local name = vim.fn.expand('%:t')
+        if name == '' then
+          return ''
+        end
+        return './' .. name
+      end,
+    },
   }
 
   FUNCTION.copy_notify_path = function(message)
