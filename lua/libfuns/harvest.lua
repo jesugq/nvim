@@ -24,12 +24,22 @@ do
     })
   end
 
+  local function compare_view(lines, base, commit)
+    local view = {
+      'base ' .. base,
+      'commit ' .. commit,
+      '',
+    }
+    vim.list_extend(view, lines)
+    return view
+  end
+
   local function show_diff(lines, base, commit)
     last_base = base
     last_commit = commit
     last_diff = vim.deepcopy(lines)
     vim.cmd('enew')
-    vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+    vim.api.nvim_buf_set_lines(0, 0, -1, false, compare_view(lines, base, commit))
     vim.bo.filetype = 'diff'
     vim.api.nvim_win_set_cursor(0, { 1, 0 })
   end
@@ -538,7 +548,7 @@ do
     end
 
     vim.cmd('enew')
-    vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+    vim.api.nvim_buf_set_lines(0, 0, -1, false, compare_view(lines, last_base, last_commit))
     vim.bo.filetype = 'diff'
     vim.api.nvim_win_set_cursor(0, { 1, 0 })
   end

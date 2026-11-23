@@ -3,6 +3,7 @@ do
 
   -- <leader>h
   vim.keymap.set('n', '<leader>ha', function() harvest.hunk_assign('') end, { desc = '[h]unk [a]ssign' })
+  vim.keymap.set('n', '<leader>hA', function() harvest.hunk_assign('origin/') end, { desc = '[h]unk [A]ssign origin' })
   vim.keymap.set('n', '<leader>hc', function() harvest.hunk_compare('') end, { desc = '[h]unk [C]ompare local' })
   vim.keymap.set('n', '<leader>hC', function() harvest.hunk_compare('origin/') end, { desc = '[h]unk [c]ompare origin' })
   vim.keymap.set('n', '<leader>hd', function() harvest.hunk_dd() end, { desc = '[h]unk [d]elete' })
