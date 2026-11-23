@@ -63,6 +63,7 @@ do
   require('autocfg.dashboard')
   require('keymaps.dashboard')
   require('plugins.tiny-glimmer')
+  require('plugins.neoscroll')
 
   -- integration
   require('plugins.which-key')

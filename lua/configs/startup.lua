@@ -33,7 +33,7 @@ do
   vim.opt.guicursor = 'a:block'
   vim.o.number = true
   vim.o.cursorline = true
-  vim.o.scrolloff = 8
+  vim.o.scrolloff = 0
 
   -- column
   vim.o.relativenumber = true
