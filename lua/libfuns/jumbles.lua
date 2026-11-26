@@ -1,7 +1,7 @@
 do
   local FUNCTION = {}
 
-  FUNCTION.wrap_nook = function()
+  FUNCTION.wrap_jumble = function()
     local new_state = not vim.o.wrap
 
     vim.o.wrap = new_state
@@ -13,7 +13,7 @@ do
     end
   end
 
-  FUNCTION.number_nook = function()
+  FUNCTION.number_jumble = function()
     vim.opt.relativenumber = not vim.opt.relativenumber:get()
   end
 

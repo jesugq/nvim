@@ -13,7 +13,7 @@ do
       { '<leader>h', group = '[h]unk' },
       { '<leader>H', group = '[H]unk' },
       { '<leader>m', group = '[m]emory' },
-      { '<leader>n', group = '[n]ook' },
+      { '<leader>j', group = '[j]umble' },
       { '<leader>o', group = '[o]pen' },
       { '<leader>q', group = '[q]uest' },
       { '<leader>v', group = '[v]iew' },

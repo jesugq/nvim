@@ -195,7 +195,7 @@ do
     vim.notify('Copied to macro [' .. slot .. ']:\n' .. shown, vim.log.levels.INFO, { title = 'nvim-recorder' })
   end
 
-  FUNCTION.nest_marks = function(opts)
+  FUNCTION.jumble_marks = function(opts)
     local marks = {}
     if opts.global ~= false then
       vim.list_extend(marks, vim.fn.getmarklist())
@@ -289,12 +289,12 @@ do
 
   FUNCTION.buffer_marks = function(opts)
     local buf = vim.api.nvim_get_current_buf()
-    return vim.tbl_filter(function(item) return item.buf == buf end, FUNCTION.nest_marks(opts))
+    return vim.tbl_filter(function(item) return item.buf == buf end, FUNCTION.jumble_marks(opts))
   end
 
   FUNCTION.window_marks = function(opts)
     local visible = visible_buffer_set()
-    return vim.tbl_filter(function(item) return item.buf and visible[item.buf] end, FUNCTION.nest_marks(opts))
+    return vim.tbl_filter(function(item) return item.buf and visible[item.buf] end, FUNCTION.jumble_marks(opts))
   end
 
   return FUNCTION

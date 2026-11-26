@@ -14,11 +14,11 @@ do
   vim.keymap.set('n', '<leader>wg', function() Snacks.picker.grep_buffers({ focus = 'input', finder = snacks.window_grep }) end, { desc = '[w]indows [g]rep visible buffers' })
   vim.keymap.set('n', '<leader>wm', function() Snacks.picker.marks({ finder = snacks.window_marks, transform = function(item) return snacks.person_marks(item) end }) end, { desc = '[w]indows [m]arks' })
 
-  -- <leader>n
-  vim.keymap.set('n', '<leader>ne', function() Snacks.picker.explorer({ finder = snacks.explorer_buffers('nest') }) end, { desc = '[n]est [e]xplore' })
-  vim.keymap.set('n', '<leader>nf', function() Snacks.picker.buffers() end, { desc = '[n]est [f]ind' })
-  vim.keymap.set('n', '<leader>ng', function() Snacks.picker.grep_buffers() end, { desc = '[n]est [g]rep' })
-  vim.keymap.set('n', '<leader>nm', function() Snacks.picker.marks({ finder = snacks.nest_marks, transform = function(item) return snacks.person_marks(item) end }) end, { desc = '[n]est [m]arks' })
+  -- <leader>j
+  vim.keymap.set('n', '<leader>je', function() Snacks.picker.explorer({ finder = snacks.explorer_buffers('jumble') }) end, { desc = '[j]umble [e]xplore' })
+  vim.keymap.set('n', '<leader>jf', function() Snacks.picker.buffers() end, { desc = '[j]umble [f]ind' })
+  vim.keymap.set('n', '<leader>jg', function() Snacks.picker.grep_buffers() end, { desc = '[j]umble [g]rep' })
+  vim.keymap.set('n', '<leader>jm', function() Snacks.picker.marks({ finder = snacks.jumble_marks, transform = function(item) return snacks.person_marks(item) end }) end, { desc = '[j]umble [m]arks' })
 
   -- <leader>o
   vim.keymap.set('n', '<leader>oe', function() Snacks.explorer() end, { desc = '[o]pen [e]xplore' })
